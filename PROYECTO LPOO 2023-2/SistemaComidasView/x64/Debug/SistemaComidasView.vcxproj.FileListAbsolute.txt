@@ -1,0 +1,5 @@
+C:\Users\willi\OneDrive\Desktop\PROYECTO LPOO 2023-2\SistemaComidasView\x64\Debug\SistemaComidasView.vcxproj.AssemblyReference.cache
+C:\Users\willi\OneDrive\Desktop\PROYECTO LPOO 2023-2\SistemaComidasView\x64\Debug\SistemaComidasView.frmMantenimientoProyecto.resources
+C:\Users\willi\OneDrive\Desktop\PROYECTO LPOO 2023-2\SistemaComidasView\x64\Debug\SistemaComidasView.frmPrincipal.resources
+C:\Users\willi\OneDrive\Desktop\PROYECTO LPOO 2023-2\SistemaComidasView\x64\Debug\SistemaComidasView.VistaPedido.resources
+C:\Users\willi\OneDrive\Desktop\PROYECTO LPOO 2023-2\SistemaComidasView\x64\Debug\SistemaComidasView.vcxproj.GenerateResource.cache

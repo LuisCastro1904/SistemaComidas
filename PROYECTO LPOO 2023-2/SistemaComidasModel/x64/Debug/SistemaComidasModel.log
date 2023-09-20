@@ -1,0 +1,11 @@
+﻿  Cliente.cpp
+  Cocinero.cpp
+  Pedido.cpp
+  Persona.cpp
+  Aviso.cpp
+  DetallePedido.cpp
+  Producto.cpp
+  .NETFramework,Version=v4.7.2.AssemblyAttributes.cpp
+  Generating Code...
+  Cliente.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
+  SistemaComidasModel.vcxproj -> C:\Users\willi\OneDrive\Desktop\PROYECTO LPOO 2023-2\x64\Debug\SistemaComidasModel.dll
