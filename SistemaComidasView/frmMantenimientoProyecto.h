@@ -142,7 +142,7 @@ namespace SistemaComidasView {
 				this->Column1,
 					this->Column2, this->Column3, this->Column4, this->Column5
 			});
-			this->dataGridView1->Location = System::Drawing::Point(141, 162);
+			this->dataGridView1->Location = System::Drawing::Point(137, 161);
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->RowHeadersWidth = 51;
 			this->dataGridView1->RowTemplate->Height = 24;
