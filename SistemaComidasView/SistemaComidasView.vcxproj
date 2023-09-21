@@ -155,6 +155,14 @@
       <DependentUpon>VistaPedido.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SistemaComidasController\SistemaComidasController.vcxproj">
+      <Project>{cfc01403-c1b1-4437-83bb-68acc7a5473c}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\SistemaComidasModel\SistemaComidasModel.vcxproj">
+      <Project>{ae9baabc-a98b-4b29-8463-f8cfab76ae73}</Project>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

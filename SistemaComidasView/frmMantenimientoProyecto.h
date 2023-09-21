@@ -8,6 +8,9 @@ namespace SistemaComidasView {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace SistemaComidasController;
+	using namespace System::Collections::Generic;
+	using namespace SistemaComidasModel;
 
 	/// <summary>
 	/// Summary for frmMantenimientoProyecto
@@ -41,13 +44,23 @@ namespace SistemaComidasView {
 	private: System::Windows::Forms::Button^ button4;
 	private: System::Windows::Forms::Button^ button5;
 	private: System::Windows::Forms::Button^ button6;
-	private: System::Windows::Forms::Button^ button7;
+
+	private: System::Windows::Forms::DataGridView^ dataGridView1;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column1;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column2;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column3;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column4;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column5;
+	private: System::Windows::Forms::ComboBox^ comboBox1;
+	private: System::Windows::Forms::Button^ button1;
+	private: System::Windows::Forms::GroupBox^ groupBox1;
 	private: System::Windows::Forms::Label^ label2;
-	private: System::Windows::Forms::Label^ label3;
-	private: System::Windows::Forms::Label^ label4;
-	private: System::Windows::Forms::Label^ label5;
-	private: System::Windows::Forms::Label^ label6;
-	private: System::Windows::Forms::Label^ label7;
+
+
+
+
+
+
 
 
 
@@ -68,49 +81,53 @@ namespace SistemaComidasView {
 			this->button4 = (gcnew System::Windows::Forms::Button());
 			this->button5 = (gcnew System::Windows::Forms::Button());
 			this->button6 = (gcnew System::Windows::Forms::Button());
-			this->button7 = (gcnew System::Windows::Forms::Button());
+			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
+			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column4 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column5 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
+			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
 			this->label2 = (gcnew System::Windows::Forms::Label());
-			this->label3 = (gcnew System::Windows::Forms::Label());
-			this->label4 = (gcnew System::Windows::Forms::Label());
-			this->label5 = (gcnew System::Windows::Forms::Label());
-			this->label6 = (gcnew System::Windows::Forms::Label());
-			this->label7 = (gcnew System::Windows::Forms::Label());
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
+			this->groupBox1->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(12, 27);
+			this->label1->Location = System::Drawing::Point(45, 38);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(109, 16);
 			this->label1->TabIndex = 2;
 			this->label1->Text = L"Bienvenido Admi";
-			this->label1->Click += gcnew System::EventHandler(this, &frmMantenimientoProyecto::label1_Click);
 			// 
 			// button4
 			// 
-			this->button4->Location = System::Drawing::Point(213, 417);
+			this->button4->Location = System::Drawing::Point(481, 399);
 			this->button4->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->button4->Name = L"button4";
 			this->button4->Size = System::Drawing::Size(71, 29);
 			this->button4->TabIndex = 3;
 			this->button4->Text = L"Editar";
 			this->button4->UseVisualStyleBackColor = true;
-			this->button4->Click += gcnew System::EventHandler(this, &frmMantenimientoProyecto::button4_Click);
 			// 
 			// button5
 			// 
-			this->button5->Location = System::Drawing::Point(310, 417);
+			this->button5->Location = System::Drawing::Point(322, 399);
 			this->button5->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->button5->Name = L"button5";
 			this->button5->Size = System::Drawing::Size(71, 29);
 			this->button5->TabIndex = 5;
 			this->button5->Text = L"Agregar";
 			this->button5->UseVisualStyleBackColor = true;
+			this->button5->Click += gcnew System::EventHandler(this, &frmMantenimientoProyecto::button5_Click);
 			// 
 			// button6
 			// 
-			this->button6->Location = System::Drawing::Point(405, 417);
+			this->button6->Location = System::Drawing::Point(616, 399);
 			this->button6->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->button6->Name = L"button6";
 			this->button6->Size = System::Drawing::Size(71, 29);
@@ -118,85 +135,102 @@ namespace SistemaComidasView {
 			this->button6->Text = L"Eliminar";
 			this->button6->UseVisualStyleBackColor = true;
 			// 
-			// button7
+			// dataGridView1
 			// 
-			this->button7->Location = System::Drawing::Point(508, 417);
-			this->button7->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
-			this->button7->Name = L"button7";
-			this->button7->Size = System::Drawing::Size(71, 29);
-			this->button7->TabIndex = 7;
-			this->button7->Text = L"Salir";
-			this->button7->UseVisualStyleBackColor = true;
+			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(5) {
+				this->Column1,
+					this->Column2, this->Column3, this->Column4, this->Column5
+			});
+			this->dataGridView1->Location = System::Drawing::Point(141, 162);
+			this->dataGridView1->Name = L"dataGridView1";
+			this->dataGridView1->RowHeadersWidth = 51;
+			this->dataGridView1->RowTemplate->Height = 24;
+			this->dataGridView1->Size = System::Drawing::Size(675, 213);
+			this->dataGridView1->TabIndex = 16;
+			// 
+			// Column1
+			// 
+			this->Column1->HeaderText = L"Código";
+			this->Column1->MinimumWidth = 6;
+			this->Column1->Name = L"Column1";
+			this->Column1->Width = 125;
+			// 
+			// Column2
+			// 
+			this->Column2->HeaderText = L"Nombre";
+			this->Column2->MinimumWidth = 6;
+			this->Column2->Name = L"Column2";
+			this->Column2->Width = 125;
+			// 
+			// Column3
+			// 
+			this->Column3->HeaderText = L"Descipción";
+			this->Column3->MinimumWidth = 6;
+			this->Column3->Name = L"Column3";
+			this->Column3->Width = 125;
+			// 
+			// Column4
+			// 
+			this->Column4->HeaderText = L"Precio";
+			this->Column4->MinimumWidth = 6;
+			this->Column4->Name = L"Column4";
+			this->Column4->Width = 125;
+			// 
+			// Column5
+			// 
+			this->Column5->HeaderText = L"Stock";
+			this->Column5->MinimumWidth = 6;
+			this->Column5->Name = L"Column5";
+			this->Column5->Width = 125;
+			// 
+			// comboBox1
+			// 
+			this->comboBox1->FormattingEnabled = true;
+			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(2) { L"Bebida", L"Comida" });
+			this->comboBox1->Location = System::Drawing::Point(123, 36);
+			this->comboBox1->Name = L"comboBox1";
+			this->comboBox1->Size = System::Drawing::Size(121, 24);
+			this->comboBox1->TabIndex = 17;
+			// 
+			// button1
+			// 
+			this->button1->Location = System::Drawing::Point(300, 36);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(75, 23);
+			this->button1->TabIndex = 18;
+			this->button1->Text = L"Buscar";
+			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &frmMantenimientoProyecto::button1_Click);
+			// 
+			// groupBox1
+			// 
+			this->groupBox1->Controls->Add(this->label2);
+			this->groupBox1->Controls->Add(this->comboBox1);
+			this->groupBox1->Controls->Add(this->button1);
+			this->groupBox1->Location = System::Drawing::Point(270, 38);
+			this->groupBox1->Name = L"groupBox1";
+			this->groupBox1->Size = System::Drawing::Size(417, 86);
+			this->groupBox1->TabIndex = 19;
+			this->groupBox1->TabStop = false;
+			this->groupBox1->Text = L"Criterio de búsqueda";
 			// 
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(85, 120);
+			this->label2->Location = System::Drawing::Point(49, 38);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(127, 16);
-			this->label2->TabIndex = 9;
-			this->label2->Text = L"Codigo de Producto";
-			this->label2->Click += gcnew System::EventHandler(this, &frmMantenimientoProyecto::label2_Click);
-			// 
-			// label3
-			// 
-			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(85, 84);
-			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(111, 16);
-			this->label3->TabIndex = 10;
-			this->label3->Text = L"Tipo de Producto";
-			this->label3->Click += gcnew System::EventHandler(this, &frmMantenimientoProyecto::label3_Click);
-			// 
-			// label4
-			// 
-			this->label4->AutoSize = true;
-			this->label4->Location = System::Drawing::Point(85, 154);
-			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(135, 16);
-			this->label4->TabIndex = 11;
-			this->label4->Text = L"Nombre del Producto";
-			// 
-			// label5
-			// 
-			this->label5->AutoSize = true;
-			this->label5->Location = System::Drawing::Point(85, 186);
-			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(158, 16);
-			this->label5->TabIndex = 12;
-			this->label5->Text = L"Descripcion del Prodcuto";
-			// 
-			// label6
-			// 
-			this->label6->AutoSize = true;
-			this->label6->Location = System::Drawing::Point(85, 215);
-			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(125, 16);
-			this->label6->TabIndex = 13;
-			this->label6->Text = L"Precio del Producto";
-			this->label6->Click += gcnew System::EventHandler(this, &frmMantenimientoProyecto::label6_Click);
-			// 
-			// label7
-			// 
-			this->label7->AutoSize = true;
-			this->label7->Location = System::Drawing::Point(85, 249);
-			this->label7->Name = L"label7";
-			this->label7->Size = System::Drawing::Size(81, 16);
-			this->label7->TabIndex = 14;
-			this->label7->Text = L"Ingredientes";
+			this->label2->Size = System::Drawing::Size(35, 16);
+			this->label2->TabIndex = 19;
+			this->label2->Text = L"Tipo";
 			// 
 			// frmMantenimientoProyecto
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(850, 509);
-			this->Controls->Add(this->label7);
-			this->Controls->Add(this->label6);
-			this->Controls->Add(this->label5);
-			this->Controls->Add(this->label4);
-			this->Controls->Add(this->label3);
-			this->Controls->Add(this->label2);
-			this->Controls->Add(this->button7);
+			this->ClientSize = System::Drawing::Size(984, 506);
+			this->Controls->Add(this->groupBox1);
+			this->Controls->Add(this->dataGridView1);
 			this->Controls->Add(this->button6);
 			this->Controls->Add(this->button5);
 			this->Controls->Add(this->button4);
@@ -205,27 +239,46 @@ namespace SistemaComidasView {
 			this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->Name = L"frmMantenimientoProyecto";
 			this->Text = L"frmMantenimientoProyecto";
-			this->Load += gcnew System::EventHandler(this, &frmMantenimientoProyecto::frmMantenimientoProyecto_Load);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
+			this->groupBox1->ResumeLayout(false);
+			this->groupBox1->PerformLayout();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
 		}
 #pragma endregion
-	private: System::Void frmMantenimientoProyecto_Load(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+		String^ Tipo = this->comboBox1->Text;
+		ProductoController^ objProductoController = gcnew ProductoController();
+		List<Producto^>^ listaProductos = objProductoController->BuscarProducto(Tipo);
+		mostrarGrilla(listaProductos);
 	}
-	private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
+	private: void mostrarGrilla(List<Producto^>^ listaProductos) {
+
+		this->dataGridView1->Rows->Clear(); /*Elimino toda la informacion del datagrid*/
+
+		for (int i = 0; i < listaProductos->Count; i++) {
+
+			Producto^ objProducto = listaProductos[i];
+
+			array<String^>^ filaGrilla = gcnew array<String^>(5);
+
+			filaGrilla[0] = Convert::ToString(objProducto->getCodigo());
+
+			filaGrilla[1] = objProducto->getNombre();
+
+			filaGrilla[2] = objProducto->getDescripcion();
+
+			filaGrilla[3] = Convert::ToString(objProducto->getPrecio());
+
+			filaGrilla[4] = Convert::ToString(objProducto->getStock());
+
+			this->dataGridView1->Rows->Add(filaGrilla);
+
+		}
+
 	}
-	private: System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void listBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
-	}
-private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void label2_Click(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void label3_Click(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void label6_Click(System::Object^ sender, System::EventArgs^ e) {
+private: System::Void button5_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }

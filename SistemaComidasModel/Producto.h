@@ -9,11 +9,23 @@ namespace SistemaComidasModel {
 		String^ Nombre;
 		String^ Descripcion;
 		double Precio;
-		String^ Ingredientes;
 		String^ Tipo;
+		int Stock;
 		/*Definimos métodos*/
 	public:
 		Producto();
-		Producto(int codigo, String^ Nombre, double Precio, String^ Ingredientes, String^ Tipo);
+		Producto(int codigo, String^ Nombre, String^ Descripcion, double Precio, String^ Tipo, int Stock);
+		int getCodigo();
+		void setCodigo(int codigo);
+		String^ getNombre();
+		void setNombre(String^ Nombre);
+		String^ getDescripcion();
+		void setDescripcion(String^ Descripcion);
+		double getPrecio();
+		void setPrecio(double Precio);
+		String^ getTipo();
+		void setTipo(String^ Tipo);
+		int getStock();
+		void setStock(int Stock);
 	};
 }

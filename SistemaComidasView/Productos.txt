@@ -1,0 +1,11 @@
+1;Causa;a;15;Comida;10
+2;Papa a la Huacaina;a;15;Comida;10
+3;Chicha Morada;a;15;Bebida;10
+4;Maracuya;a;15;Bebida;10
+5;Arroz con pollo;a;15;Comida;10
+6;Inka Cola;a;Bebida;10
+7;Coca Cola;a;15;Bebida;10
+8;Carapulcra con Sopa Seca;a;15;Comida;10
+9;Aji de Gallina;a;15;Comida;10
+10;Agua;a;15;Bebida;10
+

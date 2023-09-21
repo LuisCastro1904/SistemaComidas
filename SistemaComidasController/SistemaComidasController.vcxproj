@@ -116,6 +116,12 @@
       <Project>{ae9baabc-a98b-4b29-8463-f8cfab76ae73}</Project>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ProductoController.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="ProductoController.cpp" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
