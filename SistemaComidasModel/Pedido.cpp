@@ -1,5 +1,5 @@
 #include "Pedido.h"
-
+using namespace SistemaComidasModel;
 Pedido::Pedido() {
 
 }

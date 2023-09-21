@@ -1,5 +1,6 @@
 #include "Aviso.h"
 
+using namespace SistemaComidasModel;
 Aviso::Aviso() {
 
 }

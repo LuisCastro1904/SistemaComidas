@@ -1,5 +1,5 @@
 #include "Producto.h"
-
+using namespace SistemaComidasModel;
 Producto::Producto() {
 
 }

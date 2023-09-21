@@ -34,10 +34,17 @@ namespace SistemaComidasView {
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::Label^ label1;
+	private: System::Windows::Forms::GroupBox^ groupBox1;
 	protected:
-	private: System::Windows::Forms::Label^ label2;
-	private: System::Windows::Forms::Label^ label3;
+
+	protected:
+
+	protected:
+
+	protected:
+
+
+
 
 	protected:
 
@@ -54,55 +61,36 @@ namespace SistemaComidasView {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->label1 = (gcnew System::Windows::Forms::Label());
-			this->label2 = (gcnew System::Windows::Forms::Label());
-			this->label3 = (gcnew System::Windows::Forms::Label());
+			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
 			this->SuspendLayout();
 			// 
-			// label1
+			// groupBox1
 			// 
-			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(465, 129);
-			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(51, 20);
-			this->label1->TabIndex = 1;
-			this->label1->Text = L"label1";
-			// 
-			// label2
-			// 
-			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(341, 259);
-			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(51, 20);
-			this->label2->TabIndex = 2;
-			this->label2->Text = L"label2";
-			// 
-			// label3
-			// 
-			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(589, 292);
-			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(51, 20);
-			this->label3->TabIndex = 3;
-			this->label3->Text = L"label3";
+			this->groupBox1->Location = System::Drawing::Point(293, 38);
+			this->groupBox1->Name = L"groupBox1";
+			this->groupBox1->Size = System::Drawing::Size(504, 410);
+			this->groupBox1->TabIndex = 5;
+			this->groupBox1->TabStop = false;
+			this->groupBox1->Text = L"groupBox1";
+			this->groupBox1->Enter += gcnew System::EventHandler(this, &VistaCocinero::groupBox1_Enter);
 			// 
 			// VistaCocinero
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1154, 575);
-			this->Controls->Add(this->label3);
-			this->Controls->Add(this->label2);
-			this->Controls->Add(this->label1);
+			this->ClientSize = System::Drawing::Size(1026, 460);
+			this->Controls->Add(this->groupBox1);
 			this->IsMdiContainer = true;
+			this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->Name = L"VistaCocinero";
 			this->Text = L"VistaCocinero";
 			this->ResumeLayout(false);
-			this->PerformLayout();
 
 		}
 #pragma endregion
 	private: System::Void pictureBox1_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void groupBox1_Enter(System::Object^ sender, System::EventArgs^ e) {
 	}
 	};
 }

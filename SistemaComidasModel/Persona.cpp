@@ -1,5 +1,5 @@
 #include "Persona.h"
-
+using namespace SistemaComidasModel;
 Persona::Persona() {
 
 }

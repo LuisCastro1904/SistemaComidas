@@ -1,5 +1,5 @@
 #include "Cliente.h"
-
+using namespace SistemaComidasModel;
 Cliente::Cliente() :Persona() {
 
 }

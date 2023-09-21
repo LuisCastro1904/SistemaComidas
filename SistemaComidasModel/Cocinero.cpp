@@ -1,5 +1,5 @@
 #include "Cocinero.h"
-
+using namespace SistemaComidasModel;
 Cocinero::Cocinero() :Persona() {
 
 }
