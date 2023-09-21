@@ -114,8 +114,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="frmMantenimientoProyecto.cpp" />
     <ClCompile Include="frmPrincipal.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="VistaCocinero.cpp" />
     <ClCompile Include="VistaPedido.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -126,7 +128,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="frmMantenimientoProyecto.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="frmPrincipal.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="VistaCocinero.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="VistaPedido.h">
@@ -134,8 +142,14 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="frmMantenimientoProyecto.resx">
+      <DependentUpon>frmMantenimientoProyecto.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmPrincipal.resx">
       <DependentUpon>frmPrincipal.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VistaCocinero.resx">
+      <DependentUpon>VistaCocinero.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VistaPedido.resx">
       <DependentUpon>VistaPedido.h</DependentUpon>

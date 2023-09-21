@@ -1,4 +1,6 @@
 #include "frmPrincipal.h"
+#include "frmMantenimientoProyecto.h"
+#include "VistaPedido.h"
 
 using namespace System;
 using namespace System::Windows::Forms;
