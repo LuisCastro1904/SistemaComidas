@@ -53,13 +53,14 @@ namespace SistemaComidasView {
 		void InitializeComponent(void)
 		{
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
-			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->groupBox1->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// groupBox1
 			// 
+			this->groupBox1->BackColor = System::Drawing::Color::IndianRed;
 			this->groupBox1->Controls->Add(this->label1);
 			this->groupBox1->Controls->Add(this->button1);
 			this->groupBox1->Location = System::Drawing::Point(214, 77);
@@ -69,25 +70,29 @@ namespace SistemaComidasView {
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"DETALLE";
 			// 
+			// label1
+			// 
+			this->label1->AutoSize = true;
+			this->label1->Font = (gcnew System::Drawing::Font(L"Swis721 BlkEx BT", 10, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label1->Location = System::Drawing::Point(6, 145);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(376, 24);
+			this->label1->TabIndex = 1;
+			this->label1->Text = L"GRACIAS POR SU PEDIDO";
+			this->label1->Click += gcnew System::EventHandler(this, &VentanaFin::label1_Click);
+			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(120, 420);
+			this->button1->Font = (gcnew System::Drawing::Font(L"Nirmala UI", 12, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->button1->Location = System::Drawing::Point(82, 430);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(143, 72);
+			this->button1->Size = System::Drawing::Size(201, 72);
 			this->button1->TabIndex = 0;
 			this->button1->Text = L"FINALIZAR";
 			this->button1->UseVisualStyleBackColor = true;
 			this->button1->Click += gcnew System::EventHandler(this, &VentanaFin::button1_Click);
-			// 
-			// label1
-			// 
-			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(69, 152);
-			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(214, 20);
-			this->label1->TabIndex = 1;
-			this->label1->Text = L"GRACIAS POR SU PEDIDO";
-			this->label1->Click += gcnew System::EventHandler(this, &VentanaFin::label1_Click);
 			// 
 			// VentanaFin
 			// 
