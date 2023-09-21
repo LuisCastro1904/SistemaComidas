@@ -119,6 +119,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="VentanaFin.cpp" />
     <ClCompile Include="VentanaPago.cpp" />
+    <ClCompile Include="VentanaRecepcion.cpp" />
     <ClCompile Include="VentanaResumen.cpp" />
     <ClCompile Include="VistaBebidas.cpp" />
     <ClCompile Include="VistaCocinero.cpp" />
@@ -142,6 +143,9 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="VentanaPago.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="VentanaRecepcion.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="VentanaResumen.h">
