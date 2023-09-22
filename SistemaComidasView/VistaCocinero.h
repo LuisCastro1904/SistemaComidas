@@ -34,7 +34,14 @@ namespace SistemaComidasView {
 				delete components;
 			}
 		}
+
+	private: System::Windows::Forms::DataGridView^ dataGridView1;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column1;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column2;
+	private: System::Windows::Forms::Button^ button1;
 	private: System::Windows::Forms::GroupBox^ groupBox1;
+	protected:
+
 	protected:
 
 	protected:
@@ -61,29 +68,71 @@ namespace SistemaComidasView {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
+			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->SuspendLayout();
+			// 
+			// dataGridView1
+			// 
+			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(2) {
+				this->Column1,
+					this->Column2
+			});
+			this->dataGridView1->Location = System::Drawing::Point(107, 89);
+			this->dataGridView1->Name = L"dataGridView1";
+			this->dataGridView1->Size = System::Drawing::Size(241, 146);
+			this->dataGridView1->TabIndex = 8;
+			// 
+			// Column1
+			// 
+			this->Column1->HeaderText = L"Codigo";
+			this->Column1->Name = L"Column1";
+			// 
+			// Column2
+			// 
+			this->Column2->HeaderText = L"Detalle del Pedido";
+			this->Column2->Name = L"Column2";
+			// 
+			// button1
+			// 
+			this->button1->Location = System::Drawing::Point(133, 257);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(75, 23);
+			this->button1->TabIndex = 9;
+			this->button1->Text = L"Seleccionar";
+			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &VistaCocinero::button1_Click);
 			// 
 			// groupBox1
 			// 
-			this->groupBox1->Location = System::Drawing::Point(293, 38);
+			this->groupBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 20.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->groupBox1->Location = System::Drawing::Point(39, 21);
 			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Size = System::Drawing::Size(504, 410);
-			this->groupBox1->TabIndex = 5;
+			this->groupBox1->Size = System::Drawing::Size(143, 40);
+			this->groupBox1->TabIndex = 10;
 			this->groupBox1->TabStop = false;
-			this->groupBox1->Text = L"groupBox1";
-			this->groupBox1->Enter += gcnew System::EventHandler(this, &VistaCocinero::groupBox1_Enter);
+			this->groupBox1->Text = L"Pedidos:";
+			this->groupBox1->Enter += gcnew System::EventHandler(this, &VistaCocinero::groupBox1_Enter_1);
 			// 
 			// VistaCocinero
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1026, 460);
+			this->ClientSize = System::Drawing::Size(501, 332);
 			this->Controls->Add(this->groupBox1);
+			this->Controls->Add(this->button1);
+			this->Controls->Add(this->dataGridView1);
 			this->IsMdiContainer = true;
-			this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->Name = L"VistaCocinero";
 			this->Text = L"VistaCocinero";
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
 			this->ResumeLayout(false);
 
 		}
@@ -92,5 +141,11 @@ namespace SistemaComidasView {
 	}
 	private: System::Void groupBox1_Enter(System::Object^ sender, System::EventArgs^ e) {
 	}
-	};
+	private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+private: System::Void groupBox1_Enter_1(System::Object^ sender, System::EventArgs^ e) {
+}
+};
 }

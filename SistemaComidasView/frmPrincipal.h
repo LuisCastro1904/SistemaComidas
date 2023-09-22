@@ -191,12 +191,12 @@ namespace SistemaComidasView {
 private: System::Void cocineroToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 	VistaCocinero ^ ventanaCocinero = gcnew VistaCocinero();
 	//ventanaCocinero->MdiParent = this;
-	ventanaCocinero->Show();
+	ventanaCocinero->ShowDialog();
 }
 private: System::Void recepciónToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 	VentanaRecepcion^ vistaRecepcion = gcnew VentanaRecepcion();
 	//ventanaRecepcion->MdiParent = this;
-	vistaRecepcion->Show();
+	vistaRecepcion->ShowDialog();
 }
 };
 	}

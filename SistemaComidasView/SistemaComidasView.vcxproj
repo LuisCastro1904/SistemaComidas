@@ -116,8 +116,10 @@
   <ItemGroup>
     <ClCompile Include="frmMantenimientoProyecto.cpp" />
     <ClCompile Include="frmPrincipal.cpp" />
+    <ClCompile Include="login.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="VentanaFin.cpp" />
+    <ClCompile Include="VentanaGracias.cpp" />
     <ClCompile Include="VentanaPago.cpp" />
     <ClCompile Include="VentanaRecepcion.cpp" />
     <ClCompile Include="VentanaResumen.cpp" />
@@ -139,7 +141,13 @@
     <ClInclude Include="frmPrincipal.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="login.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="VentanaFin.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="VentanaGracias.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="VentanaPago.h">
@@ -168,11 +176,20 @@
     <EmbeddedResource Include="frmPrincipal.resx">
       <DependentUpon>frmPrincipal.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="login.resx">
+      <DependentUpon>login.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="VentanaFin.resx">
       <DependentUpon>VentanaFin.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="VentanaGracias.resx">
+      <DependentUpon>VentanaGracias.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="VentanaPago.resx">
       <DependentUpon>VentanaPago.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VentanaRecepcion.resx">
+      <DependentUpon>VentanaRecepcion.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VentanaResumen.resx">
       <DependentUpon>VentanaResumen.h</DependentUpon>
