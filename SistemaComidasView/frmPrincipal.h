@@ -1,6 +1,6 @@
 #pragma once
 #include "VistaPedido.h"
-#include "frmMantenimientoProyecto.h"
+#include "frmMantenimientoProducto.h"
 #include "VistaCocinero.h"
 #include "VentanaRecepcion.h"
 
@@ -178,15 +178,15 @@ namespace SistemaComidasView {
 	private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-		VistaPedido^ ventanaMantProyectos1  = gcnew VistaPedido();
-		//ventanaMantProyectos1 -> MdiParent = this;
-		ventanaMantProyectos1 ->Show();
+		VistaPedido^ ventanaMantProductos1 = gcnew VistaPedido();
+		//ventanaMantProductos1 -> MdiParent = this;
+		ventanaMantProductos1->Show();
 	}
 
 	private: System::Void gerenteToolStripMenuItem_Click_1(System::Object^ sender, System::EventArgs^ e) {
-		frmMantenimientoProyecto^ ventanaMantProyectos = gcnew frmMantenimientoProyecto();
-		//ventanaMantProyectos->MdiParent = this;
-		ventanaMantProyectos-> ShowDialog();
+		frmMantenimientoProducto^ ventanaMantProductos = gcnew frmMantenimientoProducto();
+		//ventanaMantProductos->MdiParent = this;
+		ventanaMantProductos-> ShowDialog();
 	}
 private: System::Void cocineroToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 	VistaCocinero ^ ventanaCocinero = gcnew VistaCocinero();

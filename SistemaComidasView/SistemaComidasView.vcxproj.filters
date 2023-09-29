@@ -24,7 +24,7 @@
     <ClCompile Include="VistaPedido.cpp">
       <Filter>Archivos de encabezado</Filter>
     </ClCompile>
-    <ClCompile Include="frmMantenimientoProyecto.cpp">
+    <ClCompile Include="frmMantenimientoProducto.cpp">
       <Filter>Archivos de encabezado</Filter>
     </ClCompile>
     <ClCompile Include="VistaCocinero.cpp">
@@ -51,6 +51,12 @@
     <ClCompile Include="login.cpp">
       <Filter>Archivos de encabezado</Filter>
     </ClCompile>
+    <ClCompile Include="frmNuevoProducto.cpp">
+      <Filter>Archivos de encabezado</Filter>
+    </ClCompile>
+    <ClCompile Include="frmEditarProducto.cpp">
+      <Filter>Archivos de encabezado</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="frmPrincipal.h">
@@ -59,7 +65,7 @@
     <ClInclude Include="VistaPedido.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="frmMantenimientoProyecto.h">
+    <ClInclude Include="frmMantenimientoProducto.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="VistaCocinero.h">
@@ -84,6 +90,12 @@
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="login.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="frmNuevoProducto.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="frmEditarProducto.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>

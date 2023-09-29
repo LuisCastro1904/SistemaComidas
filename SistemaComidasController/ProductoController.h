@@ -9,5 +9,11 @@ namespace SistemaComidasController {
 	public:
 		ProductoController();
 		List<Producto^>^ BuscarProducto(String^ Tipo);
+		List<Producto^>^ buscarAll();
+		void escribirArchivo(List<Producto^>^ listaProductos);
+		void eliminarProductoFisico(int codigo);
+		void agregarProducto(Producto^ objProducto);
+		Producto^ buscarProductoporCodigo(int codigo);
+		void actualizarProducto(Producto^ objProducto);
 	};
 }

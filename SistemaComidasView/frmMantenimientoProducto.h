@@ -1,4 +1,6 @@
 #pragma once
+#include "frmNuevoProducto.h"
+#include "frmEditarProducto.h"
 
 namespace SistemaComidasView {
 
@@ -13,12 +15,12 @@ namespace SistemaComidasView {
 	using namespace SistemaComidasModel;
 
 	/// <summary>
-	/// Summary for frmMantenimientoProyecto
+	/// Summary for frmMantenimientoProducto
 	/// </summary>
-	public ref class frmMantenimientoProyecto : public System::Windows::Forms::Form
+	public ref class frmMantenimientoProducto : public System::Windows::Forms::Form
 	{
 	public:
-		frmMantenimientoProyecto(void)
+		frmMantenimientoProducto(void)
 		{
 			InitializeComponent();
 			//
@@ -30,7 +32,7 @@ namespace SistemaComidasView {
 		/// <summary>
 		/// Clean up any resources being used.
 		/// </summary>
-		~frmMantenimientoProyecto()
+		~frmMantenimientoProducto()
 		{
 			if (components)
 			{
@@ -101,15 +103,15 @@ namespace SistemaComidasView {
 			this->button5 = (gcnew System::Windows::Forms::Button());
 			this->button6 = (gcnew System::Windows::Forms::Button());
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
-			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
-			this->button1 = (gcnew System::Windows::Forms::Button());
-			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
-			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column4 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column5 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
+			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
+			this->label2 = (gcnew System::Windows::Forms::Label());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->groupBox1->SuspendLayout();
 			this->SuspendLayout();
@@ -123,6 +125,7 @@ namespace SistemaComidasView {
 			this->button4->TabIndex = 3;
 			this->button4->Text = L"Editar";
 			this->button4->UseVisualStyleBackColor = true;
+			this->button4->Click += gcnew System::EventHandler(this, &frmMantenimientoProducto::button4_Click);
 			// 
 			// button5
 			// 
@@ -133,7 +136,7 @@ namespace SistemaComidasView {
 			this->button5->TabIndex = 5;
 			this->button5->Text = L"Agregar";
 			this->button5->UseVisualStyleBackColor = true;
-			this->button5->Click += gcnew System::EventHandler(this, &frmMantenimientoProyecto::button5_Click);
+			this->button5->Click += gcnew System::EventHandler(this, &frmMantenimientoProducto::button5_Click);
 			// 
 			// button6
 			// 
@@ -144,6 +147,7 @@ namespace SistemaComidasView {
 			this->button6->TabIndex = 6;
 			this->button6->Text = L"Eliminar";
 			this->button6->UseVisualStyleBackColor = true;
+			this->button6->Click += gcnew System::EventHandler(this, &frmMantenimientoProducto::button6_Click);
 			// 
 			// dataGridView1
 			// 
@@ -158,47 +162,7 @@ namespace SistemaComidasView {
 			this->dataGridView1->RowTemplate->Height = 24;
 			this->dataGridView1->Size = System::Drawing::Size(1165, 202);
 			this->dataGridView1->TabIndex = 16;
-			this->dataGridView1->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &frmMantenimientoProyecto::dataGridView1_CellContentClick);
-			// 
-			// comboBox1
-			// 
-			this->comboBox1->FormattingEnabled = true;
-			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(2) { L"Bebida", L"Comida" });
-			this->comboBox1->Location = System::Drawing::Point(123, 36);
-			this->comboBox1->Name = L"comboBox1";
-			this->comboBox1->Size = System::Drawing::Size(121, 24);
-			this->comboBox1->TabIndex = 17;
-			// 
-			// button1
-			// 
-			this->button1->Location = System::Drawing::Point(300, 36);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(75, 23);
-			this->button1->TabIndex = 18;
-			this->button1->Text = L"Buscar";
-			this->button1->UseVisualStyleBackColor = true;
-			this->button1->Click += gcnew System::EventHandler(this, &frmMantenimientoProyecto::button1_Click);
-			// 
-			// groupBox1
-			// 
-			this->groupBox1->Controls->Add(this->label2);
-			this->groupBox1->Controls->Add(this->comboBox1);
-			this->groupBox1->Controls->Add(this->button1);
-			this->groupBox1->Location = System::Drawing::Point(137, 38);
-			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Size = System::Drawing::Size(417, 86);
-			this->groupBox1->TabIndex = 19;
-			this->groupBox1->TabStop = false;
-			this->groupBox1->Text = L"Criterio de búsqueda";
-			// 
-			// label2
-			// 
-			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(49, 38);
-			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(35, 16);
-			this->label2->TabIndex = 19;
-			this->label2->Text = L"Tipo";
+			this->dataGridView1->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &frmMantenimientoProducto::dataGridView1_CellContentClick);
 			// 
 			// Column1
 			// 
@@ -235,7 +199,47 @@ namespace SistemaComidasView {
 			this->Column5->Name = L"Column5";
 			this->Column5->Width = 125;
 			// 
-			// frmMantenimientoProyecto
+			// comboBox1
+			// 
+			this->comboBox1->FormattingEnabled = true;
+			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(2) { L"Bebida", L"Comida" });
+			this->comboBox1->Location = System::Drawing::Point(123, 36);
+			this->comboBox1->Name = L"comboBox1";
+			this->comboBox1->Size = System::Drawing::Size(121, 24);
+			this->comboBox1->TabIndex = 17;
+			// 
+			// button1
+			// 
+			this->button1->Location = System::Drawing::Point(300, 36);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(75, 23);
+			this->button1->TabIndex = 18;
+			this->button1->Text = L"Buscar";
+			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &frmMantenimientoProducto::button1_Click);
+			// 
+			// groupBox1
+			// 
+			this->groupBox1->Controls->Add(this->label2);
+			this->groupBox1->Controls->Add(this->comboBox1);
+			this->groupBox1->Controls->Add(this->button1);
+			this->groupBox1->Location = System::Drawing::Point(137, 38);
+			this->groupBox1->Name = L"groupBox1";
+			this->groupBox1->Size = System::Drawing::Size(417, 86);
+			this->groupBox1->TabIndex = 19;
+			this->groupBox1->TabStop = false;
+			this->groupBox1->Text = L"Criterio de búsqueda";
+			// 
+			// label2
+			// 
+			this->label2->AutoSize = true;
+			this->label2->Location = System::Drawing::Point(49, 38);
+			this->label2->Name = L"label2";
+			this->label2->Size = System::Drawing::Size(35, 16);
+			this->label2->TabIndex = 19;
+			this->label2->Text = L"Tipo";
+			// 
+			// frmMantenimientoProducto
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
@@ -247,7 +251,7 @@ namespace SistemaComidasView {
 			this->Controls->Add(this->button4);
 			this->IsMdiContainer = true;
 			this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
-			this->Name = L"frmMantenimientoProyecto";
+			this->Name = L"frmMantenimientoProducto";
 			this->Text = L"frmMantenimientoProyecto";
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
 			this->groupBox1->ResumeLayout(false);
@@ -267,29 +271,37 @@ namespace SistemaComidasView {
 		this->dataGridView1->Rows->Clear(); /*Elimino toda la informacion del datagrid*/
 
 		for (int i = 0; i < listaProductos->Count; i++) {
-
 			Producto^ objProducto = listaProductos[i];
-
 			array<String^>^ filaGrilla = gcnew array<String^>(5);
-
 			filaGrilla[0] = Convert::ToString(objProducto->getCodigo());
-
 			filaGrilla[1] = objProducto->getNombre();
-
 			filaGrilla[2] = objProducto->getDescripcion();
-
 			filaGrilla[3] = Convert::ToString(objProducto->getPrecio());
-
 			filaGrilla[4] = Convert::ToString(objProducto->getStock());
-
 			this->dataGridView1->Rows->Add(filaGrilla);
-
 		}
 
 	}
 private: System::Void button5_Click(System::Object^ sender, System::EventArgs^ e) {
+	frmNuevoProducto^ ventanaNuevoProducto = gcnew frmNuevoProducto();
+	ventanaNuevoProducto->ShowDialog();
 }
 private: System::Void dataGridView1_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
+}
+private: System::Void button6_Click(System::Object^ sender, System::EventArgs^ e) {
+	ProductoController^ objProducto;
+	int filaSeleccionada = this->dataGridView1->SelectedRows[0]->Index; /*Le pongo [0] porque en este caso estamos asumiendo que solo seleccionamos una fila, por ello es la de la posicion 0*/
+	int codigoEliminar = Convert::ToInt32(this->dataGridView1->Rows[filaSeleccionada]->Cells[0]->Value->ToString());
+	objProducto->eliminarProductoFisico(codigoEliminar);
+	MessageBox::Show("El producto ha sido eliminado con éxito");
+}
+private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
+	int filaSeleccionada = this->dataGridView1->SelectedRows[0]->Index; /*Le pongo [0] porque en este caso estamos asumiendo que solo seleccionamos una fila, por ello es la de la posicion 0*/
+	int codigoEditar = Convert::ToInt32(this->dataGridView1->Rows[filaSeleccionada]->Cells[0]->Value->ToString());
+	ProductoController^ objProductoController = gcnew ProductoController();
+	Producto^ objProducto = objProductoController->buscarProductoporCodigo(codigoEditar);
+	frmEditarProducto^ ventanaEditarProducto = gcnew frmEditarProducto(objProducto);
+	ventanaEditarProducto->ShowDialog(); 
 }
 };
 }

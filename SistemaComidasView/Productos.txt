@@ -1,4 +1,3 @@
-1;Causa;Puré de papas acompañado con lechuga, queso fresco, aceitunas, choclo y ají. Se come frío como entrada.;12;Comida;10
 2;Papa a la Huacaina;Entrante típico hecho de papas hervidas, huevo y  crema de ají amarillo.;7;Comida;10
 3;Chicha Morada;Bebida elaborada a partir de un concentrado de maíz morado.;4;Bebida;10
 4;Bebida de Maracuyá;Bebida hecha a base de maracuya con pequeños gránulos que provienen de la fruta.;4;Bebida;10

@@ -114,7 +114,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="frmMantenimientoProyecto.cpp" />
+    <ClCompile Include="frmEditarProducto.cpp" />
+    <ClCompile Include="frmMantenimientoProducto.cpp" />
+    <ClCompile Include="frmNuevoProducto.cpp" />
     <ClCompile Include="frmPrincipal.cpp" />
     <ClCompile Include="login.cpp" />
     <ClCompile Include="main.cpp" />
@@ -135,7 +137,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="frmMantenimientoProyecto.h">
+    <ClInclude Include="frmEditarProducto.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="frmMantenimientoProducto.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="frmNuevoProducto.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="frmPrincipal.h">
@@ -170,8 +178,14 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="frmMantenimientoProyecto.resx">
-      <DependentUpon>frmMantenimientoProyecto.h</DependentUpon>
+    <EmbeddedResource Include="frmEditarProducto.resx">
+      <DependentUpon>frmEditarProducto.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMantenimientoProducto.resx">
+      <DependentUpon>frmMantenimientoProducto.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNuevoProducto.resx">
+      <DependentUpon>frmNuevoProducto.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPrincipal.resx">
       <DependentUpon>frmPrincipal.h</DependentUpon>

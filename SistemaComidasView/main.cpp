@@ -1,5 +1,5 @@
 #include "frmPrincipal.h"
-#include "frmMantenimientoProyecto.h"
+#include "frmMantenimientoProducto.h"
 #include "VistaPedido.h"
 
 using namespace System;
