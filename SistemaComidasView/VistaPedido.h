@@ -57,6 +57,12 @@ namespace SistemaComidasView {
 	private: System::Windows::Forms::GroupBox^ groupBox2;
 	private: System::Windows::Forms::DataGridView^ dataGridView1;
 	private: System::Windows::Forms::NumericUpDown^ numericUpDown1;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Pedido;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Cantidad;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Precio;
+
+
+
 
 
 
@@ -100,6 +106,9 @@ namespace SistemaComidasView {
 			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->Pedido = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Cantidad = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Precio = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->groupBox1->SuspendLayout();
 			this->groupBox2->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numericUpDown1))->BeginInit();
@@ -132,9 +141,9 @@ namespace SistemaComidasView {
 			this->groupBox2->Controls->Add(this->dataGridView1);
 			this->groupBox2->Controls->Add(this->button9);
 			this->groupBox2->Controls->Add(this->button8);
-			this->groupBox2->Location = System::Drawing::Point(602, 24);
+			this->groupBox2->Location = System::Drawing::Point(500, 24);
 			this->groupBox2->Name = L"groupBox2";
-			this->groupBox2->Size = System::Drawing::Size(427, 450);
+			this->groupBox2->Size = System::Drawing::Size(529, 450);
 			this->groupBox2->TabIndex = 16;
 			this->groupBox2->TabStop = false;
 			this->groupBox2->Text = L"Resumen de Pedido";
@@ -150,16 +159,21 @@ namespace SistemaComidasView {
 			// dataGridView1
 			// 
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridView1->Location = System::Drawing::Point(90, 111);
+			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(3) {
+				this->Pedido,
+					this->Cantidad, this->Precio
+			});
+			this->dataGridView1->Location = System::Drawing::Point(10, 111);
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->RowHeadersWidth = 62;
 			this->dataGridView1->RowTemplate->Height = 28;
-			this->dataGridView1->Size = System::Drawing::Size(269, 225);
+			this->dataGridView1->Size = System::Drawing::Size(513, 225);
 			this->dataGridView1->TabIndex = 0;
+			this->dataGridView1->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &VistaPedido::dataGridView1_CellContentClick);
 			// 
 			// button9
 			// 
-			this->button9->Location = System::Drawing::Point(234, 356);
+			this->button9->Location = System::Drawing::Point(300, 356);
 			this->button9->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
 			this->button9->Name = L"button9";
 			this->button9->Size = System::Drawing::Size(125, 60);
@@ -170,7 +184,7 @@ namespace SistemaComidasView {
 			// 
 			// button8
 			// 
-			this->button8->Location = System::Drawing::Point(90, 356);
+			this->button8->Location = System::Drawing::Point(96, 356);
 			this->button8->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
 			this->button8->Name = L"button8";
 			this->button8->Size = System::Drawing::Size(125, 60);
@@ -180,7 +194,7 @@ namespace SistemaComidasView {
 			// 
 			// button7
 			// 
-			this->button7->Location = System::Drawing::Point(350, 408);
+			this->button7->Location = System::Drawing::Point(276, 421);
 			this->button7->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->button7->Name = L"button7";
 			this->button7->Size = System::Drawing::Size(202, 129);
@@ -190,7 +204,7 @@ namespace SistemaComidasView {
 			// 
 			// button6
 			// 
-			this->button6->Location = System::Drawing::Point(676, 499);
+			this->button6->Location = System::Drawing::Point(630, 499);
 			this->button6->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->button6->Name = L"button6";
 			this->button6->Size = System::Drawing::Size(274, 51);
@@ -201,27 +215,27 @@ namespace SistemaComidasView {
 			// 
 			// button5
 			// 
-			this->button5->Location = System::Drawing::Point(350, 231);
+			this->button5->Location = System::Drawing::Point(276, 231);
 			this->button5->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->button5->Name = L"button5";
 			this->button5->Size = System::Drawing::Size(202, 129);
 			this->button5->TabIndex = 4;
-			this->button5->Text = L"Comida 5";
+			this->button5->Text = L"Papa a la huancaina";
 			this->button5->UseVisualStyleBackColor = true;
 			// 
 			// button4
 			// 
-			this->button4->Location = System::Drawing::Point(350, 48);
+			this->button4->Location = System::Drawing::Point(276, 48);
 			this->button4->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->button4->Name = L"button4";
 			this->button4->Size = System::Drawing::Size(202, 129);
 			this->button4->TabIndex = 3;
-			this->button4->Text = L"Comida 4";
+			this->button4->Text = L"Carapulcra con sopa seca";
 			this->button4->UseVisualStyleBackColor = true;
 			// 
 			// button3
 			// 
-			this->button3->Location = System::Drawing::Point(44, 408);
+			this->button3->Location = System::Drawing::Point(29, 421);
 			this->button3->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->button3->Name = L"button3";
 			this->button3->Size = System::Drawing::Size(202, 129);
@@ -231,24 +245,46 @@ namespace SistemaComidasView {
 			// 
 			// button2
 			// 
-			this->button2->Location = System::Drawing::Point(44, 231);
+			this->button2->Location = System::Drawing::Point(29, 231);
 			this->button2->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(202, 129);
 			this->button2->TabIndex = 1;
-			this->button2->Text = L"Comida 2";
+			this->button2->Text = L"Aji de Gallina";
 			this->button2->UseVisualStyleBackColor = true;
+			this->button2->Click += gcnew System::EventHandler(this, &VistaPedido::button2_Click);
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(44, 48);
+			this->button1->Location = System::Drawing::Point(29, 48);
 			this->button1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(202, 129);
 			this->button1->TabIndex = 0;
-			this->button1->Text = L"Comida 1";
+			this->button1->Text = L"Arroz con Pollo";
 			this->button1->UseVisualStyleBackColor = true;
 			this->button1->Click += gcnew System::EventHandler(this, &VistaPedido::button1_Click);
+			// 
+			// Pedido
+			// 
+			this->Pedido->HeaderText = L"Producto";
+			this->Pedido->MinimumWidth = 8;
+			this->Pedido->Name = L"Pedido";
+			this->Pedido->Width = 150;
+			// 
+			// Cantidad
+			// 
+			this->Cantidad->HeaderText = L"Cantidad";
+			this->Cantidad->MinimumWidth = 8;
+			this->Cantidad->Name = L"Cantidad";
+			this->Cantidad->Width = 150;
+			// 
+			// Precio
+			// 
+			this->Precio->HeaderText = L"Precio";
+			this->Precio->MinimumWidth = 8;
+			this->Precio->Name = L"Precio";
+			this->Precio->Width = 150;
 			// 
 			// VistaPedido
 			// 
@@ -298,6 +334,11 @@ private: System::Void button6_Click(System::Object^ sender, System::EventArgs^ e
 	VistaBebidas ^ ventanabebidas = gcnew VistaBebidas ();
 	//ventanaMantProyectos1 -> MdiParent = this;
 	ventanabebidas -> Show();
+	this->Close();
+}
+private: System::Void dataGridView1_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
+}
+private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }

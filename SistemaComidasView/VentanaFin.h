@@ -60,12 +60,12 @@ namespace SistemaComidasView {
 			// 
 			// groupBox1
 			// 
-			this->groupBox1->BackColor = System::Drawing::Color::IndianRed;
+			this->groupBox1->BackColor = System::Drawing::Color::SeaGreen;
 			this->groupBox1->Controls->Add(this->label1);
 			this->groupBox1->Controls->Add(this->button1);
-			this->groupBox1->Location = System::Drawing::Point(214, 77);
+			this->groupBox1->Location = System::Drawing::Point(173, 77);
 			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Size = System::Drawing::Size(382, 565);
+			this->groupBox1->Size = System::Drawing::Size(457, 565);
 			this->groupBox1->TabIndex = 1;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"DETALLE";
@@ -73,11 +73,11 @@ namespace SistemaComidasView {
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Font = (gcnew System::Drawing::Font(L"Swis721 BlkEx BT", 10, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
+			this->label1->Font = (gcnew System::Drawing::Font(L"Swis721 BT", 14, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label1->Location = System::Drawing::Point(6, 145);
+			this->label1->Location = System::Drawing::Point(35, 155);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(376, 24);
+			this->label1->Size = System::Drawing::Size(376, 34);
 			this->label1->TabIndex = 1;
 			this->label1->Text = L"GRACIAS POR SU PEDIDO";
 			this->label1->Click += gcnew System::EventHandler(this, &VentanaFin::label1_Click);
@@ -86,7 +86,7 @@ namespace SistemaComidasView {
 			// 
 			this->button1->Font = (gcnew System::Drawing::Font(L"Nirmala UI", 12, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			this->button1->Location = System::Drawing::Point(82, 430);
+			this->button1->Location = System::Drawing::Point(132, 273);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(201, 72);
 			this->button1->TabIndex = 0;
@@ -112,7 +112,11 @@ namespace SistemaComidasView {
 	private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-		Application::Exit();
+		//Application::Exit();
+	//	frmPrincipal^ ventanainicio = gcnew frmPrincipal();
+		//ventanainicio-> Show();
+		this->Close();
+
 	}
 	};
 }

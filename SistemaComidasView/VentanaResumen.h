@@ -39,7 +39,8 @@ namespace SistemaComidasView {
 	private: System::Windows::Forms::ListBox^ PEDIDO;
 	private: System::Windows::Forms::Button^ button2;
 	private: System::Windows::Forms::Button^ button1;
-	private: System::Windows::Forms::ListView^ listView1;
+
+
 
 	private:
 		/// <summary>
@@ -54,12 +55,10 @@ namespace SistemaComidasView {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::Windows::Forms::ListViewItem^ listViewItem1 = (gcnew System::Windows::Forms::ListViewItem(L""));
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
-			this->PEDIDO = (gcnew System::Windows::Forms::ListBox());
-			this->listView1 = (gcnew System::Windows::Forms::ListView());
-			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->button2 = (gcnew System::Windows::Forms::Button());
+			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->PEDIDO = (gcnew System::Windows::Forms::ListBox());
 			this->groupBox1->SuspendLayout();
 			this->SuspendLayout();
 			// 
@@ -67,7 +66,6 @@ namespace SistemaComidasView {
 			// 
 			this->groupBox1->Controls->Add(this->button2);
 			this->groupBox1->Controls->Add(this->button1);
-			this->groupBox1->Controls->Add(this->listView1);
 			this->groupBox1->Controls->Add(this->PEDIDO);
 			this->groupBox1->Location = System::Drawing::Point(234, 26);
 			this->groupBox1->Name = L"groupBox1";
@@ -76,25 +74,15 @@ namespace SistemaComidasView {
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"RESUMEN";
 			// 
-			// PEDIDO
+			// button2
 			// 
-			this->PEDIDO->FormattingEnabled = true;
-			this->PEDIDO->ItemHeight = 20;
-			this->PEDIDO->Location = System::Drawing::Point(62, 79);
-			this->PEDIDO->Name = L"PEDIDO";
-			this->PEDIDO->Size = System::Drawing::Size(298, 564);
-			this->PEDIDO->TabIndex = 0;
-			this->PEDIDO->SelectedIndexChanged += gcnew System::EventHandler(this, &VentanaResumen::PEDIDO_SelectedIndexChanged);
-			// 
-			// listView1
-			// 
-			this->listView1->HideSelection = false;
-			this->listView1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ListViewItem^  >(1) { listViewItem1 });
-			this->listView1->Location = System::Drawing::Point(111, 160);
-			this->listView1->Name = L"listView1";
-			this->listView1->Size = System::Drawing::Size(198, 352);
-			this->listView1->TabIndex = 1;
-			this->listView1->UseCompatibleStateImageBehavior = false;
+			this->button2->Location = System::Drawing::Point(62, 673);
+			this->button2->Name = L"button2";
+			this->button2->Size = System::Drawing::Size(118, 56);
+			this->button2->TabIndex = 3;
+			this->button2->Text = L"ATRÁS";
+			this->button2->UseVisualStyleBackColor = true;
+			this->button2->Click += gcnew System::EventHandler(this, &VentanaResumen::button2_Click);
 			// 
 			// button1
 			// 
@@ -106,14 +94,15 @@ namespace SistemaComidasView {
 			this->button1->UseVisualStyleBackColor = true;
 			this->button1->Click += gcnew System::EventHandler(this, &VentanaResumen::button1_Click);
 			// 
-			// button2
+			// PEDIDO
 			// 
-			this->button2->Location = System::Drawing::Point(62, 673);
-			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(118, 56);
-			this->button2->TabIndex = 3;
-			this->button2->Text = L"ATRÁS";
-			this->button2->UseVisualStyleBackColor = true;
+			this->PEDIDO->FormattingEnabled = true;
+			this->PEDIDO->ItemHeight = 20;
+			this->PEDIDO->Location = System::Drawing::Point(62, 79);
+			this->PEDIDO->Name = L"PEDIDO";
+			this->PEDIDO->Size = System::Drawing::Size(298, 564);
+			this->PEDIDO->TabIndex = 0;
+			this->PEDIDO->SelectedIndexChanged += gcnew System::EventHandler(this, &VentanaResumen::PEDIDO_SelectedIndexChanged);
 			// 
 			// VentanaResumen
 			// 
@@ -133,8 +122,12 @@ namespace SistemaComidasView {
 	}
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 		VentanaPago^ ventanapago  = gcnew VentanaPago;
-		//ventanaMantProyectos1 -> MdiParent = this;
+		//ventanapago -> MdiParent = this;
 		ventanapago -> Show();
+		this->Close();
 	}
+private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+		
+}
 };
 }
