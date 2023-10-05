@@ -1,5 +1,8 @@
 #pragma once
 #include "VentanaResumen.h"
+
+
+
 namespace SistemaComidasView {
 
 	using namespace System;
@@ -47,7 +50,9 @@ namespace SistemaComidasView {
 	private: System::Windows::Forms::Button^ button9;
 	private: System::Windows::Forms::Button^ button8;
 	private: System::Windows::Forms::Button^ button5;
-	private: System::Windows::Forms::Button^ button7;
+	private: System::Windows::Forms::Button^ button7back;
+
+
 	private: System::Windows::Forms::Label^ label1;
 
 	private:
@@ -64,8 +69,9 @@ namespace SistemaComidasView {
 		void InitializeComponent(void)
 		{
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
-			this->button7 = (gcnew System::Windows::Forms::Button());
+			this->button7back = (gcnew System::Windows::Forms::Button());
 			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
+			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->numericUpDown1 = (gcnew System::Windows::Forms::NumericUpDown());
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
 			this->button9 = (gcnew System::Windows::Forms::Button());
@@ -76,7 +82,6 @@ namespace SistemaComidasView {
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->button6 = (gcnew System::Windows::Forms::Button());
 			this->button4 = (gcnew System::Windows::Forms::Button());
-			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->groupBox1->SuspendLayout();
 			this->groupBox2->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numericUpDown1))->BeginInit();
@@ -85,7 +90,7 @@ namespace SistemaComidasView {
 			// 
 			// groupBox1
 			// 
-			this->groupBox1->Controls->Add(this->button7);
+			this->groupBox1->Controls->Add(this->button7back);
 			this->groupBox1->Controls->Add(this->groupBox2);
 			this->groupBox1->Controls->Add(this->button5);
 			this->groupBox1->Controls->Add(this->button3);
@@ -101,15 +106,16 @@ namespace SistemaComidasView {
 			this->groupBox1->Text = L"Bebidas";
 			this->groupBox1->Enter += gcnew System::EventHandler(this, &VistaBebidas::groupBox1_Enter);
 			// 
-			// button7
+			// button7back
 			// 
-			this->button7->Location = System::Drawing::Point(308, 568);
-			this->button7->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
-			this->button7->Name = L"button7";
-			this->button7->Size = System::Drawing::Size(158, 51);
-			this->button7->TabIndex = 19;
-			this->button7->Text = L"Atrás";
-			this->button7->UseVisualStyleBackColor = true;
+			this->button7back->Location = System::Drawing::Point(308, 568);
+			this->button7back->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->button7back->Name = L"button7back";
+			this->button7back->Size = System::Drawing::Size(158, 51);
+			this->button7back->TabIndex = 19;
+			this->button7back->Text = L"Atrás";
+			this->button7back->UseVisualStyleBackColor = true;
+			this->button7back->Click += gcnew System::EventHandler(this, &VistaBebidas::button7back_Click);
 			// 
 			// groupBox2
 			// 
@@ -124,6 +130,16 @@ namespace SistemaComidasView {
 			this->groupBox2->TabIndex = 18;
 			this->groupBox2->TabStop = false;
 			this->groupBox2->Text = L"Resumen de Pedido";
+			// 
+			// label1
+			// 
+			this->label1->AutoSize = true;
+			this->label1->Location = System::Drawing::Point(36, 56);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(73, 20);
+			this->label1->TabIndex = 10;
+			this->label1->Text = L"Cantidad";
+			this->label1->Click += gcnew System::EventHandler(this, &VistaBebidas::label1_Click);
 			// 
 			// numericUpDown1
 			// 
@@ -219,16 +235,6 @@ namespace SistemaComidasView {
 			this->button4->Text = L"AGUA";
 			this->button4->UseVisualStyleBackColor = true;
 			// 
-			// label1
-			// 
-			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(36, 56);
-			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(73, 20);
-			this->label1->TabIndex = 10;
-			this->label1->Text = L"Cantidad";
-			this->label1->Click += gcnew System::EventHandler(this, &VistaBebidas::label1_Click);
-			// 
 			// VistaBebidas
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
@@ -259,6 +265,9 @@ namespace SistemaComidasView {
 private: System::Void button8_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void button7back_Click(System::Object^ sender, System::EventArgs^ e) {
+	
 }
 };
 }
