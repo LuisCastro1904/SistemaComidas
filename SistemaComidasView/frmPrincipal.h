@@ -181,22 +181,26 @@ namespace SistemaComidasView {
 		VistaPedido^ ventanaMantProductos1 = gcnew VistaPedido();
 		//ventanaMantProductos1 -> MdiParent = this;
 		ventanaMantProductos1->Show();
+		//this->Close();
 	}
 
 	private: System::Void gerenteToolStripMenuItem_Click_1(System::Object^ sender, System::EventArgs^ e) {
 		frmMantenimientoProducto^ ventanaMantProductos = gcnew frmMantenimientoProducto();
 		//ventanaMantProductos->MdiParent = this;
 		ventanaMantProductos-> ShowDialog();
+		this->Close();
 	}
 private: System::Void cocineroToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 	VistaCocinero ^ ventanaCocinero = gcnew VistaCocinero();
 	//ventanaCocinero->MdiParent = this;
 	ventanaCocinero->ShowDialog();
+	this->Close();
 }
 private: System::Void recepciónToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 	VentanaRecepcion^ vistaRecepcion = gcnew VentanaRecepcion();
 	//ventanaRecepcion->MdiParent = this;
 	vistaRecepcion->ShowDialog();
+	this->Close();
 }
 };
 	}

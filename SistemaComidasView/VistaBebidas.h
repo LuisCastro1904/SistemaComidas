@@ -48,6 +48,7 @@ namespace SistemaComidasView {
 	private: System::Windows::Forms::Button^ button8;
 	private: System::Windows::Forms::Button^ button5;
 	private: System::Windows::Forms::Button^ button7;
+	private: System::Windows::Forms::Label^ label1;
 
 	private:
 		/// <summary>
@@ -75,6 +76,7 @@ namespace SistemaComidasView {
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->button6 = (gcnew System::Windows::Forms::Button());
 			this->button4 = (gcnew System::Windows::Forms::Button());
+			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->groupBox1->SuspendLayout();
 			this->groupBox2->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numericUpDown1))->BeginInit();
@@ -91,11 +93,9 @@ namespace SistemaComidasView {
 			this->groupBox1->Controls->Add(this->button2);
 			this->groupBox1->Controls->Add(this->button6);
 			this->groupBox1->Controls->Add(this->button4);
-			this->groupBox1->Location = System::Drawing::Point(63, 38);
-			this->groupBox1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->groupBox1->Location = System::Drawing::Point(94, 58);
 			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Padding = System::Windows::Forms::Padding(2, 2, 2, 2);
-			this->groupBox1->Size = System::Drawing::Size(481, 447);
+			this->groupBox1->Size = System::Drawing::Size(722, 688);
 			this->groupBox1->TabIndex = 1;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Bebidas";
@@ -103,64 +103,61 @@ namespace SistemaComidasView {
 			// 
 			// button7
 			// 
-			this->button7->Location = System::Drawing::Point(205, 369);
-			this->button7->Margin = System::Windows::Forms::Padding(2, 1, 2, 1);
+			this->button7->Location = System::Drawing::Point(308, 568);
+			this->button7->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->button7->Name = L"button7";
-			this->button7->Size = System::Drawing::Size(105, 33);
+			this->button7->Size = System::Drawing::Size(158, 51);
 			this->button7->TabIndex = 19;
 			this->button7->Text = L"Atrás";
 			this->button7->UseVisualStyleBackColor = true;
 			// 
 			// groupBox2
 			// 
+			this->groupBox2->Controls->Add(this->label1);
 			this->groupBox2->Controls->Add(this->numericUpDown1);
 			this->groupBox2->Controls->Add(this->dataGridView1);
 			this->groupBox2->Controls->Add(this->button9);
 			this->groupBox2->Controls->Add(this->button8);
-			this->groupBox2->Location = System::Drawing::Point(175, 49);
-			this->groupBox2->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->groupBox2->Location = System::Drawing::Point(262, 75);
 			this->groupBox2->Name = L"groupBox2";
-			this->groupBox2->Padding = System::Windows::Forms::Padding(2, 2, 2, 2);
-			this->groupBox2->Size = System::Drawing::Size(285, 292);
+			this->groupBox2->Size = System::Drawing::Size(428, 449);
 			this->groupBox2->TabIndex = 18;
 			this->groupBox2->TabStop = false;
 			this->groupBox2->Text = L"Resumen de Pedido";
 			// 
 			// numericUpDown1
 			// 
-			this->numericUpDown1->Location = System::Drawing::Point(78, 31);
-			this->numericUpDown1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->numericUpDown1->Location = System::Drawing::Point(170, 56);
 			this->numericUpDown1->Name = L"numericUpDown1";
-			this->numericUpDown1->Size = System::Drawing::Size(132, 20);
+			this->numericUpDown1->Size = System::Drawing::Size(198, 26);
 			this->numericUpDown1->TabIndex = 9;
 			// 
 			// dataGridView1
 			// 
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridView1->Location = System::Drawing::Point(60, 72);
-			this->dataGridView1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->dataGridView1->Location = System::Drawing::Point(90, 111);
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->RowHeadersWidth = 62;
 			this->dataGridView1->RowTemplate->Height = 28;
-			this->dataGridView1->Size = System::Drawing::Size(179, 146);
+			this->dataGridView1->Size = System::Drawing::Size(268, 225);
 			this->dataGridView1->TabIndex = 0;
 			// 
 			// button9
 			// 
-			this->button9->Location = System::Drawing::Point(156, 231);
-			this->button9->Margin = System::Windows::Forms::Padding(2, 3, 2, 3);
+			this->button9->Location = System::Drawing::Point(234, 355);
+			this->button9->Margin = System::Windows::Forms::Padding(3, 5, 3, 5);
 			this->button9->Name = L"button9";
-			this->button9->Size = System::Drawing::Size(83, 39);
+			this->button9->Size = System::Drawing::Size(124, 60);
 			this->button9->TabIndex = 8;
 			this->button9->Text = L"Quitar";
 			this->button9->UseVisualStyleBackColor = true;
 			// 
 			// button8
 			// 
-			this->button8->Location = System::Drawing::Point(60, 231);
-			this->button8->Margin = System::Windows::Forms::Padding(2, 3, 2, 3);
+			this->button8->Location = System::Drawing::Point(90, 355);
+			this->button8->Margin = System::Windows::Forms::Padding(3, 5, 3, 5);
 			this->button8->Name = L"button8";
-			this->button8->Size = System::Drawing::Size(83, 39);
+			this->button8->Size = System::Drawing::Size(124, 60);
 			this->button8->TabIndex = 7;
 			this->button8->Text = L"Agregar";
 			this->button8->UseVisualStyleBackColor = true;
@@ -168,10 +165,10 @@ namespace SistemaComidasView {
 			// 
 			// button5
 			// 
-			this->button5->Location = System::Drawing::Point(343, 369);
-			this->button5->Margin = System::Windows::Forms::Padding(2, 1, 2, 1);
+			this->button5->Location = System::Drawing::Point(514, 568);
+			this->button5->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->button5->Name = L"button5";
-			this->button5->Size = System::Drawing::Size(105, 33);
+			this->button5->Size = System::Drawing::Size(158, 51);
 			this->button5->TabIndex = 17;
 			this->button5->Text = L"Resumen";
 			this->button5->UseVisualStyleBackColor = true;
@@ -179,66 +176,71 @@ namespace SistemaComidasView {
 			// 
 			// button3
 			// 
-			this->button3->Location = System::Drawing::Point(44, 41);
-			this->button3->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->button3->Location = System::Drawing::Point(66, 63);
 			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(109, 58);
+			this->button3->Size = System::Drawing::Size(164, 89);
 			this->button3->TabIndex = 8;
 			this->button3->Text = L"INKA COLA";
 			this->button3->UseVisualStyleBackColor = true;
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(44, 122);
-			this->button1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->button1->Location = System::Drawing::Point(66, 188);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(109, 58);
+			this->button1->Size = System::Drawing::Size(164, 89);
 			this->button1->TabIndex = 7;
 			this->button1->Text = L"COCA COLA";
 			this->button1->UseVisualStyleBackColor = true;
 			// 
 			// button2
 			// 
-			this->button2->Location = System::Drawing::Point(44, 207);
-			this->button2->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->button2->Location = System::Drawing::Point(66, 318);
 			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(109, 58);
+			this->button2->Size = System::Drawing::Size(164, 89);
 			this->button2->TabIndex = 6;
 			this->button2->Text = L"CHICHA";
 			this->button2->UseVisualStyleBackColor = true;
 			// 
 			// button6
 			// 
-			this->button6->Location = System::Drawing::Point(44, 284);
-			this->button6->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->button6->Location = System::Drawing::Point(66, 437);
 			this->button6->Name = L"button6";
-			this->button6->Size = System::Drawing::Size(109, 58);
+			this->button6->Size = System::Drawing::Size(164, 89);
 			this->button6->TabIndex = 5;
 			this->button6->Text = L"MARACUYA";
 			this->button6->UseVisualStyleBackColor = true;
 			// 
 			// button4
 			// 
-			this->button4->Location = System::Drawing::Point(44, 369);
-			this->button4->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->button4->Location = System::Drawing::Point(66, 568);
 			this->button4->Name = L"button4";
-			this->button4->Size = System::Drawing::Size(109, 58);
+			this->button4->Size = System::Drawing::Size(164, 89);
 			this->button4->TabIndex = 3;
 			this->button4->Text = L"AGUA";
 			this->button4->UseVisualStyleBackColor = true;
 			// 
+			// label1
+			// 
+			this->label1->AutoSize = true;
+			this->label1->Location = System::Drawing::Point(36, 56);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(73, 20);
+			this->label1->TabIndex = 10;
+			this->label1->Text = L"Cantidad";
+			this->label1->Click += gcnew System::EventHandler(this, &VistaBebidas::label1_Click);
+			// 
 			// VistaBebidas
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(627, 487);
+			this->ClientSize = System::Drawing::Size(940, 749);
 			this->Controls->Add(this->groupBox1);
 			this->IsMdiContainer = true;
-			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->Name = L"VistaBebidas";
 			this->Text = L"VistaBebidas";
 			this->groupBox1->ResumeLayout(false);
 			this->groupBox2->ResumeLayout(false);
+			this->groupBox2->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numericUpDown1))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
 			this->ResumeLayout(false);
@@ -251,9 +253,12 @@ namespace SistemaComidasView {
 		VentanaResumen^ ventanaResumen = gcnew VentanaResumen;
 		//ventanaMantProyectos1 -> MdiParent = this;
 		ventanaResumen->Show();
+		this->Close();
 
 	}
 private: System::Void button8_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }

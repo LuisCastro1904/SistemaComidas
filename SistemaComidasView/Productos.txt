@@ -7,3 +7,6 @@
 8;Carapulcra con Sopa Seca;Potaje indígena, preparado con papa seca sancochada, guisada con chancho y acompañado de sopa seca.;12;Comida;10
 9;Ají de Gallina;Platillo que consiste en un ají o crema espesa con pechuga de gallina deshilachada.;12;Comida;10
 10;Agua;Agua mineral.;3;Bebida;20
+123;qwe;qwe;123;;123
+15;sada;asd;12;;1
+2231;czxc;zxczx zxczx;21231;;123
