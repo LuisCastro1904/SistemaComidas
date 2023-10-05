@@ -67,18 +67,21 @@ namespace SistemaComidasView {
 			this->groupBox1->Controls->Add(this->button2);
 			this->groupBox1->Controls->Add(this->button1);
 			this->groupBox1->Controls->Add(this->PEDIDO);
-			this->groupBox1->Location = System::Drawing::Point(234, 26);
+			this->groupBox1->Location = System::Drawing::Point(208, 21);
+			this->groupBox1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Size = System::Drawing::Size(434, 758);
+			this->groupBox1->Padding = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->groupBox1->Size = System::Drawing::Size(386, 606);
 			this->groupBox1->TabIndex = 1;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"RESUMEN";
 			// 
 			// button2
 			// 
-			this->button2->Location = System::Drawing::Point(62, 673);
+			this->button2->Location = System::Drawing::Point(55, 538);
+			this->button2->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(118, 56);
+			this->button2->Size = System::Drawing::Size(105, 45);
 			this->button2->TabIndex = 3;
 			this->button2->Text = L"ATRÁS";
 			this->button2->UseVisualStyleBackColor = true;
@@ -86,9 +89,10 @@ namespace SistemaComidasView {
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(242, 673);
+			this->button1->Location = System::Drawing::Point(215, 538);
+			this->button1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(118, 56);
+			this->button1->Size = System::Drawing::Size(105, 45);
 			this->button1->TabIndex = 2;
 			this->button1->Text = L"ACEPTAR";
 			this->button1->UseVisualStyleBackColor = true;
@@ -97,22 +101,24 @@ namespace SistemaComidasView {
 			// PEDIDO
 			// 
 			this->PEDIDO->FormattingEnabled = true;
-			this->PEDIDO->ItemHeight = 20;
-			this->PEDIDO->Location = System::Drawing::Point(62, 79);
+			this->PEDIDO->ItemHeight = 16;
+			this->PEDIDO->Location = System::Drawing::Point(55, 63);
+			this->PEDIDO->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->PEDIDO->Name = L"PEDIDO";
-			this->PEDIDO->Size = System::Drawing::Size(298, 564);
+			this->PEDIDO->Size = System::Drawing::Size(265, 452);
 			this->PEDIDO->TabIndex = 0;
 			this->PEDIDO->SelectedIndexChanged += gcnew System::EventHandler(this, &VentanaResumen::PEDIDO_SelectedIndexChanged);
 			// 
 			// VentanaResumen
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(923, 828);
+			this->ClientSize = System::Drawing::Size(820, 662);
 			this->Controls->Add(this->groupBox1);
 			this->IsMdiContainer = true;
+			this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->Name = L"VentanaResumen";
-			this->Text = L"VentanaResumen";
+			this->Text = L"Resumen";
 			this->groupBox1->ResumeLayout(false);
 			this->ResumeLayout(false);
 

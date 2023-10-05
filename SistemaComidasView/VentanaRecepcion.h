@@ -61,9 +61,11 @@ namespace SistemaComidasView {
 			// 
 			// groupBox1
 			// 
-			this->groupBox1->Location = System::Drawing::Point(102, 40);
+			this->groupBox1->Location = System::Drawing::Point(136, 49);
+			this->groupBox1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Size = System::Drawing::Size(210, 64);
+			this->groupBox1->Padding = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->groupBox1->Size = System::Drawing::Size(280, 79);
 			this->groupBox1->TabIndex = 1;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"RECOGE TU PEDIDO";
@@ -71,25 +73,28 @@ namespace SistemaComidasView {
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(62, 120);
+			this->label1->Location = System::Drawing::Point(83, 148);
+			this->label1->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(118, 13);
+			this->label1->Size = System::Drawing::Size(144, 16);
 			this->label1->TabIndex = 2;
 			this->label1->Text = L"INGRESE SU CODIGO";
 			this->label1->Click += gcnew System::EventHandler(this, &VentanaRecepcion::label1_Click);
 			// 
 			// textBox1
 			// 
-			this->textBox1->Location = System::Drawing::Point(187, 113);
+			this->textBox1->Location = System::Drawing::Point(249, 139);
+			this->textBox1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(125, 20);
+			this->textBox1->Size = System::Drawing::Size(165, 22);
 			this->textBox1->TabIndex = 3;
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(197, 150);
+			this->button1->Location = System::Drawing::Point(263, 185);
+			this->button1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(98, 23);
+			this->button1->Size = System::Drawing::Size(131, 28);
 			this->button1->TabIndex = 4;
 			this->button1->Text = L"CONFIRMAR";
 			this->button1->UseVisualStyleBackColor = true;
@@ -97,15 +102,16 @@ namespace SistemaComidasView {
 			// 
 			// VentanaRecepcion
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(430, 266);
+			this->ClientSize = System::Drawing::Size(573, 327);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->textBox1);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->groupBox1);
+			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->Name = L"VentanaRecepcion";
-			this->Text = L"VentanaRecepcion";
+			this->Text = L"Recepcion";
 			this->ResumeLayout(false);
 			this->PerformLayout();
 

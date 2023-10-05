@@ -83,26 +83,33 @@ namespace SistemaComidasView {
 				this->Column1,
 					this->Column2
 			});
-			this->dataGridView1->Location = System::Drawing::Point(107, 89);
+			this->dataGridView1->Location = System::Drawing::Point(143, 110);
+			this->dataGridView1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->dataGridView1->Name = L"dataGridView1";
-			this->dataGridView1->Size = System::Drawing::Size(241, 146);
+			this->dataGridView1->RowHeadersWidth = 51;
+			this->dataGridView1->Size = System::Drawing::Size(321, 180);
 			this->dataGridView1->TabIndex = 8;
 			// 
 			// Column1
 			// 
 			this->Column1->HeaderText = L"Codigo";
+			this->Column1->MinimumWidth = 6;
 			this->Column1->Name = L"Column1";
+			this->Column1->Width = 125;
 			// 
 			// Column2
 			// 
 			this->Column2->HeaderText = L"Detalle del Pedido";
+			this->Column2->MinimumWidth = 6;
 			this->Column2->Name = L"Column2";
+			this->Column2->Width = 125;
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(133, 257);
+			this->button1->Location = System::Drawing::Point(177, 316);
+			this->button1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(75, 23);
+			this->button1->Size = System::Drawing::Size(100, 28);
 			this->button1->TabIndex = 9;
 			this->button1->Text = L"Seleccionar";
 			this->button1->UseVisualStyleBackColor = true;
@@ -112,9 +119,11 @@ namespace SistemaComidasView {
 			// 
 			this->groupBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 20.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->groupBox1->Location = System::Drawing::Point(39, 21);
+			this->groupBox1->Location = System::Drawing::Point(52, 26);
+			this->groupBox1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Size = System::Drawing::Size(143, 40);
+			this->groupBox1->Padding = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->groupBox1->Size = System::Drawing::Size(191, 49);
 			this->groupBox1->TabIndex = 10;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Pedidos:";
@@ -122,16 +131,16 @@ namespace SistemaComidasView {
 			// 
 			// VistaCocinero
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(501, 332);
+			this->ClientSize = System::Drawing::Size(668, 409);
 			this->Controls->Add(this->groupBox1);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->dataGridView1);
 			this->IsMdiContainer = true;
-			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->Name = L"VistaCocinero";
-			this->Text = L"VistaCocinero";
+			this->Text = L"Cocinero";
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
 			this->ResumeLayout(false);
 

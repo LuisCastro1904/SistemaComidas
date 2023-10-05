@@ -92,10 +92,9 @@ namespace SistemaComidasView {
 			// button1
 			// 
 			this->button1->BackColor = System::Drawing::SystemColors::Info;
-			this->button1->Location = System::Drawing::Point(509, 238);
-			this->button1->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
+			this->button1->Location = System::Drawing::Point(452, 190);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(395, 181);
+			this->button1->Size = System::Drawing::Size(351, 145);
 			this->button1->TabIndex = 2;
 			this->button1->Text = L"Presione para realizar su pedido";
 			this->button1->UseVisualStyleBackColor = false;
@@ -103,13 +102,12 @@ namespace SistemaComidasView {
 			// 
 			// menuStrip1
 			// 
-			this->menuStrip1->GripMargin = System::Windows::Forms::Padding(2, 2, 0, 2);
 			this->menuStrip1->ImageScalingSize = System::Drawing::Size(24, 24);
 			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->administracionToolStripMenuItem });
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
-			this->menuStrip1->Padding = System::Windows::Forms::Padding(6, 2, 0, 2);
-			this->menuStrip1->Size = System::Drawing::Size(1380, 33);
+			this->menuStrip1->Padding = System::Windows::Forms::Padding(5, 2, 0, 2);
+			this->menuStrip1->Size = System::Drawing::Size(1227, 28);
 			this->menuStrip1->TabIndex = 4;
 			this->menuStrip1->Text = L"menuStrip1";
 			// 
@@ -120,46 +118,45 @@ namespace SistemaComidasView {
 					this->cocineroToolStripMenuItem, this->recepciónToolStripMenuItem
 			});
 			this->administracionToolStripMenuItem->Name = L"administracionToolStripMenuItem";
-			this->administracionToolStripMenuItem->Size = System::Drawing::Size(147, 29);
+			this->administracionToolStripMenuItem->Size = System::Drawing::Size(123, 24);
 			this->administracionToolStripMenuItem->Text = L"Administracion";
 			// 
 			// gerenteToolStripMenuItem
 			// 
 			this->gerenteToolStripMenuItem->Name = L"gerenteToolStripMenuItem";
-			this->gerenteToolStripMenuItem->Size = System::Drawing::Size(270, 34);
+			this->gerenteToolStripMenuItem->Size = System::Drawing::Size(161, 26);
 			this->gerenteToolStripMenuItem->Text = L"Gerente";
 			this->gerenteToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::gerenteToolStripMenuItem_Click_1);
 			// 
 			// cocineroToolStripMenuItem
 			// 
 			this->cocineroToolStripMenuItem->Name = L"cocineroToolStripMenuItem";
-			this->cocineroToolStripMenuItem->Size = System::Drawing::Size(270, 34);
+			this->cocineroToolStripMenuItem->Size = System::Drawing::Size(161, 26);
 			this->cocineroToolStripMenuItem->Text = L"Cocinero";
 			this->cocineroToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::cocineroToolStripMenuItem_Click);
 			// 
 			// recepciónToolStripMenuItem
 			// 
 			this->recepciónToolStripMenuItem->Name = L"recepciónToolStripMenuItem";
-			this->recepciónToolStripMenuItem->Size = System::Drawing::Size(270, 34);
+			this->recepciónToolStripMenuItem->Size = System::Drawing::Size(161, 26);
 			this->recepciónToolStripMenuItem->Text = L"Recepción";
 			this->recepciónToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::recepciónToolStripMenuItem_Click);
 			// 
 			// frmPrincipal
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::HotTrack;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
-			this->ClientSize = System::Drawing::Size(1380, 681);
+			this->ClientSize = System::Drawing::Size(1227, 545);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->menuStrip1);
 			this->ForeColor = System::Drawing::SystemColors::InactiveCaptionText;
 			this->IsMdiContainer = true;
 			this->MainMenuStrip = this->menuStrip1;
-			this->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
 			this->Name = L"frmPrincipal";
-			this->Text = L"frmPrincipal";
+			this->Text = L"Principal";
 			this->Load += gcnew System::EventHandler(this, &frmPrincipal::frmPrincipal_Load);
 			this->menuStrip1->ResumeLayout(false);
 			this->menuStrip1->PerformLayout();

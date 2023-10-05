@@ -63,9 +63,11 @@ namespace SistemaComidasView {
 			this->groupBox1->BackColor = System::Drawing::Color::SeaGreen;
 			this->groupBox1->Controls->Add(this->label1);
 			this->groupBox1->Controls->Add(this->button1);
-			this->groupBox1->Location = System::Drawing::Point(173, 77);
+			this->groupBox1->Location = System::Drawing::Point(154, 62);
+			this->groupBox1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Size = System::Drawing::Size(457, 565);
+			this->groupBox1->Padding = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->groupBox1->Size = System::Drawing::Size(406, 452);
 			this->groupBox1->TabIndex = 1;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"DETALLE";
@@ -75,9 +77,9 @@ namespace SistemaComidasView {
 			this->label1->AutoSize = true;
 			this->label1->Font = (gcnew System::Drawing::Font(L"Swis721 BT", 14, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label1->Location = System::Drawing::Point(35, 155);
+			this->label1->Location = System::Drawing::Point(31, 124);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(376, 34);
+			this->label1->Size = System::Drawing::Size(320, 29);
 			this->label1->TabIndex = 1;
 			this->label1->Text = L"GRACIAS POR SU PEDIDO";
 			this->label1->Click += gcnew System::EventHandler(this, &VentanaFin::label1_Click);
@@ -86,9 +88,10 @@ namespace SistemaComidasView {
 			// 
 			this->button1->Font = (gcnew System::Drawing::Font(L"Nirmala UI", 12, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			this->button1->Location = System::Drawing::Point(132, 273);
+			this->button1->Location = System::Drawing::Point(117, 218);
+			this->button1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(201, 72);
+			this->button1->Size = System::Drawing::Size(179, 58);
 			this->button1->TabIndex = 0;
 			this->button1->Text = L"FINALIZAR";
 			this->button1->UseVisualStyleBackColor = true;
@@ -96,13 +99,15 @@ namespace SistemaComidasView {
 			// 
 			// VentanaFin
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(830, 737);
+			this->ClientSize = System::Drawing::Size(738, 590);
 			this->Controls->Add(this->groupBox1);
 			this->IsMdiContainer = true;
+			this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->Name = L"VentanaFin";
-			this->Text = L"VentanaFin";
+			this->Text = L"Fin";
+			this->Load += gcnew System::EventHandler(this, &VentanaFin::VentanaFin_Load);
 			this->groupBox1->ResumeLayout(false);
 			this->groupBox1->PerformLayout();
 			this->ResumeLayout(false);
@@ -118,5 +123,7 @@ namespace SistemaComidasView {
 		this->Close();
 
 	}
-	};
+	private: System::Void VentanaFin_Load(System::Object^ sender, System::EventArgs^ e) {
+	}
+};
 }
