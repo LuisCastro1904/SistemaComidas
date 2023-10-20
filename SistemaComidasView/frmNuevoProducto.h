@@ -267,7 +267,7 @@ namespace SistemaComidasView {
 		String^ Nombre = this->textBox5->Text;
 		String^ Descripcion = this->textBox4->Text;
 		double Precio = Convert::ToDouble(this->textBox2->Text);
-		String^ Tipo = this-> comboBox2Tipo ->SelectedText;
+		String^ Tipo = this-> comboBox2Tipo ->Text;
 		int Stock = Convert::ToInt32(this->textBox3->Text);
 		Producto^ objProducto = gcnew Producto(codigo, Nombre, Descripcion, Precio, Tipo, Stock);
 		ProductoController^ objProductoController = gcnew ProductoController();

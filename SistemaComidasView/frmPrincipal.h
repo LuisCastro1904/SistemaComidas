@@ -1,8 +1,8 @@
 #pragma once
 #include "VistaPedido.h"
-#include "VistaCocinero.h"
 #include "VentanaRecepcion.h"
-#include "login.h"
+#include "loginAdministracion.h"
+#include "loginCocinero.h"
 
 namespace SistemaComidasView {
 
@@ -92,9 +92,10 @@ namespace SistemaComidasView {
 			// button1
 			// 
 			this->button1->BackColor = System::Drawing::SystemColors::Info;
-			this->button1->Location = System::Drawing::Point(452, 190);
+			this->button1->Location = System::Drawing::Point(339, 154);
+			this->button1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(351, 145);
+			this->button1->Size = System::Drawing::Size(263, 118);
 			this->button1->TabIndex = 2;
 			this->button1->Text = L"Presione para realizar su pedido";
 			this->button1->UseVisualStyleBackColor = false;
@@ -106,8 +107,8 @@ namespace SistemaComidasView {
 			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->administracionToolStripMenuItem });
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
-			this->menuStrip1->Padding = System::Windows::Forms::Padding(5, 2, 0, 2);
-			this->menuStrip1->Size = System::Drawing::Size(1227, 28);
+			this->menuStrip1->Padding = System::Windows::Forms::Padding(4, 2, 0, 2);
+			this->menuStrip1->Size = System::Drawing::Size(920, 24);
 			this->menuStrip1->TabIndex = 4;
 			this->menuStrip1->Text = L"menuStrip1";
 			// 
@@ -118,43 +119,45 @@ namespace SistemaComidasView {
 					this->cocineroToolStripMenuItem, this->recepciónToolStripMenuItem
 			});
 			this->administracionToolStripMenuItem->Name = L"administracionToolStripMenuItem";
-			this->administracionToolStripMenuItem->Size = System::Drawing::Size(123, 24);
-			this->administracionToolStripMenuItem->Text = L"Administracion";
+			this->administracionToolStripMenuItem->Size = System::Drawing::Size(66, 20);
+			this->administracionToolStripMenuItem->Text = L"Ventanas";
+			this->administracionToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::administracionToolStripMenuItem_Click);
 			// 
 			// gerenteToolStripMenuItem
 			// 
 			this->gerenteToolStripMenuItem->Name = L"gerenteToolStripMenuItem";
-			this->gerenteToolStripMenuItem->Size = System::Drawing::Size(161, 26);
-			this->gerenteToolStripMenuItem->Text = L"Gerente";
+			this->gerenteToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->gerenteToolStripMenuItem->Text = L"Administración";
 			this->gerenteToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::gerenteToolStripMenuItem_Click_1);
 			// 
 			// cocineroToolStripMenuItem
 			// 
 			this->cocineroToolStripMenuItem->Name = L"cocineroToolStripMenuItem";
-			this->cocineroToolStripMenuItem->Size = System::Drawing::Size(161, 26);
+			this->cocineroToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->cocineroToolStripMenuItem->Text = L"Cocinero";
 			this->cocineroToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::cocineroToolStripMenuItem_Click);
 			// 
 			// recepciónToolStripMenuItem
 			// 
 			this->recepciónToolStripMenuItem->Name = L"recepciónToolStripMenuItem";
-			this->recepciónToolStripMenuItem->Size = System::Drawing::Size(161, 26);
+			this->recepciónToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->recepciónToolStripMenuItem->Text = L"Recepción";
 			this->recepciónToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::recepciónToolStripMenuItem_Click);
 			// 
 			// frmPrincipal
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::HotTrack;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
-			this->ClientSize = System::Drawing::Size(1227, 545);
+			this->ClientSize = System::Drawing::Size(920, 443);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->menuStrip1);
 			this->ForeColor = System::Drawing::SystemColors::InactiveCaptionText;
 			this->IsMdiContainer = true;
 			this->MainMenuStrip = this->menuStrip1;
+			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->Name = L"frmPrincipal";
 			this->Text = L"Principal";
 			this->Load += gcnew System::EventHandler(this, &frmPrincipal::frmPrincipal_Load);
@@ -172,29 +175,28 @@ namespace SistemaComidasView {
 	private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-		VistaPedido^ ventanaMantProductos1 = gcnew VistaPedido();
+		VistaPedido^ ventanaPedido = gcnew VistaPedido();
 		//ventanaMantProductos1 -> MdiParent = this;
-		ventanaMantProductos1-> Show();
+		ventanaPedido-> ShowDialog();
 		//this->Close();
 	}
 
 	private: System::Void gerenteToolStripMenuItem_Click_1(System::Object^ sender, System::EventArgs^ e) {
-		login^ ventanaMantProductos = gcnew login();
+		loginAdministracion^ ventanaLoginAdministracion = gcnew loginAdministracion();
 		//ventanaMantProductos->MdiParent = this;
-		ventanaMantProductos-> ShowDialog();
-		this->Close();
+		ventanaLoginAdministracion-> ShowDialog();
 	}
 private: System::Void cocineroToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-	VistaCocinero ^ ventanaCocinero = gcnew VistaCocinero();
+	loginCocinero^ ventanaLoginCocinero = gcnew loginCocinero();
 	//ventanaCocinero->MdiParent = this;
-	ventanaCocinero->ShowDialog();
-	this->Close();
+	ventanaLoginCocinero->ShowDialog();
 }
 private: System::Void recepciónToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 	VentanaRecepcion^ vistaRecepcion = gcnew VentanaRecepcion();
 	//ventanaRecepcion->MdiParent = this;
 	vistaRecepcion->ShowDialog();
-	this->Close();
+}
+private: System::Void administracionToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 	}

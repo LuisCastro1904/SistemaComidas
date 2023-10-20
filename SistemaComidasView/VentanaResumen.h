@@ -130,10 +130,9 @@ namespace SistemaComidasView {
 		VentanaPago^ ventanapago  = gcnew VentanaPago;
 		//ventanapago -> MdiParent = this;
 		ventanapago -> Show();
-		this->Close();
 	}
 private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
-		
+	this->Close();
 }
 };
 }

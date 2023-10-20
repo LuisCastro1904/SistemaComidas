@@ -103,4 +103,5 @@ void ProductoController::actualizarProducto(Producto^ objProducto) {
 			break;
 		}
 	}
+	escribirArchivo(listaProductos);
 }

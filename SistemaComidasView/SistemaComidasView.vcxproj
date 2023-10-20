@@ -115,15 +115,18 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="frmEditarProducto.cpp" />
+    <ClCompile Include="frmMantenimientoLoginAdministracion.cpp" />
     <ClCompile Include="frmMantenimientoProducto.cpp" />
     <ClCompile Include="frmNuevoProducto.cpp" />
     <ClCompile Include="frmPrincipal.cpp" />
-    <ClCompile Include="login.cpp" />
+    <ClCompile Include="loginAdministracion.cpp" />
+    <ClCompile Include="loginCocinero.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="VentanaFin.cpp" />
     <ClCompile Include="VentanaGracias.cpp" />
     <ClCompile Include="VentanaPago.cpp" />
     <ClCompile Include="VentanaRecepcion.cpp" />
+    <ClCompile Include="VentanaRegistro.cpp" />
     <ClCompile Include="VentanaResumen.cpp" />
     <ClCompile Include="VistaBebidas.cpp" />
     <ClCompile Include="VistaCocinero.cpp" />
@@ -140,6 +143,9 @@
     <ClInclude Include="frmEditarProducto.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="frmMantenimientoLoginAdministracion.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="frmMantenimientoProducto.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -149,7 +155,10 @@
     <ClInclude Include="frmPrincipal.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="login.h">
+    <ClInclude Include="loginAdministracion.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="loginCocinero.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="VentanaFin.h">
@@ -162,6 +171,9 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="VentanaRecepcion.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="VentanaRegistro.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="VentanaResumen.h">
@@ -181,6 +193,9 @@
     <EmbeddedResource Include="frmEditarProducto.resx">
       <DependentUpon>frmEditarProducto.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmMantenimientoLoginAdministracion.resx">
+      <DependentUpon>frmMantenimientoLoginAdministracion.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmMantenimientoProducto.resx">
       <DependentUpon>frmMantenimientoProducto.h</DependentUpon>
     </EmbeddedResource>
@@ -190,8 +205,11 @@
     <EmbeddedResource Include="frmPrincipal.resx">
       <DependentUpon>frmPrincipal.h</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="login.resx">
-      <DependentUpon>login.h</DependentUpon>
+    <EmbeddedResource Include="loginAdministracion.resx">
+      <DependentUpon>loginAdministracion.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="loginCocinero.resx">
+      <DependentUpon>loginCocinero.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VentanaFin.resx">
       <DependentUpon>VentanaFin.h</DependentUpon>
@@ -204,6 +222,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="VentanaRecepcion.resx">
       <DependentUpon>VentanaRecepcion.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VentanaRegistro.resx">
+      <DependentUpon>VentanaRegistro.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VentanaResumen.resx">
       <DependentUpon>VentanaResumen.h</DependentUpon>

@@ -1,8 +1,6 @@
 #pragma once
 #include "VentanaResumen.h"
 
-
-
 namespace SistemaComidasView {
 
 	using namespace System;
@@ -271,15 +269,14 @@ namespace SistemaComidasView {
 		VentanaResumen^ ventanaResumen = gcnew VentanaResumen;
 		//ventanaMantProyectos1 -> MdiParent = this;
 		ventanaResumen->Show();
-		this->Close();
-
 	}
 private: System::Void button8_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
 }
-private: System::Void button7back_Click(System::Object^ sender, System::EventArgs^ e) {
-	
-}
+	private: System::Void button7back_Click(System::Object^ sender, System::EventArgs^ e) {
+		this->Close();
+
+	}
 };
 }
