@@ -10,6 +10,8 @@ namespace SistemaComidasView {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace SistemaComidasController;
+	using namespace SistemaComidasModel;
 
 	/// <summary>
 	/// Resumen de loginAdministracion
@@ -140,9 +142,35 @@ namespace SistemaComidasView {
 	private: System::Void login_Load(System::Object^ sender, System::EventArgs^ e) {
 	}
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-	VentanaRegistro^ ventanaResgistro = gcnew VentanaRegistro();
-	//ventanaMantProductos->MdiParent = this;
-	ventanaResgistro->ShowDialog();
+	String^ UsuarioIngresado = textBox1->Text;
+	String^ ContraseñaIngresada = textBox2->Text;
+	String^ Tipo = "Administrador";
+
+	UsuarioController^ objUsuarioController = gcnew UsuarioController();
+	List<Usuario^>^ listaUsuario = objUsuarioController->BuscarUsuario(Tipo);
+
+	bool usuarioValido = false;
+
+	for (int i = 0; i < listaUsuario->Count; i++) {
+		if (listaUsuario[i]->getNombreUsuario() == UsuarioIngresado &&
+			listaUsuario[i]->getContrasena() == ContraseñaIngresada) {
+
+			usuarioValido = true;
+			break;
+		}
+	}
+
+	if (usuarioValido) {
+		VentanaRegistro^ ventanaResgistro = gcnew VentanaRegistro();
+		ventanaResgistro->ShowDialog();
+	}
+	else {
+		MessageBox::Show("Usuario o contraseña incorrectos");
+		textBox2->Clear();
+		textBox1->Clear();
+	}
+
+	
 }
 private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
 	this->Close();

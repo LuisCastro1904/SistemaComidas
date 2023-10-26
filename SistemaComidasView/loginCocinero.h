@@ -6,9 +6,12 @@ namespace SistemaComidasView {
 	using namespace System;
 	using namespace System::ComponentModel;
 	using namespace System::Collections;
+	using namespace System::Collections::Generic;
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace SistemaComidasController;
+	using namespace SistemaComidasModel;
 
 	/// <summary>
 	/// Resumen de loginCocinero
@@ -135,10 +138,33 @@ namespace SistemaComidasView {
 		}
 #pragma endregion
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-		VistaCocinero^ ventanaCocinero = gcnew VistaCocinero();
-		//ventanaCocinero->MdiParent = this;
-		ventanaCocinero->ShowDialog();
-		this->Close();
+		String^ UsuarioIngresado = textBox1->Text;
+		String^ ContraseñaIngresada = textBox2->Text;
+		String^ Tipo = "Cocinero";
+
+		UsuarioController^ objUsuarioController = gcnew UsuarioController();
+		List<Usuario^>^ listaUsuario = objUsuarioController->BuscarUsuario(Tipo);
+
+		bool usuarioValido = false;
+
+		for (int i = 0; i < listaUsuario->Count; i++) {
+			if (listaUsuario[i]->getNombreUsuario() == UsuarioIngresado &&
+				listaUsuario[i]->getContrasena() == ContraseñaIngresada) {
+
+				usuarioValido = true;
+				break;
+			}
+		}
+
+		if (usuarioValido) {
+			VistaCocinero^ VistaCocina = gcnew VistaCocinero();
+			VistaCocina->ShowDialog();
+		}
+		else {
+			MessageBox::Show("Usuario o contraseña incorrectos");
+			textBox2->Clear();
+			textBox1->Clear();
+		}
 	}
 private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
 	this->Close();
