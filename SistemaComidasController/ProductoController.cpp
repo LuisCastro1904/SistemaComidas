@@ -105,3 +105,22 @@ void ProductoController::actualizarProducto(Producto^ objProducto) {
 	}
 	escribirArchivo(listaProductos);
 }
+List<String^>^ ProductoController::obtenerProductos() {
+	List<Producto^>^ listaProductos = buscarAll();
+	List<String^>^ listaNombres = gcnew List<String^>();
+	for (int i = 0; i < listaProductos->Count; i++) {
+		/*Aqui voy a buscar cada departamento si ya se encuentra en la lista de departamentos*/
+		String^ Nombre = listaProductos[i]->getNombre();
+		/*Voy a buscarlo en la listaDepartamentos*/
+		int existe = 0;
+		for (int j = 0; j < listaNombres->Count; j++) {
+			if (listaNombres[j]->Contains(Nombre)) {
+				existe = 1;
+			}
+		}
+		if (existe == 0) {
+			listaNombres->Add(Nombre);
+		}
+	}
+	return listaNombres;
+}

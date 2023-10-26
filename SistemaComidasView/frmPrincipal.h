@@ -6,6 +6,7 @@
 #include "ReporteEstado.h"
 #include "ReportePedido.h"
 #include "ReporteProducto.h"
+#include "MantenimientoPedidos.h"
 
 namespace SistemaComidasView {
 
@@ -225,6 +226,8 @@ namespace SistemaComidasView {
 		////ventanaMantProductos1 -> MdiParent = this;
 		//ventanaPedido-> ShowDialog();
 		////this->Close();
+		MantenimientoPedidos^ ventanaPedido = gcnew MantenimientoPedidos();
+		ventanaPedido->ShowDialog();
 
 	}
 

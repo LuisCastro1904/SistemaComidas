@@ -15,5 +15,6 @@ namespace SistemaComidasController {
 		void eliminarUsuarioFisico(int codigo);
 		Usuario^ buscarUsuarioporCodigo(int codigo);
 		void actualizarUsuario(Usuario^ objUsuario);
+		
 	};
 }

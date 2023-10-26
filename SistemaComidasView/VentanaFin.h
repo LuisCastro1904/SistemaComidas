@@ -38,6 +38,8 @@ namespace SistemaComidasView {
 	protected:
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::Button^ button1;
+	private: System::Windows::Forms::Label^ label2;
+	private: System::Windows::Forms::TextBox^ textBox1;
 
 	private:
 		/// <summary>
@@ -53,6 +55,8 @@ namespace SistemaComidasView {
 		void InitializeComponent(void)
 		{
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
+			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->groupBox1->SuspendLayout();
@@ -61,6 +65,8 @@ namespace SistemaComidasView {
 			// groupBox1
 			// 
 			this->groupBox1->BackColor = System::Drawing::Color::SeaGreen;
+			this->groupBox1->Controls->Add(this->label2);
+			this->groupBox1->Controls->Add(this->textBox1);
 			this->groupBox1->Controls->Add(this->label1);
 			this->groupBox1->Controls->Add(this->button1);
 			this->groupBox1->Location = System::Drawing::Point(154, 62);
@@ -72,12 +78,29 @@ namespace SistemaComidasView {
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"DETALLE";
 			// 
+			// label2
+			// 
+			this->label2->AutoSize = true;
+			this->label2->Location = System::Drawing::Point(54, 170);
+			this->label2->Name = L"label2";
+			this->label2->Size = System::Drawing::Size(216, 16);
+			this->label2->TabIndex = 3;
+			this->label2->Text = L"Su codigo para recoger pedido es:";
+			// 
+			// textBox1
+			// 
+			this->textBox1->Enabled = false;
+			this->textBox1->Location = System::Drawing::Point(88, 230);
+			this->textBox1->Name = L"textBox1";
+			this->textBox1->Size = System::Drawing::Size(209, 22);
+			this->textBox1->TabIndex = 2;
+			// 
 			// label1
 			// 
 			this->label1->AutoSize = true;
 			this->label1->Font = (gcnew System::Drawing::Font(L"Swis721 BT", 14, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label1->Location = System::Drawing::Point(31, 124);
+			this->label1->Location = System::Drawing::Point(31, 79);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(320, 29);
 			this->label1->TabIndex = 1;
@@ -88,7 +111,7 @@ namespace SistemaComidasView {
 			// 
 			this->button1->Font = (gcnew System::Drawing::Font(L"Nirmala UI", 12, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Italic)),
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			this->button1->Location = System::Drawing::Point(117, 218);
+			this->button1->Location = System::Drawing::Point(99, 340);
 			this->button1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(179, 58);
