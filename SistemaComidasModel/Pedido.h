@@ -1,6 +1,7 @@
 #pragma once
-
+#include "DetallePedido.h"
 using namespace System;
+using namespace System::Collections::Generic;
 namespace SistemaComidasModel {
 	public ref class Pedido {
 		/*Definimos los atributos*/
@@ -18,10 +19,12 @@ namespace SistemaComidasModel {
 		String^ NumeroTarjeta;
 		String^ NumeroPedido;
 		int CodigoRecibido;
+		List<DetallePedido^>^ listaDetalles;
+
 		/*Definimos métodos*/
 	public:
 		Pedido();
-		Pedido(int codigo, bool EstadoPedido, double TiempoEstimado, bool EstadoPago, String^ Fecha, String^ Direccion, Double PrecioTotal, String^ Nombres, String^ Apellidos, String^ DNI, String^ NumeroTarjeta, String^ NumeroPedido, int CodigoRecibido);
+		Pedido(int codigo, bool EstadoPedido, double TiempoEstimado, bool EstadoPago, String^ Fecha, String^ Direccion, Double PrecioTotal, String^ Nombres, String^ Apellidos, String^ DNI, String^ NumeroTarjeta, String^ NumeroPedido, int CodigoRecibido, List<DetallePedido^>^ listaDetalles);
 		int getCodigo();
 		void setCodigo(int codigo);
 
@@ -60,5 +63,8 @@ namespace SistemaComidasModel {
 
 		int getCodigoRecibido();
 		void setCodigoRecibido(int CodigoRecibido);
+
+		List<DetallePedido^>^ getLlistaDetalles();
+		void setlistaDetalles(List<DetallePedido^>^ listaDetalles);
 	};
 }

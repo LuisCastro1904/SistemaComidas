@@ -117,6 +117,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DetallePedidoController.h" />
+    <ClInclude Include="PedidoController.h" />
     <ClInclude Include="ProductoController.h" />
     <ClInclude Include="UsuarioController.h" />
   </ItemGroup>
