@@ -42,9 +42,6 @@
     <ClCompile Include="VentanaFin.cpp">
       <Filter>Archivos de encabezado</Filter>
     </ClCompile>
-    <ClCompile Include="VentanaRecepcion.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
     <ClCompile Include="VentanaGracias.cpp">
       <Filter>Archivos de encabezado</Filter>
     </ClCompile>
@@ -60,11 +57,20 @@
     <ClCompile Include="loginCocinero.cpp">
       <Filter>Archivos de encabezado</Filter>
     </ClCompile>
-    <ClCompile Include="frmMantenimientoLoginAdministracion.cpp">
-      <Filter>Archivos de origen</Filter>
+    <ClCompile Include="frmMantenimientoLogin.cpp">
+      <Filter>Archivos de encabezado</Filter>
+    </ClCompile>
+    <ClCompile Include="VentanaRecepcion.cpp">
+      <Filter>Archivos de encabezado</Filter>
     </ClCompile>
     <ClCompile Include="VentanaRegistro.cpp">
-      <Filter>Archivos de origen</Filter>
+      <Filter>Archivos de encabezado</Filter>
+    </ClCompile>
+    <ClCompile Include="frmNuevoUsuario.cpp">
+      <Filter>Archivos de encabezado</Filter>
+    </ClCompile>
+    <ClCompile Include="frmEditarUsuario.cpp">
+      <Filter>Archivos de encabezado</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -110,10 +116,16 @@
     <ClInclude Include="loginCocinero.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="frmMantenimientoLoginAdministracion.h">
+    <ClInclude Include="frmMantenimientoLogin.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="VentanaRegistro.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="frmNuevoUsuario.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="frmEditarUsuario.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>

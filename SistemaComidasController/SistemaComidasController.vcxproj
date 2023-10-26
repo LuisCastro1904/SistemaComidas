@@ -118,9 +118,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ProductoController.h" />
+    <ClInclude Include="UsuarioController.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ProductoController.cpp" />
+    <ClCompile Include="UsuarioController.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

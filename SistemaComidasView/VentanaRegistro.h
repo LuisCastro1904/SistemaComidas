@@ -1,6 +1,6 @@
 #pragma once
 #include "frmMantenimientoProducto.h"
-#include "frmMantenimientoLoginAdministracion.h"
+#include "frmMantenimientoLogin.h"
 
 namespace SistemaComidasView {
 
@@ -91,9 +91,9 @@ namespace SistemaComidasView {
 		}
 #pragma endregion
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-		frmMantenimientoLoginAdministracion^ ventanaMantenimientoLoginAdministracion = gcnew frmMantenimientoLoginAdministracion();
+		frmMantenimientoLogin^ ventanaMantenimientoLogin = gcnew frmMantenimientoLogin();
 		//ventanaMantProductos->MdiParent = this;
-		ventanaMantenimientoLoginAdministracion->ShowDialog();
+		ventanaMantenimientoLogin->ShowDialog();
 	}
 	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
 		frmMantenimientoProducto^ ventanaMantProductos = gcnew frmMantenimientoProducto();

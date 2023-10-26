@@ -1,6 +1,6 @@
 #pragma once
 #include "VentanaRegistro.h"
-#include "frmMantenimientoLoginAdministracion.h"
+#include "frmMantenimientoLogin.h"
 
 namespace SistemaComidasView {
 

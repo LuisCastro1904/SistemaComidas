@@ -115,9 +115,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="frmEditarProducto.cpp" />
-    <ClCompile Include="frmMantenimientoLoginAdministracion.cpp" />
+    <ClCompile Include="frmEditarUsuario.cpp" />
+    <ClCompile Include="frmMantenimientoLogin.cpp" />
     <ClCompile Include="frmMantenimientoProducto.cpp" />
     <ClCompile Include="frmNuevoProducto.cpp" />
+    <ClCompile Include="frmNuevoUsuario.cpp" />
     <ClCompile Include="frmPrincipal.cpp" />
     <ClCompile Include="loginAdministracion.cpp" />
     <ClCompile Include="loginCocinero.cpp" />
@@ -143,13 +145,19 @@
     <ClInclude Include="frmEditarProducto.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="frmMantenimientoLoginAdministracion.h">
+    <ClInclude Include="frmEditarUsuario.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="frmMantenimientoLogin.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="frmMantenimientoProducto.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="frmNuevoProducto.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="frmNuevoUsuario.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="frmPrincipal.h">
@@ -193,14 +201,20 @@
     <EmbeddedResource Include="frmEditarProducto.resx">
       <DependentUpon>frmEditarProducto.h</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmMantenimientoLoginAdministracion.resx">
-      <DependentUpon>frmMantenimientoLoginAdministracion.h</DependentUpon>
+    <EmbeddedResource Include="frmEditarUsuario.resx">
+      <DependentUpon>frmEditarUsuario.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMantenimientoLogin.resx">
+      <DependentUpon>frmMantenimientoLogin.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMantenimientoProducto.resx">
       <DependentUpon>frmMantenimientoProducto.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmNuevoProducto.resx">
       <DependentUpon>frmNuevoProducto.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNuevoUsuario.resx">
+      <DependentUpon>frmNuevoUsuario.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPrincipal.resx">
       <DependentUpon>frmPrincipal.h</DependentUpon>
