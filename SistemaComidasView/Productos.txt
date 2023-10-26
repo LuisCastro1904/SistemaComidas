@@ -1,10 +1,9 @@
-2;Papa a la Huacaina;Entrante típico hecho de papas hervidas, huevo y  crema de ají amarillo.;7;Comida;10
-3;Chicha Morada;Bebida elaborada a partir de un concentrado de maíz morado.;4;Bebida;10
-4;Bebida de Maracuyá;Bebida hecha a base de maracuya con pequeños gránulos que provienen de la fruta.;4;Bebida;10
-5;Arroz con pollo;Arroz cocinado con pollo, en presas o desmechado, verduras y sazonado con especias.;15;Comida;10
-6;Inca Kola;Bebida emblemática peruana.;3.5;Bebida;10
-7;Coca Cola;Reconocida bebida azucarada gaseosa.;3.5;Bebida;10
-8;Carapulcra con Sopa Seca;Potaje indígena, preparado con papa seca sancochada, guisada con chancho y acompañado de sopa seca.;12;Comida;10
-9;Ají de Gallina;Platillo que consiste en un ají o crema espesa con pechuga de gallina deshilachada.;12;Comida;10
+2;Papa a la Huacaina;Entrante típico hecho de papas hervidas, huevo y  crema de ají amarillo.;7;Comida;6
+3;Chicha Morada;Bebida elaborada a partir de un concentrado de maíz morado.;4;Bebida;8
+4;Bebida de Maracuyá;Bebida hecha a base de maracuya con pequeños gránulos que provienen de la fruta.;4;Bebida;9
+5;Arroz con pollo;Arroz cocinado con pollo, en presas o desmechado, verduras y sazonado con especias.;15;Comida;3
+6;Inca Kola;Bebida emblemática peruana.;3.5;Bebida;7
+7;Coca Cola;Reconocida bebida azucarada gaseosa.;3.5;Bebida;15
+8;Carapulcra con Sopa Seca;Potaje indígena, preparado con papa seca sancochada, guisada con chancho y acompañado de sopa seca.;12;Comida;12
+9;Ají de Gallina;Platillo que consiste en un ají o crema espesa con pechuga de gallina deshilachada.;12;Comida;2
 10;Agua;Agua mineral.;3;Bebida;20
-321342141;aasdada;dasdada;12231;Comida;12345

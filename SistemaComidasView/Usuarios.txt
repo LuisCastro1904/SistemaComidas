@@ -1,3 +1,4 @@
 1;Administrador1;123456;Administrador
 2;Administrador2;123456;Administrador
 3;Cocinero1;123456;Cocinero
+4;Juancito;1999;Administrador
