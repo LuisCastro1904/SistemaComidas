@@ -73,6 +73,7 @@ namespace SistemaComidasView {
 			this->chart1->Size = System::Drawing::Size(520, 493);
 			this->chart1->TabIndex = 0;
 			this->chart1->Text = L"chart1";
+			this->chart1->Click += gcnew System::EventHandler(this, &ReporteEstado::chart1_Click);
 			// 
 			// ReporteEstado
 			// 
@@ -87,5 +88,7 @@ namespace SistemaComidasView {
 
 		}
 #pragma endregion
+	private: System::Void chart1_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
 	};
 }

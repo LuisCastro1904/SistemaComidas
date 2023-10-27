@@ -255,6 +255,9 @@
     <EmbeddedResource Include="ReporteEstado.resx">
       <DependentUpon>ReporteEstado.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ReportePedido.resx">
+      <DependentUpon>ReportePedido.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ReporteProducto.resx">
       <DependentUpon>ReporteProducto.h</DependentUpon>
     </EmbeddedResource>
