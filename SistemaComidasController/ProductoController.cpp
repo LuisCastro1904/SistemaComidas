@@ -124,3 +124,12 @@ List<String^>^ ProductoController::obtenerProductos() {
 	}
 	return listaNombres;
 }
+
+Producto^ ProductoController::buscarProductoxNombre(String^ Nombre) {
+	List<Producto^>^ listaProductos = buscarAll();
+	for (int i = 0; i < listaProductos->Count; i++) {
+		if (listaProductos[i]->getNombre() == Nombre) {
+			return listaProductos[i];
+		}
+	}
+}

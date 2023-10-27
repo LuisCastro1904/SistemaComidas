@@ -1,5 +1,6 @@
 #pragma once
 #include "VentanaFin.h"
+#include "modificarPedido.h"
 
 namespace SistemaComidasView {
 
@@ -189,6 +190,7 @@ namespace SistemaComidasView {
 			this->button4->TabIndex = 13;
 			this->button4->Text = L"Mostrar Pedido";
 			this->button4->UseVisualStyleBackColor = true;
+			this->button4->Click += gcnew System::EventHandler(this, &MantenimientoPedidos::button4_Click);
 			// 
 			// button3
 			// 
@@ -198,6 +200,7 @@ namespace SistemaComidasView {
 			this->button3->TabIndex = 12;
 			this->button3->Text = L"Eliminar";
 			this->button3->UseVisualStyleBackColor = true;
+			this->button3->Click += gcnew System::EventHandler(this, &MantenimientoPedidos::button3_Click);
 			// 
 			// button2
 			// 
@@ -207,6 +210,7 @@ namespace SistemaComidasView {
 			this->button2->TabIndex = 11;
 			this->button2->Text = L"Modificar";
 			this->button2->UseVisualStyleBackColor = true;
+			this->button2->Click += gcnew System::EventHandler(this, &MantenimientoPedidos::button2_Click);
 			// 
 			// dataGridView1
 			// 
@@ -266,6 +270,7 @@ namespace SistemaComidasView {
 			this->button1->TabIndex = 9;
 			this->button1->Text = L"Agregar al Pedido";
 			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &MantenimientoPedidos::button1_Click);
 			// 
 			// label3
 			// 
@@ -290,6 +295,7 @@ namespace SistemaComidasView {
 			this->comboBox1->Name = L"comboBox1";
 			this->comboBox1->Size = System::Drawing::Size(206, 24);
 			this->comboBox1->TabIndex = 0;
+			this->comboBox1->SelectedIndexChanged += gcnew System::EventHandler(this, &MantenimientoPedidos::comboBox1_SelectedIndexChanged);
 			// 
 			// dateTimePicker1
 			// 
@@ -499,6 +505,56 @@ private: System::Void MantenimientoPedidos_Load(System::Object^ sender, System::
 	for (int i = 0; i < listaProductos->Count; i++) {
 		this->comboBox1->Items->Add(listaProductos[i]);
 	}
+}
+private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+	ProductoController^ objProductoController = gcnew ProductoController();
+	Producto^ objProducto = objProductoController->buscarProductoxNombre(this->comboBox1->Text);
+	int codigo = objProducto->getCodigo();
+	int Cantidad = Convert::ToInt32(this->numericUpDown1->Text);
+	String^ NombreProducto = this->comboBox1->Text;
+	Double PrecioUnitario = objProducto->getPrecio();
+	Double Importe = PrecioUnitario*Cantidad;
+	DetallePedido^ objDetallePedido = gcnew DetallePedido(codigo, Cantidad, NombreProducto, PrecioUnitario, Importe);
+	DetallePedidoController^ objDetallePedidoController = gcnew DetallePedidoController();
+	objDetallePedidoController->agregarDetallePedido(objDetallePedido);
+	MessageBox::Show("El producto se ha agregado con éxito");
+}
+private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
+	DetallePedidoController^ objDetallePedidoController = gcnew DetallePedidoController();
+	List<DetallePedido^>^ listaDetallesPedidos = objDetallePedidoController->buscarAll();
+	mostrarGrilla(listaDetallesPedidos);
+}
+
+private: void mostrarGrilla(List<DetallePedido^>^ listaDetallesPedidos) {
+	this->dataGridView1->Rows->Clear(); /*Elimino toda la informacion del datagrid*/
+	for (int i = 0; i < listaDetallesPedidos->Count; i++) {
+		DetallePedido^ objDetallePedido = listaDetallesPedidos[i];
+		array<String^>^ filaGrilla = gcnew array<String^>(5);
+		filaGrilla[0] = Convert::ToString(objDetallePedido->getCodigo());
+		filaGrilla[1] = Convert::ToString(objDetallePedido->getCantidad());
+		filaGrilla[2] = objDetallePedido->getDescripcion();
+		filaGrilla[3] = Convert::ToString(objDetallePedido->getPrecioUnitario());
+		filaGrilla[4] = Convert::ToString(objDetallePedido->getImporte());
+		this->dataGridView1->Rows->Add(filaGrilla);
+	}
+}
+
+private: System::Void comboBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
+	DetallePedidoController^ objDetallePedido;
+	int filaSeleccionada = this->dataGridView1->SelectedRows[0]->Index; /*Le pongo [0] porque en este caso estamos asumiendo que solo seleccionamos una fila, por ello es la de la posicion 0*/
+	int codigoEliminar = Convert::ToInt32(this->dataGridView1->Rows[filaSeleccionada]->Cells[0]->Value->ToString());
+	objDetallePedido->eliminarDetallePedidoFisico(codigoEliminar);
+	MessageBox::Show("El producto ha sido eliminado con éxito");
+}
+private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+	int filaSeleccionada = this->dataGridView1->SelectedRows[0]->Index; /*Le pongo [0] porque en este caso estamos asumiendo que solo seleccionamos una fila, por ello es la de la posicion 0*/
+	int codigoEditar = Convert::ToInt32(this->dataGridView1->Rows[filaSeleccionada]->Cells[0]->Value->ToString());
+	DetallePedidoController^ objDetallePedidoController = gcnew DetallePedidoController();
+	DetallePedido^ objDetallePedido = objDetallePedidoController->buscarDetallePedidoxCodigo(codigoEditar);
+	modificarPedido^ ventanaModificarPedido = gcnew modificarPedido(objDetallePedido);
+	ventanaModificarPedido->ShowDialog();
 }
 };
 }

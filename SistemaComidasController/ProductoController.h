@@ -16,5 +16,6 @@ namespace SistemaComidasController {
 		Producto^ buscarProductoporCodigo(int codigo);
 		void actualizarProducto(Producto^ objProducto);
 		List<String^>^ obtenerProductos();
+		Producto^ buscarProductoxNombre(String^ Nombre);
 	};
 }

@@ -1,0 +1,2 @@
+3;1;Chicha Morada;4;4
+7;6;Coca Cola;3.5;21

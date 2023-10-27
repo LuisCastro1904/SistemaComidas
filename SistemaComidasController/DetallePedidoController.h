@@ -8,13 +8,13 @@ namespace SistemaComidasController {
 	public ref class DetallePedidoController {
 	public:
 		DetallePedidoController();
-		List<DetallePedido^>^ BuscarDetalle(int codigoPedido);
 		List<DetallePedido^>^ buscarAll();
 		void escribirArchivo(List<DetallePedido^>^ DetallePedido);
-		void eliminarDetalleFisico(int codigo);
-		void agregarDetalle(DetallePedido^ objDetallePedido);
-		Producto^ buscarDetalleporCodigo(int codigo);
-		void actualizarDetalle(DetallePedido^ objDetallePedido);
-		List<String^>^ obtenerProductos();
+		void agregarDetallePedido(DetallePedido^ objDetallePedido);
+		void eliminarDetallePedidoFisico(int codigo);
+		DetallePedido^ buscarDetallePedidoxCodigo(int codigo);
+		void actualizarDetallePedido(DetallePedido^ objDetallePedido);
+		/*List<DetallePedido^>^ BuscarDetalle(int codigoPedido);
+		List<String^>^ obtenerProductos();*/
 	};
 }
