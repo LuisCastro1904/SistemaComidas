@@ -124,7 +124,7 @@ namespace SistemaComidasView {
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
 			this->menuStrip1->Padding = System::Windows::Forms::Padding(5, 2, 0, 2);
-			this->menuStrip1->Size = System::Drawing::Size(1227, 28);
+			this->menuStrip1->Size = System::Drawing::Size(1227, 30);
 			this->menuStrip1->TabIndex = 4;
 			this->menuStrip1->Text = L"menuStrip1";
 			// 
@@ -135,7 +135,7 @@ namespace SistemaComidasView {
 					this->cocineroToolStripMenuItem, this->recepciónToolStripMenuItem
 			});
 			this->administracionToolStripMenuItem->Name = L"administracionToolStripMenuItem";
-			this->administracionToolStripMenuItem->Size = System::Drawing::Size(82, 24);
+			this->administracionToolStripMenuItem->Size = System::Drawing::Size(82, 26);
 			this->administracionToolStripMenuItem->Text = L"Ventanas";
 			this->administracionToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::administracionToolStripMenuItem_Click);
 			// 
@@ -167,27 +167,27 @@ namespace SistemaComidasView {
 					this->pedidosToolStripMenuItem, this->estadoToolStripMenuItem
 			});
 			this->reporteToolStripMenuItem->Name = L"reporteToolStripMenuItem";
-			this->reporteToolStripMenuItem->Size = System::Drawing::Size(76, 24);
+			this->reporteToolStripMenuItem->Size = System::Drawing::Size(76, 26);
 			this->reporteToolStripMenuItem->Text = L"Reporte";
 			// 
 			// pToolStripMenuItem
 			// 
 			this->pToolStripMenuItem->Name = L"pToolStripMenuItem";
-			this->pToolStripMenuItem->Size = System::Drawing::Size(224, 26);
+			this->pToolStripMenuItem->Size = System::Drawing::Size(158, 26);
 			this->pToolStripMenuItem->Text = L"Productos";
 			this->pToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::pToolStripMenuItem_Click);
 			// 
 			// pedidosToolStripMenuItem
 			// 
 			this->pedidosToolStripMenuItem->Name = L"pedidosToolStripMenuItem";
-			this->pedidosToolStripMenuItem->Size = System::Drawing::Size(224, 26);
+			this->pedidosToolStripMenuItem->Size = System::Drawing::Size(158, 26);
 			this->pedidosToolStripMenuItem->Text = L"Pedidos";
 			this->pedidosToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::pedidosToolStripMenuItem_Click);
 			// 
 			// estadoToolStripMenuItem
 			// 
 			this->estadoToolStripMenuItem->Name = L"estadoToolStripMenuItem";
-			this->estadoToolStripMenuItem->Size = System::Drawing::Size(224, 26);
+			this->estadoToolStripMenuItem->Size = System::Drawing::Size(158, 26);
 			this->estadoToolStripMenuItem->Text = L"Estado";
 			this->estadoToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::estadoToolStripMenuItem_Click);
 			// 
@@ -222,12 +222,12 @@ namespace SistemaComidasView {
 	private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-		//VistaPedido^ ventanaPedido = gcnew VistaPedido();
-		////ventanaMantProductos1 -> MdiParent = this;
-		//ventanaPedido-> ShowDialog();
+		VistaPedido^ ventanaPedido = gcnew VistaPedido();
+		//ventanaPedido-> MdiParent = this;
+		ventanaPedido-> ShowDialog();
 		////this->Close();
-		MantenimientoPedidos^ ventanaPedido = gcnew MantenimientoPedidos();
-		ventanaPedido->ShowDialog();
+		//MantenimientoPedidos^ ventanaPedido = gcnew MantenimientoPedidos();
+		//ventanaPedido->ShowDialog();
 
 	}
 

@@ -518,6 +518,8 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	DetallePedidoController^ objDetallePedidoController = gcnew DetallePedidoController();
 	objDetallePedidoController->agregarDetallePedido(objDetallePedido);
 	MessageBox::Show("El producto se ha agregado con éxito");
+	List<DetallePedido^>^ listaDetallesPedidos = objDetallePedidoController->buscarAll();
+	mostrarGrilla(listaDetallesPedidos);
 }
 private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
 	DetallePedidoController^ objDetallePedidoController = gcnew DetallePedidoController();

@@ -1,4 +1,4 @@
-2;Papa a la Huacaina;Entrante típico hecho de papas hervidas, huevo y  crema de ají amarillo.;7;Comida;6
+2;Papa a la Huancaina;Entrante típico hecho de papas hervidas, huevo y  crema de ají amarillo.;7;Comida;6
 3;Chicha Morada;Bebida elaborada a partir de un concentrado de maíz morado.;4;Bebida;8
 4;Bebida de Maracuyá;Bebida hecha a base de maracuya con pequeños gránulos que provienen de la fruta.;4;Bebida;9
 5;Arroz con pollo;Arroz cocinado con pollo, en presas o desmechado, verduras y sazonado con especias.;15;Comida;3
