@@ -250,18 +250,16 @@ private: void mostrarGrilla(List<Usuario^>^ listaUsuarios) {
 }
 
 private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
-	UsuarioController^ objUsuario;
 	int filaSeleccionada = this->dataGridView1->SelectedRows[0]->Index; /*Le pongo [0] porque en este caso estamos asumiendo que solo seleccionamos una fila, por ello es la de la posicion 0*/
 	int codigoEliminar = Convert::ToInt32(this->dataGridView1->Rows[filaSeleccionada]->Cells[0]->Value->ToString());
+	UsuarioController^ objUsuario = gcnew UsuarioController();
 	objUsuario->eliminarUsuarioFisico(codigoEliminar);
 	MessageBox::Show("El usuario ha sido eliminado con éxito");
 }
 private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
 	int filaSeleccionada = this->dataGridView1->SelectedRows[0]->Index; /*Le pongo [0] porque en este caso estamos asumiendo que solo seleccionamos una fila, por ello es la de la posicion 0*/
 	int codigoEditar = Convert::ToInt32(this->dataGridView1->Rows[filaSeleccionada]->Cells[0]->Value->ToString());
-	UsuarioController^ objUsuarioController = gcnew UsuarioController();
-	Usuario^ objUsuario = objUsuarioController->buscarUsuarioporCodigo(codigoEditar);
-	frmEditarUsuario^ ventanaEditarUsuario = gcnew frmEditarUsuario(objUsuario);
+	frmEditarUsuario^ ventanaEditarUsuario = gcnew frmEditarUsuario(codigoEditar);
 	ventanaEditarUsuario->ShowDialog();
 }
 };

@@ -25,10 +25,10 @@ namespace SistemaComidasView {
 			//
 		}
 
-		frmEditarUsuario(Usuario^ objUsuario)
+		frmEditarUsuario(int codigo)
 		{
 			InitializeComponent();
-			this->objUsuario = objUsuario;
+			this->codigo = codigo;
 			//
 			//TODO: agregar código de constructor aquí
 			//
@@ -57,7 +57,7 @@ namespace SistemaComidasView {
 	private: System::Windows::Forms::Label^ label3;
 	private: System::Windows::Forms::Label^ label2;
 	private: System::Windows::Forms::Label^ label1;
-	private: Usuario^ objUsuario;
+	private: int codigo;
 
 	private:
 		/// <summary>
@@ -155,6 +155,7 @@ namespace SistemaComidasView {
 			this->textBox2->Name = L"textBox2";
 			this->textBox2->Size = System::Drawing::Size(143, 22);
 			this->textBox2->TabIndex = 4;
+			this->textBox2->TextChanged += gcnew System::EventHandler(this, &frmEditarUsuario::textBox2_TextChanged);
 			// 
 			// textBox1
 			// 
@@ -209,26 +210,31 @@ namespace SistemaComidasView {
 		}
 #pragma endregion
 	private: System::Void frmEditarUsuario_Load(System::Object^ sender, System::EventArgs^ e) {
-		this->textBox1->Text = Convert::ToString(this->objUsuario->getCodigo());
-		this->textBox2->Text = this->objUsuario->getNombreUsuario();
-		this->textBox3->Text = this->objUsuario->getContrasena();
-		this->comboBox1->Text = this->objUsuario->getTipoUsuario();
+		UsuarioController^ objUsuarioController = gcnew UsuarioController();
+		Usuario^ objUsuario = objUsuarioController->buscarUsuarioporCodigo(this->codigo);
+		this->textBox1->Text = Convert::ToString(objUsuario->getCodigo());
+		this->textBox2->Text = objUsuario->getNombreUsuario();
+		this->textBox3->Text = objUsuario->getContrasena();
+		this->comboBox1->Text = objUsuario->getTipoUsuario();
 	}
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 		int codigo = Convert::ToInt32(this->textBox1->Text);
 		String^ NombreUsuario = this->textBox2->Text;
-		String^ Contrasena = this->textBox3->Text;
+		String^ Contraseña = this->textBox3->Text;
 		String^ TipoUsuario = this->comboBox1->Text;
-		Usuario^ objUsuario = gcnew Usuario(codigo, NombreUsuario, Contrasena, TipoUsuario);
+		
+		Usuario^ objUsuario = gcnew Usuario(codigo, NombreUsuario, Contraseña, TipoUsuario);
 		UsuarioController^ objUsuarioController = gcnew UsuarioController();
-		objUsuarioController->actualizarUsuario(objUsuario);
-		MessageBox::Show("El nuevo ususario se ha agregado con éxito");
+		objUsuarioController->actualizarUsuario(codigo, NombreUsuario, Contraseña, TipoUsuario);
+		MessageBox::Show("El Usuario se ha actualizado correctamente");
 		this->Close();
 	}
 private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
 	this->Close();
 }
 private: System::Void groupBox1_Enter(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void textBox2_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }

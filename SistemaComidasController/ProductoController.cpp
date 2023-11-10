@@ -4,31 +4,56 @@ using namespace SistemaComidasController;
 using namespace System::IO;
 
 ProductoController::ProductoController() {
-
+	this->objConexion = gcnew SqlConnection();
 }
 List<Producto^>^ ProductoController::BuscarProducto(String^ Tipo) {
-	/*En esta lista vamos a colocar la información de los productos que encontremos en el archivo de texto*/
-	List<Producto^>^ listaProductosEncontrados = gcnew List<Producto^>();
-	array<String^>^ lineas = File::ReadAllLines("Productos.txt");
-	String^ separadores = ";"; /*Aqui defino el caracter por el cual voy a separar la informacion de cada linea*/
+	///*En esta lista vamos a colocar la información de los productos que encontremos en el archivo de texto*/
+	//List<Producto^>^ listaProductosEncontrados = gcnew List<Producto^>();
+	//array<String^>^ lineas = File::ReadAllLines("Productos.txt");
+	//String^ separadores = ";"; /*Aqui defino el caracter por el cual voy a separar la informacion de cada linea*/
 
-	for each (String ^ lineaProducto in lineas) {
+	//for each (String ^ lineaProducto in lineas) {
 
-		array<String^>^ datos = lineaProducto->Split(separadores->ToCharArray());
+	//	array<String^>^ datos = lineaProducto->Split(separadores->ToCharArray());
 
-		int codigoProducto = Convert::ToInt32(datos[0]);
-		String^ NombreProducto = datos[1];
-		String^ DescripcionProducto = datos[2];
-		double PrecioProducto = Convert::ToDouble(datos[3]);
-		String^ TipoProducto = datos[4];
-		int StockProducto = Convert::ToInt32(datos[5]);
+	//	int codigoProducto = Convert::ToInt32(datos[0]);
+	//	String^ NombreProducto = datos[1];
+	//	String^ DescripcionProducto = datos[2];
+	//	double PrecioProducto = Convert::ToDouble(datos[3]);
+	//	String^ TipoProducto = datos[4];
+	//	int StockProducto = Convert::ToInt32(datos[5]);
 
-		if (TipoProducto->Contains(Tipo)) {
-			Producto^ objProducto = gcnew Producto(codigoProducto, NombreProducto, DescripcionProducto, PrecioProducto, TipoProducto, StockProducto);
-			listaProductosEncontrados->Add(objProducto);
-		}
+	//	if (TipoProducto->Contains(Tipo)) {
+	//		Producto^ objProducto = gcnew Producto(codigoProducto, NombreProducto, DescripcionProducto, PrecioProducto, TipoProducto, StockProducto);
+	//		listaProductosEncontrados->Add(objProducto);
+	//	}
+	//}
+	//return listaProductosEncontrados;
+
+	List<Producto^>^ listaProducto = gcnew List<Producto^>();
+	abrirConexionBD();
+	/*SqlCommand viene a ser el objeto que utilizare para hacer el query o sentencia para la BD*/
+	SqlCommand^ objSentencia = gcnew SqlCommand();
+	/*Aqui estoy indicando que mi sentencia se va a ejecutar en mi conexion de BD*/
+	objSentencia->Connection = this->objConexion;
+	/*Aqui voy a indicar la sentencia que voy a ejecutar*/
+	objSentencia->CommandText = "select * from SC_Producto where tipo like '%" + Tipo + "%'";
+	/*Aqui ejecuto la sentencia en la Base de Datos*/
+	/*Para Select siempre sera ExecuteReader*/
+	/*Para select siempre va a devolver un SqlDataReader*/
+	SqlDataReader^ objData = objSentencia->ExecuteReader();
+	while (objData->Read()) {
+		int codigo = safe_cast<int>(objData[0]);
+		String^ Nombre = safe_cast<String^>(objData[1]);
+		String^ Descripcion = safe_cast<String^>(objData[2]);
+		double Precio = safe_cast<double>(objData[3]);
+		String^ tipo = safe_cast<String^>(objData[4]);
+		int stock = safe_cast<int>(objData[5]);
+		Producto^ objProducto = gcnew Producto(codigo, Nombre, Descripcion, Precio, tipo,stock);
+		listaProducto->Add(objProducto);
 	}
-	return listaProductosEncontrados;
+	cerrarConexionBD();
+	return listaProducto;
 }
 
 List<Producto^>^ ProductoController::buscarAll() {
@@ -66,44 +91,68 @@ void ProductoController::escribirArchivo(List<Producto^>^ listaProductos) {
 }
 
 void ProductoController::eliminarProductoFisico(int codigo) {
-	List<Producto^>^ listaProductos = buscarAll();
-
-	for (int i = 0; i < listaProductos->Count; i++) {
-		if (listaProductos[i]->getCodigo() == codigo) {
-			listaProductos->RemoveAt(i);
-		}
-	}
-	escribirArchivo(listaProductos);
+	abrirConexionBD();
+	SqlCommand^ objSentencia = gcnew SqlCommand();
+	objSentencia->CommandText = "delete SC_Producto where codigo=" + codigo;
+	objSentencia->Connection = this->objConexion;
+	objSentencia->ExecuteNonQuery();
+	cerrarConexionBD();
 }
 
-void ProductoController::agregarProducto(Producto^ objProducto) {
-	List<Producto^>^ listaProductos = buscarAll();
-	listaProductos->Add(objProducto);
-	escribirArchivo(listaProductos);
+void ProductoController::agregarProducto(String^ Nombre, String^ Descripcion, double Precio, String^ Tipo, int Stock) {
+	abrirConexionBD();
+	SqlCommand^ objSentencia = gcnew SqlCommand();
+	objSentencia->CommandText = "insert into SC_Producto(Nombre,Descripcion,Precio,tipo,stock) values ('" + Nombre + "','" + Descripcion + "','" + Precio + "','" + Tipo + "','" + Stock + "')";
+	objSentencia->Connection = this->objConexion;
+	objSentencia->ExecuteNonQuery();
+	cerrarConexionBD();
 }
 
 Producto^ ProductoController::buscarProductoporCodigo(int codigo) {
-	List<Producto^>^ listaProductos = buscarAll();
-	for (int i = 0; i < listaProductos->Count; i++) {
-		if (listaProductos[i]->getCodigo() == codigo) {
-			return listaProductos[i];
-		}
+	Producto^ objProducto;
+	abrirConexionBD();
+	/*SqlCommand viene a ser el objeto que utilizare para hacer el query o sentencia para la BD*/
+	SqlCommand^ objSentencia = gcnew SqlCommand();
+	/*Aqui estoy indicando que mi sentencia se va a ejecutar en mi conexion de BD*/
+	objSentencia->Connection = this->objConexion;
+	/*Aqui voy a indicar la sentencia que voy a ejecutar*/
+	objSentencia->CommandText = "select * from SC_Producto where codigo=" + codigo;
+	/*Aqui ejecuto la sentencia en la Base de Datos*/
+	/*Para Select siempre sera ExecuteReader*/
+	/*Para select siempre va a devolver un SqlDataReader*/
+	SqlDataReader^ objData = objSentencia->ExecuteReader();
+	while (objData->Read()) {
+		int codigo = safe_cast<int>(objData[0]);
+		String^ Nombre = safe_cast<String^>(objData[1]);
+		String^ Descripcion = safe_cast<String^>(objData[2]);
+		double Precio = safe_cast<double>(objData[3]);
+		String^ Tipo = safe_cast<String^>(objData[4]);
+		int stock = safe_cast<int>(objData[5]);
+		objProducto = gcnew Producto(codigo, Nombre, Descripcion, Precio, Tipo, stock);
 	}
+	cerrarConexionBD();
+	return objProducto;
 }
 
-void ProductoController::actualizarProducto(Producto^ objProducto) {
-	List<Producto^>^ listaProductos = buscarAll();
-	for (int i = 0; i < listaProductos->Count; i++) {
-		if (listaProductos[i]->getCodigo() == objProducto->getCodigo()) {
-			listaProductos[i]->setNombre(objProducto->getNombre());
-			listaProductos[i]->setDescripcion(objProducto->getDescripcion());
-			listaProductos[i]->setPrecio(objProducto->getPrecio());
-			listaProductos[i]->setTipo(objProducto->getTipo());
-			listaProductos[i]->setStock(objProducto->getStock());
-			break;
-		}
-	}
-	escribirArchivo(listaProductos);
+void ProductoController::actualizarProducto(int codigo, String^ Nombre, String^ Descripcion, double Precio, String^ Tipo, int Stock) {
+	//List<Producto^>^ listaProductos = buscarAll();
+	//for (int i = 0; i < listaProductos->Count; i++) {
+	//	if (listaProductos[i]->getCodigo() == objProducto->getCodigo()) {
+	//		listaProductos[i]->setNombre(objProducto->getNombre());
+	//		listaProductos[i]->setDescripcion(objProducto->getDescripcion());
+	//		listaProductos[i]->setPrecio(objProducto->getPrecio());
+	//		listaProductos[i]->setTipo(objProducto->getTipo());
+	//		listaProductos[i]->setStock(objProducto->getStock());
+	//		break;
+	//	}
+	//}
+	//escribirArchivo(listaProductos);
+	abrirConexionBD();
+	SqlCommand^ objSentencia = gcnew SqlCommand();
+	objSentencia->CommandText = "update SC_Producto set Nombre='" + Nombre + "', Descripcion='" + Descripcion + "', Precio='" + Precio + "', tipo='" + Tipo + "', stock='" + Stock  + "' where codigo = " + codigo;
+	objSentencia->Connection = this->objConexion;
+	objSentencia->ExecuteNonQuery();
+	cerrarConexionBD();
 }
 List<String^>^ ProductoController::obtenerProductos() {
 	List<Producto^>^ listaProductos = buscarAll();
@@ -132,4 +181,15 @@ Producto^ ProductoController::buscarProductoxNombre(String^ Nombre) {
 			return listaProductos[i];
 		}
 	}
+}
+
+/*Base de datos*/
+void ProductoController::abrirConexionBD() {
+	/*Cadena de conexion: Servidor de BD, usuario de BD, password BD, nombre de la BD*/
+	this->objConexion->ConnectionString = "Server=200.16.7.140;DataBase=a20192506;User Id=a20192506;Password=QMH7NqVu";
+	this->objConexion->Open(); /*Apertura de la conexion a BD*/
+}
+
+void ProductoController::cerrarConexionBD() {
+	this->objConexion->Close();
 }

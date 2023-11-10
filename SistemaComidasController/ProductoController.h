@@ -1,21 +1,30 @@
 #pragma once
 
-using namespace System;
-using namespace System::Collections::Generic;
-using namespace SistemaComidasModel;
+
 
 namespace SistemaComidasController {
+
+	using namespace System;
+	using namespace System::Collections::Generic;
+	using namespace SistemaComidasModel;
+	using namespace System::Data::SqlClient;
 	public ref class ProductoController {
-	public:
-		ProductoController();
-		List<Producto^>^ BuscarProducto(String^ Tipo);
-		List<Producto^>^ buscarAll();
-		void escribirArchivo(List<Producto^>^ listaProductos);
-		void eliminarProductoFisico(int codigo);
-		void agregarProducto(Producto^ objProducto);
-		Producto^ buscarProductoporCodigo(int codigo);
-		void actualizarProducto(Producto^ objProducto);
-		List<String^>^ obtenerProductos();
-		Producto^ buscarProductoxNombre(String^ Nombre);
-	};
+		private:
+			SqlConnection^ objConexion; /*Un atributo que nos permita hacer la conexion con la Base de Datos*/
+		public:
+			ProductoController();
+			List<Producto^>^ BuscarProducto(String^ Tipo);
+			List<Producto^>^ buscarAll();
+			void escribirArchivo(List<Producto^>^ listaProductos);
+			void eliminarProductoFisico(int codigo);
+			void agregarProducto(String^ Nombre, String^ Descripcion, double Precio, String^ Tipo, int Stock);
+			Producto^ buscarProductoporCodigo(int codigo);
+			void actualizarProducto(int codigo, String^ Nombre, String^ Descripcion, double Precio, String^ Tipo, int Stock);
+			List<String^>^ obtenerProductos();
+			Producto^ buscarProductoxNombre(String^ Nombre);
+
+			/*Base de Datos*/
+			void abrirConexionBD();
+			void cerrarConexionBD();
+		};
 }

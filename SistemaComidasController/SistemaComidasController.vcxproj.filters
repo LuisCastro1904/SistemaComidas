@@ -21,12 +21,24 @@
     <ClInclude Include="UsuarioController.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
+    <ClInclude Include="DetallePedidoController.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="PedidoController.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ProductoController.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
     <ClCompile Include="UsuarioController.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="DetallePedidoController.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="PedidoController.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>

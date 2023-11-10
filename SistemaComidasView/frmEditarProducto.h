@@ -25,11 +25,10 @@ namespace SistemaComidasView {
 			//
 		}
 
-		frmEditarProducto(Producto^ objProducto)
+		frmEditarProducto(int codigo)
 		{
 			InitializeComponent();
-			this->objProducto = objProducto;
-			//
+			this->codigo = codigo;
 			//TODO: agregar código de constructor aquí
 			//
 		}
@@ -61,11 +60,11 @@ namespace SistemaComidasView {
 	private: System::Windows::Forms::Label^ label3;
 	private: System::Windows::Forms::Label^ label2;
 	private: System::Windows::Forms::Label^ label1;
-	private: Producto^ objProducto;
 
-	private: System::Windows::Forms::ListView^ listView1;
+
+
 	private: System::Windows::Forms::ComboBox^ comboBox1Tipo;
-
+	private: int codigo;
 
 	private:
 		/// <summary>
@@ -82,7 +81,6 @@ namespace SistemaComidasView {
 		{
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
 			this->comboBox1Tipo = (gcnew System::Windows::Forms::ComboBox());
-			this->listView1 = (gcnew System::Windows::Forms::ListView());
 			this->textBox5 = (gcnew System::Windows::Forms::TextBox());
 			this->textBox4 = (gcnew System::Windows::Forms::TextBox());
 			this->textBox3 = (gcnew System::Windows::Forms::TextBox());
@@ -102,7 +100,6 @@ namespace SistemaComidasView {
 			// groupBox1
 			// 
 			this->groupBox1->Controls->Add(this->comboBox1Tipo);
-			this->groupBox1->Controls->Add(this->listView1);
 			this->groupBox1->Controls->Add(this->textBox5);
 			this->groupBox1->Controls->Add(this->textBox4);
 			this->groupBox1->Controls->Add(this->textBox3);
@@ -131,21 +128,11 @@ namespace SistemaComidasView {
 			this->comboBox1Tipo->FormattingEnabled = true;
 			this->comboBox1Tipo->Items->AddRange(gcnew cli::array< System::Object^  >(2) { L"Comida", L"Bebida" });
 			this->comboBox1Tipo->Location = System::Drawing::Point(245, 234);
-			this->comboBox1Tipo->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->comboBox1Tipo->Margin = System::Windows::Forms::Padding(4);
 			this->comboBox1Tipo->Name = L"comboBox1Tipo";
 			this->comboBox1Tipo->Size = System::Drawing::Size(160, 24);
 			this->comboBox1Tipo->TabIndex = 15;
 			this->comboBox1Tipo->SelectedIndexChanged += gcnew System::EventHandler(this, &frmEditarProducto::comboBox1Tipo_SelectedIndexChanged);
-			// 
-			// listView1
-			// 
-			this->listView1->HideSelection = false;
-			this->listView1->Location = System::Drawing::Point(7, 22);
-			this->listView1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
-			this->listView1->Name = L"listView1";
-			this->listView1->Size = System::Drawing::Size(160, 118);
-			this->listView1->TabIndex = 14;
-			this->listView1->UseCompatibleStateImageBehavior = false;
 			// 
 			// textBox5
 			// 
@@ -283,12 +270,15 @@ namespace SistemaComidasView {
 		}
 #pragma endregion
 	private: System::Void frmEditarProducto_Load(System::Object^ sender, System::EventArgs^ e) {
-		this->textBox1->Text = Convert::ToString(this->objProducto->getCodigo());
-		this->textBox5->Text = this->objProducto->getNombre();
-		this->textBox4->Text = this->objProducto->getDescripcion();
-		this->textBox2->Text = Convert::ToString(this->objProducto->getPrecio());
-		this->comboBox1Tipo->Text = this->objProducto->getTipo();
-		this->textBox3->Text = Convert::ToString(this->objProducto->getStock());
+		ProductoController^ objProductoController = gcnew ProductoController();
+		Producto^ objProducto = objProductoController->buscarProductoporCodigo(this->codigo);
+		this->textBox1->Text = Convert::ToString(objProducto->getCodigo());
+		this->textBox5->Text = objProducto->getNombre();
+		this->textBox4->Text = objProducto->getDescripcion();
+		this->textBox2->Text = Convert::ToString(objProducto->getPrecio());
+		this->textBox3->Text = Convert::ToString(objProducto->getStock());
+		this->comboBox1Tipo->Text = objProducto->getTipo();
+
 	}
 private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
 	this->Close();
@@ -302,7 +292,7 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	int Stock = Convert::ToInt32(this->textBox3->Text);
 	Producto^ objProducto = gcnew Producto(codigo, Nombre, Descripcion, Precio, Tipo, Stock);
 	ProductoController^ objProductoController = gcnew ProductoController();
-	objProductoController->actualizarProducto(objProducto);
+	objProductoController->actualizarProducto(codigo,Nombre,Descripcion,Precio,Tipo,Stock);
 	MessageBox::Show("El producto se ha actualizado correctamente");
 	this->Close();
 }

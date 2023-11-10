@@ -202,13 +202,13 @@ namespace SistemaComidasView {
 	private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-		int codigo = Convert::ToInt32(this->textBox1->Text);
+		/*int codigo = Convert::ToInt32(this->textBox1->Text);*/
 		String^ NombreUsuario = this->textBox2->Text;
 		String^ Contrasena = this->textBox3->Text;
 		String^ TipoUsuario = this->comboBox1->Text;
-		Usuario^ objUsuario = gcnew Usuario(codigo, NombreUsuario, Contrasena, TipoUsuario);
+		/*Usuario^ objUsuario = gcnew Usuario( NombreUsuario, Contrasena, TipoUsuario);*/
 		UsuarioController^ objUsuarioController = gcnew UsuarioController();
-		objUsuarioController->agregarUsuario(objUsuario);
+		objUsuarioController->agregarUsuario(NombreUsuario, Contrasena,  TipoUsuario);
 		MessageBox::Show("El nuevo ususario se ha agregado con éxito");
 		this->Close();
 	}
