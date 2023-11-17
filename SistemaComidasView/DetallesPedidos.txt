@@ -1,1 +1,4 @@
 9;5;Ají de Gallina;12;60
+7;1;Arroz con pollo;15;15
+7;1;Arroz con pollo;15;15
+8;1;Inca Kola;3.5;3.5

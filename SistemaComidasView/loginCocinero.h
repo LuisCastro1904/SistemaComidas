@@ -69,9 +69,10 @@ namespace SistemaComidasView {
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(52, 118);
+			this->button1->Location = System::Drawing::Point(69, 145);
+			this->button1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(73, 27);
+			this->button1->Size = System::Drawing::Size(97, 33);
 			this->button1->TabIndex = 9;
 			this->button1->Text = L"Ingresar";
 			this->button1->UseVisualStyleBackColor = true;
@@ -80,40 +81,46 @@ namespace SistemaComidasView {
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(32, 78);
+			this->label2->Location = System::Drawing::Point(43, 96);
+			this->label2->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(61, 13);
+			this->label2->Size = System::Drawing::Size(76, 16);
 			this->label2->TabIndex = 8;
 			this->label2->Text = L"Contraseña";
 			// 
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(32, 41);
+			this->label1->Location = System::Drawing::Point(43, 50);
+			this->label1->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(46, 13);
+			this->label1->Size = System::Drawing::Size(57, 16);
 			this->label1->TabIndex = 7;
 			this->label1->Text = L"Usuario:";
 			// 
 			// textBox2
 			// 
-			this->textBox2->Location = System::Drawing::Point(132, 75);
+			this->textBox2->Location = System::Drawing::Point(176, 92);
+			this->textBox2->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->textBox2->Name = L"textBox2";
-			this->textBox2->Size = System::Drawing::Size(126, 20);
+			this->textBox2->Size = System::Drawing::Size(167, 22);
 			this->textBox2->TabIndex = 6;
+			this->textBox2->TextChanged += gcnew System::EventHandler(this, &loginCocinero::textBox2_TextChanged);
 			// 
 			// textBox1
 			// 
-			this->textBox1->Location = System::Drawing::Point(132, 38);
+			this->textBox1->Location = System::Drawing::Point(176, 47);
+			this->textBox1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(126, 20);
+			this->textBox1->Size = System::Drawing::Size(167, 22);
 			this->textBox1->TabIndex = 5;
 			// 
 			// button2
 			// 
-			this->button2->Location = System::Drawing::Point(157, 118);
+			this->button2->Location = System::Drawing::Point(209, 145);
+			this->button2->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(73, 27);
+			this->button2->Size = System::Drawing::Size(97, 33);
 			this->button2->TabIndex = 10;
 			this->button2->Text = L"Cancelar";
 			this->button2->UseVisualStyleBackColor = true;
@@ -121,17 +128,18 @@ namespace SistemaComidasView {
 			// 
 			// loginCocinero
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(290, 175);
+			this->ClientSize = System::Drawing::Size(387, 215);
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->textBox2);
 			this->Controls->Add(this->textBox1);
+			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->Name = L"loginCocinero";
-			this->Text = L"Iniciar Sesión";
+			this->Text = L"Iniciar sesión";
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -168,6 +176,9 @@ namespace SistemaComidasView {
 	}
 private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
 	this->Close();
+}
+private: System::Void textBox2_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+	this->textBox2->UseSystemPasswordChar = this->textBox2->Text->Length > 0;
 }
 };
 }

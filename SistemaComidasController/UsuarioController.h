@@ -17,7 +17,7 @@ namespace SistemaComidasController {
 		UsuarioController();
 		List<Usuario^>^ BuscarUsuario(String^ Tipo);
 		List<Usuario^>^ buscarAll();
-		void escribirArchivo(List<Usuario^>^ listaUsuarios);
+		//void escribirArchivo(List<Usuario^>^ listaUsuarios);
 		void agregarUsuario( String^ NombreUsuario, String^ Contrasena, String^ TipoUsuario);
 		void eliminarUsuarioFisico(int codigo);
 		Usuario^ buscarUsuarioporCodigo(int codigo);

@@ -292,24 +292,35 @@ namespace SistemaComidasView {
 private: System::Void button5_Click(System::Object^ sender, System::EventArgs^ e) {
 	frmNuevoProducto^ ventanaNuevoProducto = gcnew frmNuevoProducto();
 	ventanaNuevoProducto->ShowDialog();
+	ProductoController^ objProductoController = gcnew ProductoController();
+	List<Producto^>^ listaProductos = objProductoController->buscarAll();
+	mostrarGrilla(listaProductos);
 }
 private: System::Void dataGridView1_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
 }
-private: System::Void button6_Click(System::Object^ sender, System::EventArgs^ e) {
-	
+private: System::Void button6_Click(System::Object^ sender, System::EventArgs^ e) {	
 	int filaSeleccionada = this->dataGridView1->SelectedRows[0]->Index; /*Le pongo [0] porque en este caso estamos asumiendo que solo seleccionamos una fila, por ello es la de la posicion 0*/
 	int codigoEliminar = Convert::ToInt32(this->dataGridView1->Rows[filaSeleccionada]->Cells[0]->Value->ToString());
 	ProductoController^ objProducto = gcnew ProductoController();
 	objProducto->eliminarProductoFisico(codigoEliminar);
 	MessageBox::Show("El producto ha sido eliminado con éxito");
+	ProductoController^ objProductoController = gcnew ProductoController();
+	List<Producto^>^ listaProductos = objProductoController->buscarAll();
+	mostrarGrilla(listaProductos);
 }
 private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
 	int filaSeleccionada = this->dataGridView1->SelectedRows[0]->Index; /*Le pongo [0] porque en este caso estamos asumiendo que solo seleccionamos una fila, por ello es la de la posicion 0*/
 	int codigoEditar = Convert::ToInt32(this->dataGridView1->Rows[filaSeleccionada]->Cells[0]->Value->ToString());
 	frmEditarProducto^ ventanaEditarProducto = gcnew frmEditarProducto(codigoEditar);
 	ventanaEditarProducto->ShowDialog();
+	ProductoController^ objProductoController = gcnew ProductoController();
+	List<Producto^>^ listaProductos = objProductoController->buscarAll();
+	mostrarGrilla(listaProductos);
 }
 private: System::Void frmMantenimientoProducto_Load(System::Object^ sender, System::EventArgs^ e) {
+	ProductoController^ objProductoController = gcnew ProductoController();
+	List<Producto^>^ listaProductos = objProductoController->buscarAll();
+	mostrarGrilla(listaProductos);
 }
 private: System::Void comboBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
 }

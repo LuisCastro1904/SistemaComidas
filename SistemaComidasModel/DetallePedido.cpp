@@ -3,12 +3,13 @@ using namespace SistemaComidasModel;
 DetallePedido::DetallePedido() {
 
 }
-DetallePedido::DetallePedido(int codigo, int Cantidad, String^ Descripcion, double PrecioUnitario, double Importe) {
+DetallePedido::DetallePedido(int codigo, int Cantidad, String^ NombreProducto, double PrecioUnitario, double Importe, int CodigoPedido) {
 	this->codigo = codigo;
 	this->Cantidad = Cantidad;
-	this->Descripcion = Descripcion;
+	this->NombreProducto = NombreProducto;
 	this->PrecioUnitario = PrecioUnitario;
 	this->Importe = Importe;
+    this->CodigoPedido = CodigoPedido;
 }
 int DetallePedido::getCodigo() {
     return this->codigo;
@@ -26,12 +27,12 @@ void DetallePedido::setCantidad(int Cantidad) {
     this->Cantidad = Cantidad;
 }
 
-String^ DetallePedido::getDescripcion() {
-    return this->Descripcion;
+String^ DetallePedido::getNombreProducto() {
+    return this->NombreProducto;
 }
 
-void DetallePedido::setDescripcion(String^ Descripcion) {
-    this->Descripcion = Descripcion;
+void DetallePedido::setNombreProducto(String^ NombreProducto) {
+    this->NombreProducto = NombreProducto;
 }
 
 double DetallePedido::getPrecioUnitario() {
@@ -48,4 +49,12 @@ double DetallePedido::getImporte() {
 
 void DetallePedido::setImporte(double Importe) {
     this->Importe = Importe;
+}
+
+int DetallePedido::getCodigoPedido() {
+    return this->CodigoPedido;
+}
+
+void DetallePedido::setCodigoPedido(int CodigoPedido) {
+    this->CodigoPedido = CodigoPedido;
 }

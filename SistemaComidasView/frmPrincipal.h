@@ -6,7 +6,6 @@
 #include "ReporteEstado.h"
 #include "ReportePedido.h"
 #include "ReporteProducto.h"
-#include "MantenimientoPedidos.h"
 
 namespace SistemaComidasView {
 

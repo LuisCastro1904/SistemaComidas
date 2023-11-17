@@ -124,7 +124,6 @@
     <ClCompile Include="loginAdministracion.cpp" />
     <ClCompile Include="loginCocinero.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="MantenimientoPedidos.cpp" />
     <ClCompile Include="modificarPedido.cpp" />
     <ClCompile Include="ReporteEstado.cpp" />
     <ClCompile Include="ReportePedido.cpp" />
@@ -173,9 +172,6 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="loginCocinero.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
-    <ClInclude Include="MantenimientoPedidos.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="modificarPedido.h">
@@ -245,9 +241,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="loginCocinero.resx">
       <DependentUpon>loginCocinero.h</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MantenimientoPedidos.resx">
-      <DependentUpon>MantenimientoPedidos.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="modificarPedido.resx">
       <DependentUpon>modificarPedido.h</DependentUpon>

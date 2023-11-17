@@ -224,10 +224,16 @@ namespace SistemaComidasView {
 		}
 #pragma endregion
 	private: System::Void frmMantenimientoLogin_Load(System::Object^ sender, System::EventArgs^ e) {
+		UsuarioController^ objUsuarioController = gcnew UsuarioController();
+		List<Usuario^>^ listaUsuarios = objUsuarioController->buscarAll();
+		mostrarGrilla(listaUsuarios);
 	}
 	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
 		frmNuevoUsuario^ ventanaNuevoUsuario = gcnew frmNuevoUsuario();
 		ventanaNuevoUsuario->ShowDialog();
+		UsuarioController^ objUsuarioController = gcnew UsuarioController();
+		List<Usuario^>^ listaUsuarios = objUsuarioController->buscarAll();
+		mostrarGrilla(listaUsuarios);
 	}
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 	String^ Tipo = this->comboBox1->Text;
@@ -255,12 +261,18 @@ private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e
 	UsuarioController^ objUsuario = gcnew UsuarioController();
 	objUsuario->eliminarUsuarioFisico(codigoEliminar);
 	MessageBox::Show("El usuario ha sido eliminado con éxito");
+	UsuarioController^ objUsuarioController = gcnew UsuarioController();
+	List<Usuario^>^ listaUsuarios = objUsuarioController->buscarAll();
+	mostrarGrilla(listaUsuarios);
 }
 private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
 	int filaSeleccionada = this->dataGridView1->SelectedRows[0]->Index; /*Le pongo [0] porque en este caso estamos asumiendo que solo seleccionamos una fila, por ello es la de la posicion 0*/
 	int codigoEditar = Convert::ToInt32(this->dataGridView1->Rows[filaSeleccionada]->Cells[0]->Value->ToString());
 	frmEditarUsuario^ ventanaEditarUsuario = gcnew frmEditarUsuario(codigoEditar);
 	ventanaEditarUsuario->ShowDialog();
+	UsuarioController^ objUsuarioController = gcnew UsuarioController();
+	List<Usuario^>^ listaUsuarios = objUsuarioController->buscarAll();
+	mostrarGrilla(listaUsuarios);
 }
 };
 }

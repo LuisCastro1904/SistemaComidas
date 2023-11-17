@@ -95,8 +95,8 @@ namespace SistemaComidasView {
 		List<DetallePedido^>^ listaDetalle = objDetallePedidoController->buscarAll();
 		for (int i = 0; i < listaDetalle->Count; i++) {
 			this->chart1->Series["Series1"]->Points->Add(listaDetalle[i]->getCantidad());
-			this->chart1->Series["Series1"]->Points[i]->AxisLabel = listaDetalle[i]->getDescripcion();
-			this->chart1->Series["Series1"]->Points[i]->LegendText = listaDetalle[i]->getDescripcion();
+			this->chart1->Series["Series1"]->Points[i]->AxisLabel = listaDetalle[i]->getNombreProducto();
+			this->chart1->Series["Series1"]->Points[i]->LegendText = listaDetalle[i]->getNombreProducto();
 			this->chart1->Series["Series1"]->Points[i]->Label = Convert::ToString(listaDetalle[i]->getCantidad());
 		}
 	}

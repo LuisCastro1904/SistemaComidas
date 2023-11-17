@@ -6,6 +6,7 @@ using namespace System::IO;
 ProductoController::ProductoController() {
 	this->objConexion = gcnew SqlConnection();
 }
+
 List<Producto^>^ ProductoController::BuscarProducto(String^ Tipo) {
 	///*En esta lista vamos a colocar la información de los productos que encontremos en el archivo de texto*/
 	//List<Producto^>^ listaProductosEncontrados = gcnew List<Producto^>();
@@ -30,7 +31,7 @@ List<Producto^>^ ProductoController::BuscarProducto(String^ Tipo) {
 	//}
 	//return listaProductosEncontrados;
 
-	List<Producto^>^ listaProducto = gcnew List<Producto^>();
+	List<Producto^>^ listaProductos = gcnew List<Producto^>();
 	abrirConexionBD();
 	/*SqlCommand viene a ser el objeto que utilizare para hacer el query o sentencia para la BD*/
 	SqlCommand^ objSentencia = gcnew SqlCommand();
@@ -50,17 +51,18 @@ List<Producto^>^ ProductoController::BuscarProducto(String^ Tipo) {
 		String^ tipo = safe_cast<String^>(objData[4]);
 		int stock = safe_cast<int>(objData[5]);
 		Producto^ objProducto = gcnew Producto(codigo, Nombre, Descripcion, Precio, tipo,stock);
-		listaProducto->Add(objProducto);
+		listaProductos->Add(objProducto);
 	}
 	cerrarConexionBD();
-	return listaProducto;
+	return listaProductos;
 }
 
 List<Producto^>^ ProductoController::buscarAll() {
 	/*En esta lista vamos a colocar la información de los productos que encontremos en el archivo de texto*/
+	/*
 	List<Producto^>^ listaProductosEncontrados = gcnew List<Producto^>();
 	array<String^>^ lineas = File::ReadAllLines("Productos.txt");
-	String^ separadores = ";"; /*Aqui defino el caracter por el cual voy a separar la informacion de cada linea*/
+	String^ separadores = ";"; /*Aqui defino el caracter por el cual voy a separar la informacion de cada linea
 
 	for each (String ^ lineaProducto in lineas) {
 
@@ -75,11 +77,35 @@ List<Producto^>^ ProductoController::buscarAll() {
 
 		Producto^ objProducto = gcnew Producto(codigoProducto, NombreProducto, DescripcionProducto, PrecioProducto, TipoProducto, StockProducto);
 		listaProductosEncontrados->Add(objProducto);
+	}*/
+
+	List<Producto^>^ listaProductos = gcnew List<Producto^>();
+	abrirConexionBD();
+	/*SqlCommand viene a ser el objeto que utilizare para hacer el query o sentencia para la BD*/
+	SqlCommand^ objSentencia = gcnew SqlCommand();
+	/*Aqui estoy indicando que mi sentencia se va a ejecutar en mi conexion de BD*/
+	objSentencia->Connection = this->objConexion;
+	/*Aqui voy a indicar la sentencia que voy a ejecutar*/
+	objSentencia->CommandText = "select * from SC_Producto";
+	/*Aqui ejecuto la sentencia en la Base de Datos*/
+	/*Para Select siempre sera ExecuteReader*/
+	/*Para select siempre va a devolver un SqlDataReader*/
+	SqlDataReader^ objData = objSentencia->ExecuteReader();
+	while (objData->Read()) {
+		int codigo = safe_cast<int>(objData[0]);
+		String^ Nombre = safe_cast<String^>(objData[1]);
+		String^ Descripcion = safe_cast<String^>(objData[2]);
+		double Precio = safe_cast<double>(objData[3]);
+		String^ tipo = safe_cast<String^>(objData[4]);
+		int stock = safe_cast<int>(objData[5]);
+		Producto^ objProducto = gcnew Producto(codigo, Nombre, Descripcion, Precio, tipo, stock);
+		listaProductos->Add(objProducto);
 	}
-	return listaProductosEncontrados;
+	cerrarConexionBD();
+	return listaProductos;
 }
 
-void ProductoController::escribirArchivo(List<Producto^>^ listaProductos) {
+/*void ProductoController::escribirArchivo(List<Producto^>^ listaProductos) {
 	array<String^>^ lineasArchivo = gcnew array<String^>(listaProductos->Count);
 
 	for (int i = 0; i < listaProductos->Count; i++){
@@ -88,7 +114,7 @@ void ProductoController::escribirArchivo(List<Producto^>^ listaProductos) {
 	}
 
 	File::WriteAllLines("Productos.txt", lineasArchivo);
-}
+}*/
 
 void ProductoController::eliminarProductoFisico(int codigo) {
 	abrirConexionBD();
@@ -158,9 +184,7 @@ List<String^>^ ProductoController::obtenerProductos() {
 	List<Producto^>^ listaProductos = buscarAll();
 	List<String^>^ listaNombres = gcnew List<String^>();
 	for (int i = 0; i < listaProductos->Count; i++) {
-		/*Aqui voy a buscar cada departamento si ya se encuentra en la lista de departamentos*/
 		String^ Nombre = listaProductos[i]->getNombre();
-		/*Voy a buscarlo en la listaDepartamentos*/
 		int existe = 0;
 		for (int j = 0; j < listaNombres->Count; j++) {
 			if (listaNombres[j]->Contains(Nombre)) {

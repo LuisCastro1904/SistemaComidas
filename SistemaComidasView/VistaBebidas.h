@@ -46,11 +46,11 @@ namespace SistemaComidasView {
 	private: System::Windows::Forms::Button^ button3;
 	private: System::Windows::Forms::Button^ button2;
 	private: System::Windows::Forms::DataGridView^ dataGridView1;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column1;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Pedido;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Cantidad;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ a;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column2;
+
+
+
+
+
 	private: System::Windows::Forms::GroupBox^ groupBox1;
 	private: System::Windows::Forms::RadioButton^ radioButton6;
 	private: System::Windows::Forms::Button^ button1;
@@ -60,6 +60,10 @@ namespace SistemaComidasView {
 	private: System::Windows::Forms::RadioButton^ radioButton3;
 	private: System::Windows::Forms::RadioButton^ radioButton2;
 	private: System::Windows::Forms::RadioButton^ radioButton1;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Pedido;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Cantidad;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ a;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column2;
 
 	protected:
 
@@ -97,7 +101,6 @@ namespace SistemaComidasView {
 			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
-			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Pedido = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Cantidad = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->a = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
@@ -174,9 +177,9 @@ namespace SistemaComidasView {
 			// dataGridView1
 			// 
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(5) {
-				this->Column1,
-					this->Pedido, this->Cantidad, this->a, this->Column2
+			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(4) {
+				this->Pedido,
+					this->Cantidad, this->a, this->Column2
 			});
 			this->dataGridView1->Location = System::Drawing::Point(21, 35);
 			this->dataGridView1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
@@ -185,13 +188,7 @@ namespace SistemaComidasView {
 			this->dataGridView1->RowTemplate->Height = 28;
 			this->dataGridView1->Size = System::Drawing::Size(559, 156);
 			this->dataGridView1->TabIndex = 0;
-			// 
-			// Column1
-			// 
-			this->Column1->HeaderText = L"Código";
-			this->Column1->MinimumWidth = 6;
-			this->Column1->Name = L"Column1";
-			this->Column1->Width = 50;
+			this->dataGridView1->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &VistaBebidas::dataGridView1_CellContentClick);
 			// 
 			// Pedido
 			// 
@@ -359,14 +356,12 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	ComidaSeleccionada = ObtenerRadioButtonSeleccionado(sender, e);
 	ProductoController^ objProductoController = gcnew ProductoController();
 	Producto^ objProducto = objProductoController->buscarProductoxNombre(ComidaSeleccionada);
-	int codigo = objProducto->getCodigo();
 	int Cantidad = Convert::ToInt32(this->numericUpDown1->Text);
 	String^ NombreProducto = ObtenerRadioButtonSeleccionado(sender, e);
 	Double PrecioUnitario = objProducto->getPrecio();
 	Double Importe = PrecioUnitario * Cantidad;
-	DetallePedido^ objDetallePedido = gcnew DetallePedido(codigo, Cantidad, NombreProducto, PrecioUnitario, Importe);
 	DetallePedidoController^ objDetallePedidoController = gcnew DetallePedidoController();
-	objDetallePedidoController->agregarDetallePedido(objDetallePedido);
+	objDetallePedidoController->agregarDetallePedido(Cantidad, NombreProducto, PrecioUnitario, Importe);
 	MessageBox::Show("El producto se ha agregado con éxito");
 	List<DetallePedido^>^ listaDetallesPedidos = objDetallePedidoController->buscarAll();
 	mostrarGrilla(listaDetallesPedidos);
@@ -394,12 +389,11 @@ private: void mostrarGrilla(List<DetallePedido^>^ listaDetallesPedidos) {
 	this->dataGridView1->Rows->Clear(); /*Elimino toda la informacion del datagrid*/
 	for (int i = 0; i < listaDetallesPedidos->Count; i++) {
 		DetallePedido^ objDetallePedido = listaDetallesPedidos[i];
-		array<String^>^ filaGrilla = gcnew array<String^>(5);
-		filaGrilla[0] = Convert::ToString(objDetallePedido->getCodigo());
-		filaGrilla[1] = objDetallePedido->getDescripcion();
-		filaGrilla[2] = Convert::ToString(objDetallePedido->getCantidad());
-		filaGrilla[3] = Convert::ToString(objDetallePedido->getPrecioUnitario());
-		filaGrilla[4] = Convert::ToString(objDetallePedido->getImporte());
+		array<String^>^ filaGrilla = gcnew array<String^>(4);
+		filaGrilla[0] = objDetallePedido->getNombreProducto();
+		filaGrilla[1] = Convert::ToString(objDetallePedido->getCantidad());
+		filaGrilla[2] = Convert::ToString(objDetallePedido->getPrecioUnitario());
+		filaGrilla[3] = Convert::ToString(objDetallePedido->getImporte());
 		this->dataGridView1->Rows->Add(filaGrilla);
 	}
 }
@@ -408,9 +402,9 @@ private: System::Void button5_Click_1(System::Object^ sender, System::EventArgs^
 }
 private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
 	int filaSeleccionada = this->dataGridView1->SelectedRows[0]->Index; /*Le pongo [0] porque en este caso estamos asumiendo que solo seleccionamos una fila, por ello es la de la posicion 0*/
-	int codigoEditar = Convert::ToInt32(this->dataGridView1->Rows[filaSeleccionada]->Cells[0]->Value->ToString());
+	String^ ProductoSeleccionado = this->dataGridView1->Rows[filaSeleccionada]->Cells[0]->Value->ToString();
 	DetallePedidoController^ objDetallePedidoController = gcnew DetallePedidoController();
-	DetallePedido^ objDetallePedido = objDetallePedidoController->buscarDetallePedidoxCodigo(codigoEditar);
+	DetallePedido^ objDetallePedido = objDetallePedidoController->buscarDetallePedidoxNombreProducto(ProductoSeleccionado);
 	modificarPedido^ ventanaModificarPedido = gcnew modificarPedido(objDetallePedido);
 	ventanaModificarPedido->ShowDialog();
 	List<DetallePedido^>^ listaDetallesPedidos = objDetallePedidoController->buscarAll();
@@ -422,14 +416,17 @@ private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e
 	ventanaResumen->ShowDialog();
 }
 private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
-	DetallePedidoController^ objDetallePedido;
 	int filaSeleccionada = this->dataGridView1->SelectedRows[0]->Index; /*Le pongo [0] porque en este caso estamos asumiendo que solo seleccionamos una fila, por ello es la de la posicion 0*/
-	int codigoEliminar = Convert::ToInt32(this->dataGridView1->Rows[filaSeleccionada]->Cells[0]->Value->ToString());
-	objDetallePedido->eliminarDetallePedidoFisico(codigoEliminar);
-	MessageBox::Show("El producto ha sido eliminado con éxito");
+	String^ ProductoSeleccionado = this->dataGridView1->Rows[filaSeleccionada]->Cells[0]->Value->ToString();
 	DetallePedidoController^ objDetallePedidoController = gcnew DetallePedidoController();
+	DetallePedido^ objDetallePedido = objDetallePedidoController->buscarDetallePedidoxNombreProducto(ProductoSeleccionado);
+	int codigoEliminar = objDetallePedido->getCodigo();
+	objDetallePedidoController->eliminarDetallePedidoFisico(codigoEliminar);
+	MessageBox::Show("El producto ha sido eliminado con éxito");
 	List<DetallePedido^>^ listaDetallesPedidos = objDetallePedidoController->buscarAll();
 	mostrarGrilla(listaDetallesPedidos);
+}
+private: System::Void dataGridView1_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
 }
 };
 }

@@ -15,7 +15,7 @@ namespace SistemaComidasController {
 			ProductoController();
 			List<Producto^>^ BuscarProducto(String^ Tipo);
 			List<Producto^>^ buscarAll();
-			void escribirArchivo(List<Producto^>^ listaProductos);
+			//void escribirArchivo(List<Producto^>^ listaProductos);
 			void eliminarProductoFisico(int codigo);
 			void agregarProducto(String^ Nombre, String^ Descripcion, double Precio, String^ Tipo, int Stock);
 			Producto^ buscarProductoporCodigo(int codigo);

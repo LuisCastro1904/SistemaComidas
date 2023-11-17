@@ -7,26 +7,31 @@ namespace SistemaComidasModel {
 	private:
 		int codigo;
 		int Cantidad;
-		String^ Descripcion;
+		String^ NombreProducto;
 		double PrecioUnitario;
 		double Importe;
+		int CodigoPedido;
 		/*Definimos métodos*/
 	public:
 		DetallePedido();
-		DetallePedido(int codigo, int Cantidad, String^ Descripcion, double PrecioUnitario, double Importe);
+		DetallePedido(int codigo, int Cantidad, String^ NombreProducto, double PrecioUnitario, double Importe, int CodigoPedido);
+		
 		int getCodigo();
 		void setCodigo(int codigo);
 
 		int getCantidad();
 		void setCantidad(int Cantidad);
 
-		String^ getDescripcion();
-		void setDescripcion(String^ Descripcion);
+		String^ getNombreProducto();
+		void setNombreProducto(String^ NombreProducto);
 
 		double getPrecioUnitario();
 		void setPrecioUnitario(double PrecioUnitario);
 
 		double getImporte();
 		void setImporte(double Importe);
+
+		int getCodigoPedido();
+		void setCodigoPedido(int CodigoPedido);
 	};
 }
