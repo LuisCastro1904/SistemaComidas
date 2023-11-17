@@ -19,7 +19,5 @@ namespace SistemaComidasController {
 		void eliminarDetallePedidoFisico(int codigo);
 		DetallePedido^ buscarDetallePedidoxNombreProducto(String^ NombreProducto);
 		void actualizarDetallePedido(int Cantidad);
-		/*List<DetallePedido^>^ BuscarDetalle(int codigoPedido);
-		List<String^>^ obtenerProductos();*/
 	};
 }

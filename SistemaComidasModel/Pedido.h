@@ -9,22 +9,19 @@ namespace SistemaComidasModel {
 		int codigo;
 		bool EstadoPedido;
 		double TiempoEstimado;
-		bool EstadoPago;
 		String^ Fecha;
-		String^ Direccion;
 		Double PrecioTotal;
 		String^ Nombres;
 		String^ Apellidos;
 		String^ DNI;
 		String^ NumeroTarjeta;
-		String^ NumeroPedido;
 		int CodigoRecibido;
 		List<DetallePedido^>^ listaDetalles;
 
 		/*Definimos métodos*/
 	public:
 		Pedido();
-		Pedido(int codigo, bool EstadoPedido, double TiempoEstimado, bool EstadoPago, String^ Fecha, String^ Direccion, Double PrecioTotal, String^ Nombres, String^ Apellidos, String^ DNI, String^ NumeroTarjeta, String^ NumeroPedido, int CodigoRecibido, List<DetallePedido^>^ listaDetalles);
+		Pedido(int codigo, bool EstadoPedido, double TiempoEstimado, String^ Fecha, Double PrecioTotal, String^ Nombres, String^ Apellidos, String^ DNI, String^ NumeroTarjeta, int CodigoRecibido, List<DetallePedido^>^ listaDetalles);
 		int getCodigo();
 		void setCodigo(int codigo);
 
@@ -34,14 +31,8 @@ namespace SistemaComidasModel {
 		double getTiempoEstimado();
 		void setTiempoEstimado(double TiempoEstimado);
 
-		bool getEstadoPago();
-		void setEstadoPago(bool EstadoPago);
-
 		String^ getFecha();
 		void setFecha(String^ Fecha);
-
-		String^ getDireccion();
-		void setDireccion(String^ Direccion);
 
 		double getPrecioTotal();
 		void setPrecioTotal(double PrecioTotal);
@@ -57,9 +48,6 @@ namespace SistemaComidasModel {
 
 		String^ getNumeroTarjeta();
 		void setNumeroTarjeta(String^ NumeroTarjeta);
-
-		String^ getNumeroPedido();
-		void setNumeroPedido(String^ NumeroPedido);
 
 		int getCodigoRecibido();
 		void setCodigoRecibido(int CodigoRecibido);

@@ -3,20 +3,17 @@ using namespace SistemaComidasModel;
 Pedido::Pedido() {
 
 }
-Pedido::Pedido(int codigo, bool EstadoPedido, double TiempoEstimado, bool EstadoPago, String^ Fecha, String^ Direccion, Double PrecioTotal, String^ Nombres, String^ Apellidos, String^ DNI, String^ NumeroTarjeta, String^ NumeroPedido, int CodigoRecibido, List<DetallePedido^>^ listaDetalles)
+Pedido::Pedido(int codigo, bool EstadoPedido, double TiempoEstimado, String^ Fecha, Double PrecioTotal, String^ Nombres, String^ Apellidos, String^ DNI, String^ NumeroTarjeta, int CodigoRecibido, List<DetallePedido^>^ listaDetalles)
 {
 	this->codigo = codigo;
 	this->EstadoPedido = EstadoPedido;
-	this->EstadoPago = EstadoPago;
-	this->EstadoPedido = EstadoPedido;
+    this->TiempoEstimado = TiempoEstimado;
 	this->Fecha = Fecha;
-	this->Direccion = Direccion;
 	this->PrecioTotal = PrecioTotal;
 	this->Nombres = Nombres;
 	this->Apellidos = Apellidos;
 	this->DNI = DNI;
 	this->NumeroTarjeta = NumeroTarjeta;
-	this->NumeroPedido = NumeroPedido;
 	this->CodigoRecibido = CodigoRecibido;
     this->listaDetalles = listaDetalles;
 }
@@ -44,28 +41,12 @@ void Pedido::setTiempoEstimado(double TiempoEstimado) {
     this->TiempoEstimado = TiempoEstimado;
 }
 
-bool Pedido::getEstadoPago() {
-    return this->EstadoPago;
-}
-
-void Pedido::setEstadoPago(bool EstadoPago) {
-    this->EstadoPago = EstadoPago;
-}
-
 String^ Pedido::getFecha() {
     return this->Fecha;
 }
 
 void Pedido::setFecha(String^ Fecha) {
     this->Fecha = Fecha;
-}
-
-String^ Pedido::getDireccion() {
-    return this->Direccion;
-}
-
-void Pedido::setDireccion(String^ Direccion) {
-    this->Direccion = Direccion;
 }
 
 double Pedido::getPrecioTotal() {
@@ -106,14 +87,6 @@ String^ Pedido::getNumeroTarjeta() {
 
 void Pedido::setNumeroTarjeta(String^ NumeroTarjeta) {
     this->NumeroTarjeta = NumeroTarjeta;
-}
-
-String^ Pedido::getNumeroPedido() {
-    return this->NumeroPedido;
-}
-
-void Pedido::setNumeroPedido(String^ NumeroPedido) {
-    this->NumeroPedido = NumeroPedido;
 }
 
 int Pedido::getCodigoRecibido() {
