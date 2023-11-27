@@ -200,8 +200,10 @@ namespace SistemaComidasView {
 	}
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 	int Cantidad = Convert::ToInt32(this->numericUpDown1->Text);
+	int codigoEditar = objDetallePedido->getCodigo();
+	int nuevoImporte = Cantidad * (objDetallePedido->getPrecioUnitario());
 	DetallePedidoController^ objDetallePedidoController = gcnew DetallePedidoController();
-	objDetallePedidoController->actualizarDetallePedido(Cantidad);
+	objDetallePedidoController->actualizarDetallePedido(Cantidad, codigoEditar, nuevoImporte);
 	MessageBox::Show("La cantidad se ha modificado correctamente");
 	this->Close();
 }

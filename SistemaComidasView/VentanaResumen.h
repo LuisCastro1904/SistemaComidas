@@ -92,11 +92,11 @@ namespace SistemaComidasView {
 			this->groupBox1->Controls->Add(this->button2);
 			this->groupBox1->Controls->Add(this->button1);
 			this->groupBox1->Controls->Add(this->PEDIDO);
-			this->groupBox1->Location = System::Drawing::Point(22, 11);
-			this->groupBox1->Margin = System::Windows::Forms::Padding(2);
+			this->groupBox1->Location = System::Drawing::Point(29, 14);
+			this->groupBox1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Padding = System::Windows::Forms::Padding(2);
-			this->groupBox1->Size = System::Drawing::Size(417, 467);
+			this->groupBox1->Padding = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->groupBox1->Size = System::Drawing::Size(556, 575);
 			this->groupBox1->TabIndex = 1;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"RESUMEN";
@@ -104,10 +104,10 @@ namespace SistemaComidasView {
 			// 
 			// textBox1
 			// 
-			this->textBox1->Location = System::Drawing::Point(305, 331);
-			this->textBox1->Margin = System::Windows::Forms::Padding(2);
+			this->textBox1->Location = System::Drawing::Point(407, 407);
+			this->textBox1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(47, 20);
+			this->textBox1->Size = System::Drawing::Size(61, 22);
 			this->textBox1->TabIndex = 8;
 			this->textBox1->TextChanged += gcnew System::EventHandler(this, &VentanaResumen::textBox1_TextChanged);
 			// 
@@ -117,10 +117,9 @@ namespace SistemaComidasView {
 			this->label1->BackColor = System::Drawing::SystemColors::ButtonHighlight;
 			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label1->Location = System::Drawing::Point(280, 332);
-			this->label1->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label1->Location = System::Drawing::Point(373, 409);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(21, 15);
+			this->label1->Size = System::Drawing::Size(26, 18);
 			this->label1->TabIndex = 7;
 			this->label1->Text = L"S/.";
 			this->label1->TextAlign = System::Drawing::ContentAlignment::MiddleRight;
@@ -132,10 +131,9 @@ namespace SistemaComidasView {
 			this->label2->BackColor = System::Drawing::SystemColors::ButtonHighlight;
 			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label2->Location = System::Drawing::Point(67, 332);
-			this->label2->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label2->Location = System::Drawing::Point(89, 409);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(78, 15);
+			this->label2->Size = System::Drawing::Size(94, 18);
 			this->label2->TabIndex = 6;
 			this->label2->Text = L"Importe total:";
 			// 
@@ -146,13 +144,14 @@ namespace SistemaComidasView {
 				this->Column1,
 					this->Column2, this->Column3
 			});
-			this->dataGridView1->Location = System::Drawing::Point(70, 82);
-			this->dataGridView1->Margin = System::Windows::Forms::Padding(2);
+			this->dataGridView1->Location = System::Drawing::Point(93, 101);
+			this->dataGridView1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->RowHeadersWidth = 51;
 			this->dataGridView1->RowTemplate->Height = 24;
-			this->dataGridView1->Size = System::Drawing::Size(282, 232);
+			this->dataGridView1->Size = System::Drawing::Size(376, 286);
 			this->dataGridView1->TabIndex = 4;
+			this->dataGridView1->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &VentanaResumen::dataGridView1_CellContentClick);
 			// 
 			// Column1
 			// 
@@ -177,10 +176,10 @@ namespace SistemaComidasView {
 			// 
 			// button2
 			// 
-			this->button2->Location = System::Drawing::Point(225, 402);
-			this->button2->Margin = System::Windows::Forms::Padding(2);
+			this->button2->Location = System::Drawing::Point(300, 495);
+			this->button2->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(79, 37);
+			this->button2->Size = System::Drawing::Size(105, 46);
 			this->button2->TabIndex = 3;
 			this->button2->Text = L"ATRÁS";
 			this->button2->UseVisualStyleBackColor = true;
@@ -188,10 +187,10 @@ namespace SistemaComidasView {
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(83, 402);
-			this->button1->Margin = System::Windows::Forms::Padding(2);
+			this->button1->Location = System::Drawing::Point(111, 495);
+			this->button1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(79, 37);
+			this->button1->Size = System::Drawing::Size(105, 46);
 			this->button1->TabIndex = 2;
 			this->button1->Text = L"ACEPTAR";
 			this->button1->UseVisualStyleBackColor = true;
@@ -202,21 +201,22 @@ namespace SistemaComidasView {
 			this->PEDIDO->Font = (gcnew System::Drawing::Font(L"Microsoft Tai Le", 7.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->PEDIDO->FormattingEnabled = true;
-			this->PEDIDO->Location = System::Drawing::Point(41, 51);
-			this->PEDIDO->Margin = System::Windows::Forms::Padding(2);
+			this->PEDIDO->ItemHeight = 16;
+			this->PEDIDO->Location = System::Drawing::Point(55, 63);
+			this->PEDIDO->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->PEDIDO->Name = L"PEDIDO";
-			this->PEDIDO->Size = System::Drawing::Size(338, 316);
+			this->PEDIDO->Size = System::Drawing::Size(449, 388);
 			this->PEDIDO->TabIndex = 0;
 			this->PEDIDO->SelectedIndexChanged += gcnew System::EventHandler(this, &VentanaResumen::PEDIDO_SelectedIndexChanged);
 			// 
 			// VentanaResumen
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(464, 493);
+			this->ClientSize = System::Drawing::Size(619, 607);
 			this->Controls->Add(this->groupBox1);
 			this->IsMdiContainer = true;
-			this->Margin = System::Windows::Forms::Padding(2);
+			this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->Name = L"VentanaResumen";
 			this->Text = L"Resumen";
 			this->Load += gcnew System::EventHandler(this, &VentanaResumen::VentanaResumen_Load);
@@ -243,7 +243,7 @@ private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e)
 }
 private: System::Void VentanaResumen_Load(System::Object^ sender, System::EventArgs^ e) {
 	DetallePedidoController^ objDetallePedidoController = gcnew DetallePedidoController();
-	List<DetallePedido^>^ listaDetallesPedido = objDetallePedidoController->buscarAll();
+	List<DetallePedido^>^ listaDetallesPedido = objDetallePedidoController->buscarDetallesPedidosSinPedido();
 	double ImporteTotal = mostrarGrillayCalcularImporteTotal(listaDetallesPedido);
 	this->textBox1->Text = Convert::ToString(ImporteTotal);
 }
@@ -263,6 +263,8 @@ private: double mostrarGrillayCalcularImporteTotal(List<DetallePedido^>^ listaDe
 	return ImporteTotal;
 }
 private: System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void dataGridView1_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
 }
 };
 }

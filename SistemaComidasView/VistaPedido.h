@@ -181,12 +181,12 @@ namespace SistemaComidasView {
 			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
-			this->button4 = (gcnew System::Windows::Forms::Button());
-			this->button5 = (gcnew System::Windows::Forms::Button());
 			this->Pedido = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Cantidad = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->a = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->button4 = (gcnew System::Windows::Forms::Button());
+			this->button5 = (gcnew System::Windows::Forms::Button());
 			this->groupBox1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numericUpDown1))->BeginInit();
 			this->groupBox2->SuspendLayout();
@@ -354,26 +354,7 @@ namespace SistemaComidasView {
 			this->dataGridView1->RowTemplate->Height = 28;
 			this->dataGridView1->Size = System::Drawing::Size(559, 156);
 			this->dataGridView1->TabIndex = 0;
-			// 
-			// button4
-			// 
-			this->button4->Location = System::Drawing::Point(498, 371);
-			this->button4->Name = L"button4";
-			this->button4->Size = System::Drawing::Size(184, 91);
-			this->button4->TabIndex = 25;
-			this->button4->Text = L"Pasar a las bebidas";
-			this->button4->UseVisualStyleBackColor = true;
-			this->button4->Click += gcnew System::EventHandler(this, &VistaPedido::button4_Click);
-			// 
-			// button5
-			// 
-			this->button5->Location = System::Drawing::Point(744, 371);
-			this->button5->Name = L"button5";
-			this->button5->Size = System::Drawing::Size(184, 91);
-			this->button5->TabIndex = 26;
-			this->button5->Text = L"Cancelar";
-			this->button5->UseVisualStyleBackColor = true;
-			this->button5->Click += gcnew System::EventHandler(this, &VistaPedido::button5_Click);
+			this->dataGridView1->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &VistaPedido::dataGridView1_CellContentClick_1);
 			// 
 			// Pedido
 			// 
@@ -402,6 +383,26 @@ namespace SistemaComidasView {
 			this->Column2->MinimumWidth = 6;
 			this->Column2->Name = L"Column2";
 			this->Column2->Width = 60;
+			// 
+			// button4
+			// 
+			this->button4->Location = System::Drawing::Point(498, 371);
+			this->button4->Name = L"button4";
+			this->button4->Size = System::Drawing::Size(184, 91);
+			this->button4->TabIndex = 25;
+			this->button4->Text = L"Pasar a las bebidas";
+			this->button4->UseVisualStyleBackColor = true;
+			this->button4->Click += gcnew System::EventHandler(this, &VistaPedido::button4_Click);
+			// 
+			// button5
+			// 
+			this->button5->Location = System::Drawing::Point(744, 371);
+			this->button5->Name = L"button5";
+			this->button5->Size = System::Drawing::Size(184, 91);
+			this->button5->TabIndex = 26;
+			this->button5->Text = L"Cancelar";
+			this->button5->UseVisualStyleBackColor = true;
+			this->button5->Click += gcnew System::EventHandler(this, &VistaPedido::button5_Click);
 			// 
 			// VistaPedido
 			// 
@@ -434,6 +435,9 @@ namespace SistemaComidasView {
 	private: System::Void label1_Click_1(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void VistaPedido_Load(System::Object^ sender, System::EventArgs^ e) {
+		DetallePedidoController^ objDetallePedidoController = gcnew DetallePedidoController();
+		List<DetallePedido^>^ listaDetallesPedidos = objDetallePedidoController->buscarDetallesPedidosComidasSinPedido();
+		mostrarGrilla(listaDetallesPedidos);
 	}
 	private: System::Void treeView1_AfterSelect(System::Object^ sender, System::Windows::Forms::TreeViewEventArgs^ e) {
 	}
@@ -472,7 +476,7 @@ private: System::Void button2_Click_1(System::Object^ sender, System::EventArgs^
 	DetallePedido^ objDetallePedido = objDetallePedidoController->buscarDetallePedidoxNombreProducto(ProductoSeleccionado);
 	modificarPedido^ ventanaModificarPedido = gcnew modificarPedido(objDetallePedido);
 	ventanaModificarPedido->ShowDialog();
-	List<DetallePedido^>^ listaDetallesPedidos = objDetallePedidoController->buscarAll();
+	List<DetallePedido^>^ listaDetallesPedidos = objDetallePedidoController->buscarDetallesPedidosComidasSinPedido();
 	mostrarGrilla(listaDetallesPedidos);
 }
 private: System::Void groupBox2_Enter_1(System::Object^ sender, System::EventArgs^ e) {
@@ -491,7 +495,7 @@ private: System::Void button1_Click_1(System::Object^ sender, System::EventArgs^
 	DetallePedidoController^ objDetallePedidoController = gcnew DetallePedidoController(); 
 	objDetallePedidoController->agregarDetallePedido(Cantidad, NombreProducto, PrecioUnitario, Importe);
 	MessageBox::Show("El producto se ha agregado con éxito");
-	List<DetallePedido^>^ listaDetallesPedidos = objDetallePedidoController->buscarAll();
+	List<DetallePedido^>^ listaDetallesPedidos = objDetallePedidoController->buscarDetallesPedidosComidasSinPedido();
 	mostrarGrilla(listaDetallesPedidos);
 }
 
@@ -533,7 +537,7 @@ private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e
 	int codigoEliminar = objDetallePedido->getCodigo();
 	objDetallePedidoController->eliminarDetallePedidoFisico(codigoEliminar);
 	MessageBox::Show("El producto ha sido eliminado con éxito");
-	List<DetallePedido^>^ listaDetallesPedidos = objDetallePedidoController->buscarAll();
+	List<DetallePedido^>^ listaDetallesPedidos = objDetallePedidoController->buscarDetallesPedidosComidasSinPedido();
 	mostrarGrilla(listaDetallesPedidos);
 }
 private: System::Void button5_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -542,6 +546,8 @@ private: System::Void button5_Click(System::Object^ sender, System::EventArgs^ e
 private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
 	VistaBebidas^ ventanaBebidas = gcnew VistaBebidas();
 	ventanaBebidas->ShowDialog();
+}
+private: System::Void dataGridView1_CellContentClick_1(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
 }
 };
 }

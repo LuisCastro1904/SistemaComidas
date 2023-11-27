@@ -258,7 +258,7 @@ namespace SistemaComidasView {
 			this->IsMdiContainer = true;
 			this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->Name = L"frmMantenimientoProducto";
-			this->Text = L"MantenimientoProyecto";
+			this->Text = L"MantenimientoProducto";
 			this->Load += gcnew System::EventHandler(this, &frmMantenimientoProducto::frmMantenimientoProducto_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
 			this->groupBox1->ResumeLayout(false);

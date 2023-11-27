@@ -340,6 +340,7 @@ namespace SistemaComidasView {
 			this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->Name = L"VistaBebidas";
 			this->Text = L"Bebidas";
+			this->Load += gcnew System::EventHandler(this, &VistaBebidas::VistaBebidas_Load);
 			this->groupBox2->ResumeLayout(false);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
 			this->groupBox1->ResumeLayout(false);
@@ -363,7 +364,7 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	DetallePedidoController^ objDetallePedidoController = gcnew DetallePedidoController();
 	objDetallePedidoController->agregarDetallePedido(Cantidad, NombreProducto, PrecioUnitario, Importe);
 	MessageBox::Show("El producto se ha agregado con éxito");
-	List<DetallePedido^>^ listaDetallesPedidos = objDetallePedidoController->buscarAll();
+	List<DetallePedido^>^ listaDetallesPedidos = objDetallePedidoController->buscarDetallesPedidosBebidasSinPedido();
 	mostrarGrilla(listaDetallesPedidos);
 }
 
@@ -407,7 +408,7 @@ private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e
 	DetallePedido^ objDetallePedido = objDetallePedidoController->buscarDetallePedidoxNombreProducto(ProductoSeleccionado);
 	modificarPedido^ ventanaModificarPedido = gcnew modificarPedido(objDetallePedido);
 	ventanaModificarPedido->ShowDialog();
-	List<DetallePedido^>^ listaDetallesPedidos = objDetallePedidoController->buscarAll();
+	List<DetallePedido^>^ listaDetallesPedidos = objDetallePedidoController->buscarDetallesPedidosBebidasSinPedido();
 	mostrarGrilla(listaDetallesPedidos);
 }
 private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -423,10 +424,15 @@ private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e
 	int codigoEliminar = objDetallePedido->getCodigo();
 	objDetallePedidoController->eliminarDetallePedidoFisico(codigoEliminar);
 	MessageBox::Show("El producto ha sido eliminado con éxito");
-	List<DetallePedido^>^ listaDetallesPedidos = objDetallePedidoController->buscarAll();
+	List<DetallePedido^>^ listaDetallesPedidos = objDetallePedidoController->buscarDetallesPedidosBebidasSinPedido();
 	mostrarGrilla(listaDetallesPedidos);
 }
 private: System::Void dataGridView1_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
+}
+private: System::Void VistaBebidas_Load(System::Object^ sender, System::EventArgs^ e) {
+	DetallePedidoController^ objDetallePedidoController = gcnew DetallePedidoController();
+	List<DetallePedido^>^ listaDetallesPedidos = objDetallePedidoController->buscarDetallesPedidosBebidasSinPedido();
+	mostrarGrilla(listaDetallesPedidos);
 }
 };
 }

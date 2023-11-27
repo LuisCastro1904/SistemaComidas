@@ -1,4 +1,5 @@
 #include "DetallePedidoController.h"
+#include "ProductoController.h"
 
 using namespace SistemaComidasController;
 using namespace System::IO;
@@ -103,11 +104,114 @@ DetallePedido^ DetallePedidoController::buscarDetallePedidoxNombreProducto(Strin
 	}
 }
 
-void DetallePedidoController::actualizarDetallePedido(int Cantidad) {
+void DetallePedidoController::actualizarDetallePedido(int Cantidad, int codigoEditar, int nuevoImporte) {
 	abrirConexionBD();
 	SqlCommand^ objSentencia = gcnew SqlCommand();
-	objSentencia->CommandText = "update SC_DetallePedido set Cantidad=" + Cantidad;
+	objSentencia->CommandText = "update SC_DetallePedido set Cantidad=" + Cantidad+ ", Importe =" + nuevoImporte +" where Codigo = " + codigoEditar;
 	objSentencia->Connection = this->objConexion;
 	objSentencia->ExecuteNonQuery();
 	cerrarConexionBD();
+}
+
+List<DetallePedido^>^ DetallePedidoController::buscarDetallesPedidosSinPedido() {
+	List<DetallePedido^>^ listaDetallePedidos = gcnew List<DetallePedido^>();
+	abrirConexionBD();
+	/*SqlCommand viene a ser el objeto que utilizare para hacer el query o sentencia para la BD*/
+	SqlCommand^ objSentencia = gcnew SqlCommand();
+	/*Aqui estoy indicando que mi sentencia se va a ejecutar en mi conexion de BD*/
+	objSentencia->Connection = this->objConexion;
+	/*Aqui voy a indicar la sentencia que voy a ejecutar*/
+	objSentencia->CommandText = "select * from SC_DetallePedido where codigoPedido = 0";
+	/*Aqui ejecuto la sentencia en la Base de Datos*/
+	/*Para Select siempre sera ExecuteReader*/
+	/*Para select siempre va a devolver un SqlDataReader*/
+	SqlDataReader^ objData = objSentencia->ExecuteReader();
+	while (objData->Read()) {
+		int Codigo = safe_cast<int>(objData[0]);
+		int Cantidad = safe_cast<int>(objData[1]);
+		String^ NombreProducto = safe_cast<String^>(objData[2]);
+		double PrecioUnitario = safe_cast<double>(objData[3]);
+		double Importe = safe_cast<double>(objData[4]);
+		int CodigoPedido = safe_cast<int>(objData[5]);
+
+		DetallePedido^ objDetallePedido = gcnew DetallePedido(Codigo, Cantidad, NombreProducto, PrecioUnitario, Importe, CodigoPedido);
+		listaDetallePedidos->Add(objDetallePedido);
+	}
+	cerrarConexionBD();
+	return listaDetallePedidos;
+}
+
+void  DetallePedidoController::actualizarCodigoPedido(int codigoUltimoPedido) {
+	abrirConexionBD();
+	SqlCommand^ objSentencia = gcnew SqlCommand();
+	objSentencia->CommandText = "update SC_DetallePedido set codigoPedido=" + codigoUltimoPedido + " where codigoPedido = 0";
+	objSentencia->Connection = this->objConexion;
+	objSentencia->ExecuteNonQuery();
+	cerrarConexionBD();
+}
+
+List<DetallePedido^>^ DetallePedidoController::buscarDetallesPedidosComidasSinPedido() {
+	List<DetallePedido^>^ listaDetallePedidos = gcnew List<DetallePedido^>();
+	abrirConexionBD();
+	/*SqlCommand viene a ser el objeto que utilizare para hacer el query o sentencia para la BD*/
+	SqlCommand^ objSentencia = gcnew SqlCommand();
+	/*Aqui estoy indicando que mi sentencia se va a ejecutar en mi conexion de BD*/
+	objSentencia->Connection = this->objConexion;
+	/*Aqui voy a indicar la sentencia que voy a ejecutar*/
+	objSentencia->CommandText = "select * from SC_DetallePedido where codigoPedido = 0";
+	/*Aqui ejecuto la sentencia en la Base de Datos*/
+	/*Para Select siempre sera ExecuteReader*/
+	/*Para select siempre va a devolver un SqlDataReader*/
+	SqlDataReader^ objData = objSentencia->ExecuteReader();
+	while (objData->Read()) {
+		int Codigo = safe_cast<int>(objData[0]);
+		int Cantidad = safe_cast<int>(objData[1]);
+		String^ NombreProducto = safe_cast<String^>(objData[2]);
+		double PrecioUnitario = safe_cast<double>(objData[3]);
+		double Importe = safe_cast<double>(objData[4]);
+		int CodigoPedido = safe_cast<int>(objData[5]);
+		
+		ProductoController^ objProductoController = gcnew ProductoController();
+		Producto^ objProducto = objProductoController->buscarProductoxNombre(NombreProducto);
+
+		if (objProducto->getTipo() == "Comida") {
+			DetallePedido^ objDetallePedido = gcnew DetallePedido(Codigo, Cantidad, NombreProducto, PrecioUnitario, Importe, CodigoPedido);
+			listaDetallePedidos->Add(objDetallePedido);
+		}
+	}
+	cerrarConexionBD();
+	return listaDetallePedidos;
+}
+
+List<DetallePedido^>^ DetallePedidoController::buscarDetallesPedidosBebidasSinPedido() {
+	List<DetallePedido^>^ listaDetallePedidos = gcnew List<DetallePedido^>();
+	abrirConexionBD();
+	/*SqlCommand viene a ser el objeto que utilizare para hacer el query o sentencia para la BD*/
+	SqlCommand^ objSentencia = gcnew SqlCommand();
+	/*Aqui estoy indicando que mi sentencia se va a ejecutar en mi conexion de BD*/
+	objSentencia->Connection = this->objConexion;
+	/*Aqui voy a indicar la sentencia que voy a ejecutar*/
+	objSentencia->CommandText = "select * from SC_DetallePedido where codigoPedido = 0";
+	/*Aqui ejecuto la sentencia en la Base de Datos*/
+	/*Para Select siempre sera ExecuteReader*/
+	/*Para select siempre va a devolver un SqlDataReader*/
+	SqlDataReader^ objData = objSentencia->ExecuteReader();
+	while (objData->Read()) {
+		int Codigo = safe_cast<int>(objData[0]);
+		int Cantidad = safe_cast<int>(objData[1]);
+		String^ NombreProducto = safe_cast<String^>(objData[2]);
+		double PrecioUnitario = safe_cast<double>(objData[3]);
+		double Importe = safe_cast<double>(objData[4]);
+		int CodigoPedido = safe_cast<int>(objData[5]);
+
+		ProductoController^ objProductoController = gcnew ProductoController();
+		Producto^ objProducto = objProductoController->buscarProductoxNombre(NombreProducto);
+
+		if (objProducto->getTipo() == "Bebida") {
+			DetallePedido^ objDetallePedido = gcnew DetallePedido(Codigo, Cantidad, NombreProducto, PrecioUnitario, Importe, CodigoPedido);
+			listaDetallePedidos->Add(objDetallePedido);
+		}
+	}
+	cerrarConexionBD();
+	return listaDetallePedidos;
 }
