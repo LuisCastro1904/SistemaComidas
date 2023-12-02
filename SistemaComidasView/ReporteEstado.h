@@ -83,12 +83,15 @@ namespace SistemaComidasView {
 			this->Controls->Add(this->chart1);
 			this->Name = L"ReporteEstado";
 			this->Text = L"ReporteEstado";
+			this->Load += gcnew System::EventHandler(this, &ReporteEstado::ReporteEstado_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chart1))->EndInit();
 			this->ResumeLayout(false);
 
 		}
 #pragma endregion
 	private: System::Void chart1_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void ReporteEstado_Load(System::Object^ sender, System::EventArgs^ e) {
 	}
 	};
 }

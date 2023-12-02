@@ -8,6 +8,8 @@ namespace SistemaComidasView {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace SistemaComidasController;
+
 
 	/// <summary>
 	/// Resumen de VentanaRecepcion
@@ -120,6 +122,8 @@ namespace SistemaComidasView {
 	private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+		ArduinoController^ objArduinoController = gcnew ArduinoController();
+		objArduinoController->Ejecutar();
 		VentanaGracias^ gracias = gcnew VentanaGracias();
 		//ventanaMantProyectos1 -> MdiParent = this;
 		gracias->ShowDialog();

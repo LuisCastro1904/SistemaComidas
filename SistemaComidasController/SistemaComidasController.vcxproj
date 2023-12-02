@@ -117,13 +117,17 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ArduinoController.h" />
     <ClInclude Include="DetallePedidoController.h" />
+    <ClInclude Include="pch.h" />
     <ClInclude Include="PedidoController.h" />
     <ClInclude Include="ProductoController.h" />
     <ClInclude Include="UsuarioController.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ArduinoController.cpp" />
     <ClCompile Include="DetallePedidoController.cpp" />
+    <ClCompile Include="pch.cpp" />
     <ClCompile Include="PedidoController.cpp" />
     <ClCompile Include="ProductoController.cpp" />
     <ClCompile Include="UsuarioController.cpp" />
