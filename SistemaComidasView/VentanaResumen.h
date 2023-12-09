@@ -232,7 +232,12 @@ namespace SistemaComidasView {
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 		VentanaPago^ ventanapago  = gcnew VentanaPago;
 		//ventanapago -> MdiParent = this;
-		ventanapago -> Show();
+		ventanapago->ShowDialog();
+		DetallePedidoController^ objDetallePedidoController = gcnew DetallePedidoController();
+		List<DetallePedido^>^ listaDetallesPedido = objDetallePedidoController->buscarDetallesPedidosSinPedido();
+		if (listaDetallesPedido->Count == 0) {
+			this->Close();
+		}
 	}
 private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
 	this->Close();

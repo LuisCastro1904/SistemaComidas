@@ -23,5 +23,6 @@ namespace SistemaComidasController {
 		void actualizarCodigoPedido(int codigoUltimoPedido);
 		List<DetallePedido^>^ buscarDetallesPedidosComidasSinPedido();
 		List<DetallePedido^>^ buscarDetallesPedidosBebidasSinPedido();
+		void eliminarDetallesPedidoSinPedido();
 	};
 }

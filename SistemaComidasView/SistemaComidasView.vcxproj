@@ -129,7 +129,6 @@
     <ClCompile Include="ReportePedido.cpp" />
     <ClCompile Include="ReporteProducto.cpp" />
     <ClCompile Include="VentanaFin.cpp" />
-    <ClCompile Include="VentanaGracias.cpp" />
     <ClCompile Include="VentanaPago.cpp" />
     <ClCompile Include="VentanaRecepcion.cpp" />
     <ClCompile Include="VentanaRegistro.cpp" />
@@ -187,9 +186,6 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="VentanaFin.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
-    <ClInclude Include="VentanaGracias.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="VentanaPago.h">
@@ -256,9 +252,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="VentanaFin.resx">
       <DependentUpon>VentanaFin.h</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="VentanaGracias.resx">
-      <DependentUpon>VentanaGracias.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VentanaPago.resx">
       <DependentUpon>VentanaPago.h</DependentUpon>

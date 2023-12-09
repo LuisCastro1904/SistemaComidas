@@ -1,5 +1,4 @@
 #pragma once
-#include "VentanaGracias.h"
 namespace SistemaComidasView {
 
 	using namespace System;
@@ -64,9 +63,9 @@ namespace SistemaComidasView {
 			// groupBox1
 			// 
 			this->groupBox1->Location = System::Drawing::Point(136, 49);
-			this->groupBox1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->groupBox1->Margin = System::Windows::Forms::Padding(4);
 			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Padding = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->groupBox1->Padding = System::Windows::Forms::Padding(4);
 			this->groupBox1->Size = System::Drawing::Size(280, 79);
 			this->groupBox1->TabIndex = 1;
 			this->groupBox1->TabStop = false;
@@ -86,7 +85,7 @@ namespace SistemaComidasView {
 			// textBox1
 			// 
 			this->textBox1->Location = System::Drawing::Point(249, 139);
-			this->textBox1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->textBox1->Margin = System::Windows::Forms::Padding(4);
 			this->textBox1->Name = L"textBox1";
 			this->textBox1->Size = System::Drawing::Size(165, 22);
 			this->textBox1->TabIndex = 3;
@@ -94,7 +93,7 @@ namespace SistemaComidasView {
 			// button1
 			// 
 			this->button1->Location = System::Drawing::Point(263, 185);
-			this->button1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->button1->Margin = System::Windows::Forms::Padding(4);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(131, 28);
 			this->button1->TabIndex = 4;
@@ -111,9 +110,10 @@ namespace SistemaComidasView {
 			this->Controls->Add(this->textBox1);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->groupBox1);
-			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->Margin = System::Windows::Forms::Padding(4);
 			this->Name = L"VentanaRecepcion";
 			this->Text = L"Recepcion";
+			this->Load += gcnew System::EventHandler(this, &VentanaRecepcion::VentanaRecepcion_Load);
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -122,11 +122,11 @@ namespace SistemaComidasView {
 	private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+		MessageBox::Show("");
 		ArduinoController^ objArduinoController = gcnew ArduinoController();
 		objArduinoController->Ejecutar();
-		VentanaGracias^ gracias = gcnew VentanaGracias();
-		//ventanaMantProyectos1 -> MdiParent = this;
-		gracias->ShowDialog();
 	}
-	};
+	private: System::Void VentanaRecepcion_Load(System::Object^ sender, System::EventArgs^ e) {
+	}
+};
 }

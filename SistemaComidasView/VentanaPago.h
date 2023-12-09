@@ -292,9 +292,8 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	objDetallePedidoController->actualizarCodigoPedido(codigoUltimoPedido);
 	VentanaFin ^ ventanaFIN = gcnew VentanaFin;
 	//ventanaMantProyectos1 -> MdiParent = this;
-	ventanaFIN ->Show();
+	ventanaFIN ->ShowDialog();
 	this->Close();
-
 }
 private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
 }

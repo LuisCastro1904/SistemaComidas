@@ -51,3 +51,23 @@ int PedidoController::obtenerCodigoUltimoPedido() {
 	cerrarConexionBD();
 	return CodigoUltimoPedido;
 }
+
+int PedidoController::obtenerCodigoRecibidoUltimoPedido(int codigoUltimoPedido) {
+	int CodigoRecibidoUltimoPedido;
+	abrirConexionBD();
+	/*SqlCommand viene a ser el objeto que utilizare para hacer el query o sentencia para la BD*/
+	SqlCommand^ objSentencia = gcnew SqlCommand();
+	/*Aqui estoy indicando que mi sentencia se va a ejecutar en mi conexion de BD*/
+	objSentencia->Connection = this->objConexion;
+	/*Aqui voy a indicar la sentencia que voy a ejecutar*/
+	objSentencia->CommandText = "select * from SC_Pedido where codigo =" + codigoUltimoPedido;
+	/*Aqui ejecuto la sentencia en la Base de Datos*/
+	/*Para Select siempre sera ExecuteReader*/
+	/*Para select siempre va a devolver un SqlDataReader*/
+	SqlDataReader^ objData = objSentencia->ExecuteReader();
+	while (objData->Read()) {
+		CodigoRecibidoUltimoPedido = safe_cast<int>(objData[9]);
+	}
+	cerrarConexionBD();
+	return CodigoRecibidoUltimoPedido;
+}

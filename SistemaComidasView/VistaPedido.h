@@ -542,10 +542,17 @@ private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e
 }
 private: System::Void button5_Click(System::Object^ sender, System::EventArgs^ e) {
 	this->Close();
+	DetallePedidoController^ objDetallePedidoController = gcnew DetallePedidoController();
+	objDetallePedidoController->eliminarDetallesPedidoSinPedido();
 }
 private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
 	VistaBebidas^ ventanaBebidas = gcnew VistaBebidas();
 	ventanaBebidas->ShowDialog();
+	DetallePedidoController^ objDetallePedidoController = gcnew DetallePedidoController();
+	List<DetallePedido^>^ listaDetallesPedido = objDetallePedidoController->buscarDetallesPedidosSinPedido();
+	if (listaDetallesPedido->Count == 0) {
+		this->Close();
+	}
 }
 private: System::Void dataGridView1_CellContentClick_1(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
 }

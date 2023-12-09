@@ -215,3 +215,13 @@ List<DetallePedido^>^ DetallePedidoController::buscarDetallesPedidosBebidasSinPe
 	cerrarConexionBD();
 	return listaDetallePedidos;
 }
+
+void DetallePedidoController::eliminarDetallesPedidoSinPedido() {
+	abrirConexionBD();
+	SqlCommand^ objSentencia = gcnew SqlCommand();
+	objSentencia->Connection = this->objConexion;
+	objSentencia->CommandText = "delete SC_DetallePedido where codigoPedido = 0";
+	objSentencia->Connection = this->objConexion;
+	objSentencia->ExecuteNonQuery();
+	cerrarConexionBD();
+}
