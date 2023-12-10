@@ -65,6 +65,8 @@ namespace SistemaComidasView {
 
 	private: System::Windows::Forms::ComboBox^ comboBox1Tipo;
 	private: int codigo;
+	private: System::Windows::Forms::TextBox^ textBox6;
+	private: System::Windows::Forms::Label^ label7;
 
 	private:
 		/// <summary>
@@ -94,11 +96,15 @@ namespace SistemaComidasView {
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->textBox6 = (gcnew System::Windows::Forms::TextBox());
+			this->label7 = (gcnew System::Windows::Forms::Label());
 			this->groupBox1->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// groupBox1
 			// 
+			this->groupBox1->Controls->Add(this->textBox6);
+			this->groupBox1->Controls->Add(this->label7);
 			this->groupBox1->Controls->Add(this->comboBox1Tipo);
 			this->groupBox1->Controls->Add(this->textBox5);
 			this->groupBox1->Controls->Add(this->textBox4);
@@ -117,7 +123,7 @@ namespace SistemaComidasView {
 			this->groupBox1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->groupBox1->Name = L"groupBox1";
 			this->groupBox1->Padding = System::Windows::Forms::Padding(3, 2, 3, 2);
-			this->groupBox1->Size = System::Drawing::Size(477, 380);
+			this->groupBox1->Size = System::Drawing::Size(477, 462);
 			this->groupBox1->TabIndex = 1;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Datos del producto";
@@ -179,7 +185,7 @@ namespace SistemaComidasView {
 			// 
 			// button2
 			// 
-			this->button2->Location = System::Drawing::Point(289, 335);
+			this->button2->Location = System::Drawing::Point(286, 406);
 			this->button2->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(88, 23);
@@ -190,7 +196,7 @@ namespace SistemaComidasView {
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(87, 335);
+			this->button1->Location = System::Drawing::Point(84, 406);
 			this->button1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(75, 23);
@@ -253,11 +259,30 @@ namespace SistemaComidasView {
 			this->label1->TabIndex = 0;
 			this->label1->Text = L"Código:";
 			// 
+			// textBox6
+			// 
+			this->textBox6->Location = System::Drawing::Point(245, 342);
+			this->textBox6->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->textBox6->Name = L"textBox6";
+			this->textBox6->Size = System::Drawing::Size(161, 22);
+			this->textBox6->TabIndex = 17;
+			this->textBox6->TextChanged += gcnew System::EventHandler(this, &frmEditarProducto::textBox6_TextChanged_1);
+			// 
+			// label7
+			// 
+			this->label7->AutoSize = true;
+			this->label7->Location = System::Drawing::Point(53, 345);
+			this->label7->Name = L"label7";
+			this->label7->Size = System::Drawing::Size(85, 16);
+			this->label7->TabIndex = 16;
+			this->label7->Text = L"URL Imagen:";
+			this->label7->Click += gcnew System::EventHandler(this, &frmEditarProducto::label7_Click);
+			// 
 			// frmEditarProducto
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(581, 470);
+			this->ClientSize = System::Drawing::Size(581, 533);
 			this->Controls->Add(this->groupBox1);
 			this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->Name = L"frmEditarProducto";
@@ -278,6 +303,7 @@ namespace SistemaComidasView {
 		this->textBox2->Text = Convert::ToString(objProducto->getPrecio());
 		this->textBox3->Text = Convert::ToString(objProducto->getStock());
 		this->comboBox1Tipo->Text = objProducto->getTipo();
+		this->textBox6->Text = objProducto->getImagen();
 
 	}
 private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -290,9 +316,9 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	double Precio = Convert::ToDouble(this->textBox2->Text);
 	String^ Tipo = this->comboBox1Tipo->Text;
 	int Stock = Convert::ToInt32(this->textBox3->Text);
-	Producto^ objProducto = gcnew Producto(codigo, Nombre, Descripcion, Precio, Tipo, Stock);
+	String^ Imagen = this->textBox6->Text;
 	ProductoController^ objProductoController = gcnew ProductoController();
-	objProductoController->actualizarProducto(codigo,Nombre,Descripcion,Precio,Tipo,Stock);
+	objProductoController->actualizarProducto(codigo,Nombre,Descripcion,Precio,Tipo,Stock, Imagen);
 	MessageBox::Show("El producto se ha actualizado correctamente");
 	this->Close();
 }
@@ -305,6 +331,10 @@ private: System::Void textBox6_TextChanged(System::Object^ sender, System::Event
 private: System::Void comboBox1Tipo_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
 }
 private: System::Void groupBox1_Enter(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void label7_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void textBox6_TextChanged_1(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }

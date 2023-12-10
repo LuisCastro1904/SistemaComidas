@@ -11,10 +11,11 @@ namespace SistemaComidasModel {
 		double Precio;
 		String^ Tipo;
 		int Stock;
+		String^ Imagen;
 		/*Definimos métodos*/
 	public:
 		Producto();
-		Producto(int codigo, String^ Nombre, String^ Descripcion, double Precio, String^ Tipo, int Stock);
+		Producto(int codigo, String^ Nombre, String^ Descripcion, double Precio, String^ Tipo, int Stock, String^ Imagen);
 		int getCodigo();
 		void setCodigo(int codigo);
 		String^ getNombre();
@@ -27,5 +28,7 @@ namespace SistemaComidasModel {
 		void setTipo(String^ Tipo);
 		int getStock();
 		void setStock(int Stock);
+		String^ getImagen();
+		void setImagen(String^ Imagen);
 	};
 }

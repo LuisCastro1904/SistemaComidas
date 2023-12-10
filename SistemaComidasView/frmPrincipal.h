@@ -123,7 +123,7 @@ namespace SistemaComidasView {
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
 			this->menuStrip1->Padding = System::Windows::Forms::Padding(5, 2, 0, 2);
-			this->menuStrip1->Size = System::Drawing::Size(1227, 30);
+			this->menuStrip1->Size = System::Drawing::Size(1227, 28);
 			this->menuStrip1->TabIndex = 4;
 			this->menuStrip1->Text = L"menuStrip1";
 			// 
@@ -134,7 +134,7 @@ namespace SistemaComidasView {
 					this->cocineroToolStripMenuItem, this->recepciónToolStripMenuItem
 			});
 			this->administracionToolStripMenuItem->Name = L"administracionToolStripMenuItem";
-			this->administracionToolStripMenuItem->Size = System::Drawing::Size(82, 26);
+			this->administracionToolStripMenuItem->Size = System::Drawing::Size(82, 24);
 			this->administracionToolStripMenuItem->Text = L"Ventanas";
 			this->administracionToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::administracionToolStripMenuItem_Click);
 			// 
@@ -166,7 +166,7 @@ namespace SistemaComidasView {
 					this->pedidosToolStripMenuItem, this->estadoToolStripMenuItem
 			});
 			this->reporteToolStripMenuItem->Name = L"reporteToolStripMenuItem";
-			this->reporteToolStripMenuItem->Size = System::Drawing::Size(76, 26);
+			this->reporteToolStripMenuItem->Size = System::Drawing::Size(76, 24);
 			this->reporteToolStripMenuItem->Text = L"Reporte";
 			// 
 			// pToolStripMenuItem
@@ -196,7 +196,7 @@ namespace SistemaComidasView {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::HotTrack;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
-			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
+			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->ClientSize = System::Drawing::Size(1227, 545);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->menuStrip1);

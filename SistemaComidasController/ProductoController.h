@@ -17,11 +17,15 @@ namespace SistemaComidasController {
 			List<Producto^>^ buscarAll();
 			//void escribirArchivo(List<Producto^>^ listaProductos);
 			void eliminarProductoFisico(int codigo);
-			void agregarProducto(String^ Nombre, String^ Descripcion, double Precio, String^ Tipo, int Stock);
+			void agregarProducto(String^ Nombre, String^ Descripcion, double Precio, String^ Tipo, int Stock, String^ Imagen);
 			Producto^ buscarProductoporCodigo(int codigo);
-			void actualizarProducto(int codigo, String^ Nombre, String^ Descripcion, double Precio, String^ Tipo, int Stock);
+			void actualizarProducto(int codigo, String^ Nombre, String^ Descripcion, double Precio, String^ Tipo, int Stock, String^ Imagen);
 			List<String^>^ obtenerProductos();
 			Producto^ buscarProductoxNombre(String^ Nombre);
+			int obtenerCantidadComidas();
+			List<String^>^ obtenerComidas();
+			int obtenerCantidadBebidas();
+			List<String^>^ obtenerBebidas();
 
 			/*Base de Datos*/
 			void abrirConexionBD();

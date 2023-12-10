@@ -52,6 +52,8 @@ namespace SistemaComidasView {
 	private: System::Windows::Forms::TextBox^ textBox3;
 	private: System::Windows::Forms::TextBox^ textBox2;
 	private: System::Windows::Forms::ComboBox^ comboBox2Tipo;
+	private: System::Windows::Forms::TextBox^ textBox1;
+	private: System::Windows::Forms::Label^ label1;
 
 
 	protected:
@@ -82,11 +84,15 @@ namespace SistemaComidasView {
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
+			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->groupBox1->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// groupBox1
 			// 
+			this->groupBox1->Controls->Add(this->textBox1);
+			this->groupBox1->Controls->Add(this->label1);
 			this->groupBox1->Controls->Add(this->comboBox2Tipo);
 			this->groupBox1->Controls->Add(this->textBox5);
 			this->groupBox1->Controls->Add(this->textBox4);
@@ -101,7 +107,7 @@ namespace SistemaComidasView {
 			this->groupBox1->Controls->Add(this->label2);
 			this->groupBox1->Location = System::Drawing::Point(36, 31);
 			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Size = System::Drawing::Size(460, 341);
+			this->groupBox1->Size = System::Drawing::Size(460, 409);
 			this->groupBox1->TabIndex = 0;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Datos del producto";
@@ -148,7 +154,7 @@ namespace SistemaComidasView {
 			// 
 			// button2
 			// 
-			this->button2->Location = System::Drawing::Point(285, 289);
+			this->button2->Location = System::Drawing::Point(287, 351);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(75, 23);
 			this->button2->TabIndex = 7;
@@ -158,7 +164,7 @@ namespace SistemaComidasView {
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(83, 289);
+			this->button1->Location = System::Drawing::Point(85, 351);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(75, 23);
 			this->button1->TabIndex = 6;
@@ -211,11 +217,27 @@ namespace SistemaComidasView {
 			this->label2->TabIndex = 1;
 			this->label2->Text = L"Nombre: ";
 			// 
+			// textBox1
+			// 
+			this->textBox1->Location = System::Drawing::Point(242, 292);
+			this->textBox1->Name = L"textBox1";
+			this->textBox1->Size = System::Drawing::Size(161, 22);
+			this->textBox1->TabIndex = 16;
+			// 
+			// label1
+			// 
+			this->label1->AutoSize = true;
+			this->label1->Location = System::Drawing::Point(49, 295);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(85, 16);
+			this->label1->TabIndex = 15;
+			this->label1->Text = L"URL Imagen:";
+			// 
 			// frmNuevoProducto
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(534, 409);
+			this->ClientSize = System::Drawing::Size(534, 467);
 			this->Controls->Add(this->groupBox1);
 			this->Name = L"frmNuevoProducto";
 			this->Text = L" ";
@@ -240,9 +262,10 @@ namespace SistemaComidasView {
 		double Precio = Convert::ToDouble(this->textBox2->Text);
 		String^ Tipo = this-> comboBox2Tipo ->Text;
 		int Stock = Convert::ToInt32(this->textBox3->Text);
+		String^ Imagen = this->textBox1->Text;
 		/*Producto^ objProducto = gcnew Producto(codigo, Nombre, Descripcion, Precio, Tipo, Stock);*/
 		ProductoController^ objProductoController = gcnew ProductoController();
-		objProductoController->agregarProducto(Nombre, Descripcion, Precio, Tipo, Stock);
+		objProductoController->agregarProducto(Nombre, Descripcion, Precio, Tipo, Stock, Imagen);
 		MessageBox::Show("El producto se ha agregado con éxito");
 		this->Close();
 	}

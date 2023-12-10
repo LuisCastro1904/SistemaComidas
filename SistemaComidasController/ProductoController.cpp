@@ -48,9 +48,10 @@ List<Producto^>^ ProductoController::BuscarProducto(String^ Tipo) {
 		String^ Nombre = safe_cast<String^>(objData[1]);
 		String^ Descripcion = safe_cast<String^>(objData[2]);
 		double Precio = safe_cast<double>(objData[3]);
-		String^ tipo = safe_cast<String^>(objData[4]);
-		int stock = safe_cast<int>(objData[5]);
-		Producto^ objProducto = gcnew Producto(codigo, Nombre, Descripcion, Precio, tipo,stock);
+		String^ Tipo = safe_cast<String^>(objData[4]);
+		int Stock = safe_cast<int>(objData[5]);
+		String^ Imagen = safe_cast<String^>(objData[6]);
+		Producto^ objProducto = gcnew Producto(codigo, Nombre, Descripcion, Precio, Tipo, Stock, Imagen);
 		listaProductos->Add(objProducto);
 	}
 	cerrarConexionBD();
@@ -96,9 +97,10 @@ List<Producto^>^ ProductoController::buscarAll() {
 		String^ Nombre = safe_cast<String^>(objData[1]);
 		String^ Descripcion = safe_cast<String^>(objData[2]);
 		double Precio = safe_cast<double>(objData[3]);
-		String^ tipo = safe_cast<String^>(objData[4]);
-		int stock = safe_cast<int>(objData[5]);
-		Producto^ objProducto = gcnew Producto(codigo, Nombre, Descripcion, Precio, tipo, stock);
+		String^ Tipo = safe_cast<String^>(objData[4]);
+		int Stock = safe_cast<int>(objData[5]);
+		String^ Imagen = safe_cast<String^>(objData[6]);
+		Producto^ objProducto = gcnew Producto(codigo, Nombre, Descripcion, Precio, Tipo, Stock, Imagen);
 		listaProductos->Add(objProducto);
 	}
 	cerrarConexionBD();
@@ -125,10 +127,10 @@ void ProductoController::eliminarProductoFisico(int codigo) {
 	cerrarConexionBD();
 }
 
-void ProductoController::agregarProducto(String^ Nombre, String^ Descripcion, double Precio, String^ Tipo, int Stock) {
+void ProductoController::agregarProducto(String^ Nombre, String^ Descripcion, double Precio, String^ Tipo, int Stock, String^ Imagen) {
 	abrirConexionBD();
 	SqlCommand^ objSentencia = gcnew SqlCommand();
-	objSentencia->CommandText = "insert into SC_Producto(Nombre,Descripcion,Precio,tipo,stock) values ('" + Nombre + "','" + Descripcion + "','" + Precio + "','" + Tipo + "','" + Stock + "')";
+	objSentencia->CommandText = "insert into SC_Producto(Nombre,Descripcion,Precio,Tipo,Stock,Imagen) values ('" + Nombre + "','" + Descripcion + "','" + Precio + "','" + Tipo + "','" + Stock + "','" + Imagen + "')";
 	objSentencia->Connection = this->objConexion;
 	objSentencia->ExecuteNonQuery();
 	cerrarConexionBD();
@@ -153,14 +155,15 @@ Producto^ ProductoController::buscarProductoporCodigo(int codigo) {
 		String^ Descripcion = safe_cast<String^>(objData[2]);
 		double Precio = safe_cast<double>(objData[3]);
 		String^ Tipo = safe_cast<String^>(objData[4]);
-		int stock = safe_cast<int>(objData[5]);
-		objProducto = gcnew Producto(codigo, Nombre, Descripcion, Precio, Tipo, stock);
+		int Stock = safe_cast<int>(objData[5]);
+		String^ Imagen = safe_cast<String^>(objData[6]);
+		objProducto = gcnew Producto(codigo, Nombre, Descripcion, Precio, Tipo, Stock, Imagen);
 	}
 	cerrarConexionBD();
 	return objProducto;
 }
 
-void ProductoController::actualizarProducto(int codigo, String^ Nombre, String^ Descripcion, double Precio, String^ Tipo, int Stock) {
+void ProductoController::actualizarProducto(int codigo, String^ Nombre, String^ Descripcion, double Precio, String^ Tipo, int Stock, String^ Imagen) {
 	//List<Producto^>^ listaProductos = buscarAll();
 	//for (int i = 0; i < listaProductos->Count; i++) {
 	//	if (listaProductos[i]->getCodigo() == objProducto->getCodigo()) {
@@ -175,7 +178,7 @@ void ProductoController::actualizarProducto(int codigo, String^ Nombre, String^ 
 	//escribirArchivo(listaProductos);
 	abrirConexionBD();
 	SqlCommand^ objSentencia = gcnew SqlCommand();
-	objSentencia->CommandText = "update SC_Producto set Nombre='" + Nombre + "', Descripcion='" + Descripcion + "', Precio='" + Precio + "', tipo='" + Tipo + "', stock='" + Stock  + "' where codigo = " + codigo;
+	objSentencia->CommandText = "update SC_Producto set Nombre='" + Nombre + "', Descripcion='" + Descripcion + "', Precio='" + Precio + "', Tipo='" + Tipo + "', Stock='" + Stock  + "', Imagen='" + Imagen + "' where codigo = " + codigo;
 	objSentencia->Connection = this->objConexion;
 	objSentencia->ExecuteNonQuery();
 	cerrarConexionBD();
@@ -216,4 +219,86 @@ void ProductoController::abrirConexionBD() {
 
 void ProductoController::cerrarConexionBD() {
 	this->objConexion->Close();
+}
+
+int ProductoController::obtenerCantidadComidas() {
+	int cantComidas=0;
+	abrirConexionBD();
+	/*SqlCommand viene a ser el objeto que utilizare para hacer el query o sentencia para la BD*/
+	SqlCommand^ objSentencia = gcnew SqlCommand();
+	/*Aqui estoy indicando que mi sentencia se va a ejecutar en mi conexion de BD*/
+	objSentencia->Connection = this->objConexion;
+	/*Aqui voy a indicar la sentencia que voy a ejecutar*/
+	objSentencia->CommandText = "select * from SC_Producto where tipo = 'Comida'";
+	/*Aqui ejecuto la sentencia en la Base de Datos*/
+	/*Para Select siempre sera ExecuteReader*/
+	/*Para select siempre va a devolver un SqlDataReader*/
+	SqlDataReader^ objData = objSentencia->ExecuteReader();
+	while (objData->Read()) {
+		cantComidas++;
+	}
+	cerrarConexionBD();
+	return cantComidas;
+}
+
+List<String^>^ ProductoController::obtenerComidas() {
+	List<String^>^ listaComidas = gcnew List<String^>();
+	abrirConexionBD();
+	/*SqlCommand viene a ser el objeto que utilizare para hacer el query o sentencia para la BD*/
+	SqlCommand^ objSentencia = gcnew SqlCommand();
+	/*Aqui estoy indicando que mi sentencia se va a ejecutar en mi conexion de BD*/
+	objSentencia->Connection = this->objConexion;
+	/*Aqui voy a indicar la sentencia que voy a ejecutar*/
+	objSentencia->CommandText = "select * from SC_Producto where tipo = 'Comida'";
+	/*Aqui ejecuto la sentencia en la Base de Datos*/
+	/*Para Select siempre sera ExecuteReader*/
+	/*Para select siempre va a devolver un SqlDataReader*/
+	SqlDataReader^ objData = objSentencia->ExecuteReader();
+	while (objData->Read()) {
+		String^ Nombre = safe_cast<String^>(objData[1]);
+		listaComidas->Add(Nombre);
+	}
+	cerrarConexionBD();
+	return listaComidas;
+}
+
+int ProductoController::obtenerCantidadBebidas() {
+	int cantBebidas = 0;
+	abrirConexionBD();
+	/*SqlCommand viene a ser el objeto que utilizare para hacer el query o sentencia para la BD*/
+	SqlCommand^ objSentencia = gcnew SqlCommand();
+	/*Aqui estoy indicando que mi sentencia se va a ejecutar en mi conexion de BD*/
+	objSentencia->Connection = this->objConexion;
+	/*Aqui voy a indicar la sentencia que voy a ejecutar*/
+	objSentencia->CommandText = "select * from SC_Producto where tipo = 'Bebida'";
+	/*Aqui ejecuto la sentencia en la Base de Datos*/
+	/*Para Select siempre sera ExecuteReader*/
+	/*Para select siempre va a devolver un SqlDataReader*/
+	SqlDataReader^ objData = objSentencia->ExecuteReader();
+	while (objData->Read()) {
+		cantBebidas++;
+	}
+	cerrarConexionBD();
+	return cantBebidas;
+}
+
+List<String^>^ ProductoController::obtenerBebidas() {
+	List<String^>^ listaBebidas = gcnew List<String^>();
+	abrirConexionBD();
+	/*SqlCommand viene a ser el objeto que utilizare para hacer el query o sentencia para la BD*/
+	SqlCommand^ objSentencia = gcnew SqlCommand();
+	/*Aqui estoy indicando que mi sentencia se va a ejecutar en mi conexion de BD*/
+	objSentencia->Connection = this->objConexion;
+	/*Aqui voy a indicar la sentencia que voy a ejecutar*/
+	objSentencia->CommandText = "select * from SC_Producto where tipo = 'Bebida'";
+	/*Aqui ejecuto la sentencia en la Base de Datos*/
+	/*Para Select siempre sera ExecuteReader*/
+	/*Para select siempre va a devolver un SqlDataReader*/
+	SqlDataReader^ objData = objSentencia->ExecuteReader();
+	while (objData->Read()) {
+		String^ Nombre = safe_cast<String^>(objData[1]);
+		listaBebidas->Add(Nombre);
+	}
+	cerrarConexionBD();
+	return listaBebidas;
 }

@@ -3,13 +3,14 @@ using namespace SistemaComidasModel;
 Producto::Producto() {
 
 }
-Producto::Producto(int codigo, String^ Nombre, String^ Descripcion, double Precio, String^ Tipo, int Stock) {
+Producto::Producto(int codigo, String^ Nombre, String^ Descripcion, double Precio, String^ Tipo, int Stock, String^ Imagen) {
 	this->codigo = codigo;
 	this->Nombre = Nombre;
 	this->Descripcion = Descripcion;
 	this->Precio = Precio;
 	this->Tipo = Tipo;
 	this->Stock = Stock;
+	this->Imagen = Imagen;
 }
 
 int Producto::getCodigo() {
@@ -47,4 +48,10 @@ int Producto::getStock() {
 }
 void Producto::setStock(int Stock) {
 	this->Stock = Stock;
+}
+String^ Producto::getImagen() {
+	return this->Imagen;
+}
+void Producto::setImagen(String^ Imagen) {
+	this->Imagen = Imagen;
 }
