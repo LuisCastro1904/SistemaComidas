@@ -234,7 +234,7 @@ List<DetallePedido^>^ DetallePedidoController::VerDetallePedido(int codigoPedido
 	/*Aqui estoy indicando que mi sentencia se va a ejecutar en mi conexion de BD*/
 	objSentencia->Connection = this->objConexion;
 	/*Aqui voy a indicar la sentencia que voy a ejecutar*/
-	objSentencia->CommandText = "select * from SC_DetallePedido where codigo=" + codigoPedido;
+	objSentencia->CommandText = "select * from SC_DetallePedido where codigoPedido=" + codigoPedido;
 	/*Aqui ejecuto la sentencia en la Base de Datos*/
 	/*Para Select siempre sera ExecuteReader*/
 	/*Para select siempre va a devolver un SqlDataReader*/
@@ -252,4 +252,45 @@ List<DetallePedido^>^ DetallePedidoController::VerDetallePedido(int codigoPedido
 	}
 	cerrarConexionBD();
 	return listaDetallePedidos;
+}
+
+List<String^>^ DetallePedidoController::buscarDetallesPedidosxFecha(String^ fechaSeleccionada) {
+	List<String^>^ listaDetallePedidos = gcnew List<String^>();
+	abrirConexionBD();
+	/*SqlCommand viene a ser el objeto que utilizare para hacer el query o sentencia para la BD*/
+	SqlCommand^ objSentencia = gcnew SqlCommand();
+	/*Aqui estoy indicando que mi sentencia se va a ejecutar en mi conexion de BD*/
+	objSentencia->Connection = this->objConexion;
+	/*Aqui voy a indicar la sentencia que voy a ejecutar*/
+	objSentencia->CommandText = "select d.NombreProducto, count(*) from SC_Pedido p, SC_DetallePedido d where p.Fecha = '" + fechaSeleccionada + "' and d.codigoPedido = p.codigo group by d.NombreProducto";
+	/*Aqui ejecuto la sentencia en la Base de Datos*/
+	/*Para Select siempre sera ExecuteReader*/
+	/*Para select siempre va a devolver un SqlDataReader*/
+	SqlDataReader^ objData = objSentencia->ExecuteReader();
+	while (objData->Read()) {
+		String^ Nombre = safe_cast<String^>(objData[0]);
+		listaDetallePedidos->Add(Nombre);
+	}
+	cerrarConexionBD();
+	return listaDetallePedidos;
+}
+
+int DetallePedidoController::obtenerCantidadProductos(String^ Producto, String^ fechaSeleccionada) {
+	int Cantidad;
+	abrirConexionBD();
+	/*SqlCommand viene a ser el objeto que utilizare para hacer el query o sentencia para la BD*/
+	SqlCommand^ objSentencia = gcnew SqlCommand();
+	/*Aqui estoy indicando que mi sentencia se va a ejecutar en mi conexion de BD*/
+	objSentencia->Connection = this->objConexion;
+	/*Aqui voy a indicar la sentencia que voy a ejecutar*/
+	objSentencia->CommandText = "select d.NombreProducto, count(*) from SC_Pedido p, SC_DetallePedido d where p.Fecha = '" + fechaSeleccionada + "' and d.codigoPedido = p.codigo group by d.NombreProducto";
+	/*Aqui ejecuto la sentencia en la Base de Datos*/
+	/*Para Select siempre sera ExecuteReader*/
+	/*Para select siempre va a devolver un SqlDataReader*/
+	SqlDataReader^ objData = objSentencia->ExecuteReader();
+	while (objData->Read()) {
+		Cantidad = safe_cast<int>(objData[1]);
+	}
+	cerrarConexionBD();
+	return Cantidad;
 }

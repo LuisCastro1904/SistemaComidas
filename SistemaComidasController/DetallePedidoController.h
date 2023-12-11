@@ -25,5 +25,7 @@ namespace SistemaComidasController {
 		List<DetallePedido^>^ buscarDetallesPedidosBebidasSinPedido();
 		void eliminarDetallesPedidoSinPedido();
 		List<DetallePedido^>^ VerDetallePedido(int codigoPedido);
+		List<String^>^ buscarDetallesPedidosxFecha(String^ fechaSeleccionada);
+		int obtenerCantidadProductos(String^ Producto, String^ fechaSeleccionada);
 	};
 }

@@ -18,5 +18,6 @@ namespace SistemaComidasController {
 		void agregarPedido(bool EstadoPedido, double TiempoEstimado, String^ Fecha, double PrecioTotal, String^ Nombres, String^ Apellidos, String^ DNI, String^ NumeroTarjeta, int CodigoRecibido);
 		int obtenerCodigoUltimoPedido();
 		int obtenerCodigoRecibidoUltimoPedido(int codigoUltimoPedido);
+		List<String^>^ buscarCodigosxFecha(String^ fechaActual);
 	};
 }

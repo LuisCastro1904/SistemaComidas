@@ -47,11 +47,13 @@ namespace SistemaComidasView {
 		}
 	private: System::Windows::Forms::DataGridView^ dataGridView1;
 	protected:
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column1;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column2;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column3;
+
+
+
 	private: System::Windows::Forms::Button^ button1;
 	private: int codigopedido;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column1;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column2;
 
 	private:
 		/// <summary>
@@ -67,57 +69,59 @@ namespace SistemaComidasView {
 		void InitializeComponent(void)
 		{
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
+			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->button1 = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// dataGridView1
 			// 
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(3) {
+			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(2) {
 				this->Column1,
-					this->Column2, this->Column3
+					this->Column2
 			});
-			this->dataGridView1->Location = System::Drawing::Point(18, 20);
+			this->dataGridView1->Location = System::Drawing::Point(24, 25);
+			this->dataGridView1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->dataGridView1->Name = L"dataGridView1";
-			this->dataGridView1->Size = System::Drawing::Size(387, 251);
+			this->dataGridView1->RowHeadersWidth = 51;
+			this->dataGridView1->Size = System::Drawing::Size(397, 259);
 			this->dataGridView1->TabIndex = 0;
+			// 
+			// button1
+			// 
+			this->button1->Location = System::Drawing::Point(124, 314);
+			this->button1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(195, 38);
+			this->button1->TabIndex = 1;
+			this->button1->Text = L"OK";
+			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &CocineroDetallePedido::button1_Click);
 			// 
 			// Column1
 			// 
 			this->Column1->HeaderText = L"NombreProducto";
+			this->Column1->MinimumWidth = 6;
 			this->Column1->Name = L"Column1";
+			this->Column1->Width = 125;
 			// 
 			// Column2
 			// 
 			this->Column2->HeaderText = L"Cantidad";
+			this->Column2->MinimumWidth = 6;
 			this->Column2->Name = L"Column2";
-			// 
-			// Column3
-			// 
-			this->Column3->HeaderText = L"CodigoPedido";
-			this->Column3->Name = L"Column3";
-			// 
-			// button1
-			// 
-			this->button1->Location = System::Drawing::Point(142, 293);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(146, 31);
-			this->button1->TabIndex = 1;
-			this->button1->Text = L"ok";
-			this->button1->UseVisualStyleBackColor = true;
-			this->button1->Click += gcnew System::EventHandler(this, &CocineroDetallePedido::button1_Click);
+			this->Column2->Width = 125;
 			// 
 			// CocineroDetallePedido
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(426, 336);
+			this->ClientSize = System::Drawing::Size(472, 387);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->dataGridView1);
+			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->Name = L"CocineroDetallePedido";
 			this->Text = L"CocineroDetallePedido";
 			this->Load += gcnew System::EventHandler(this, &CocineroDetallePedido::CocineroDetallePedido_Load);
@@ -142,7 +146,6 @@ namespace SistemaComidasView {
 			array<String^>^ filaGrilla = gcnew array<String^>(3);
 			filaGrilla[0] = objDetalle->getNombreProducto();
 			filaGrilla[1] = Convert::ToString(objDetalle->getCantidad());
-			filaGrilla[2] = Convert::ToString(objDetalle->getCodigoPedido());
 			this->dataGridView1->Rows->Add(filaGrilla);
 		}
 }

@@ -71,3 +71,24 @@ int PedidoController::obtenerCodigoRecibidoUltimoPedido(int codigoUltimoPedido) 
 	cerrarConexionBD();
 	return CodigoRecibidoUltimoPedido;
 }
+
+List<String^>^ PedidoController::buscarCodigosxFecha(String^ fechaActual) {
+	List<String^>^ listaCodigos = gcnew List<String^>();
+	abrirConexionBD();
+	/*SqlCommand viene a ser el objeto que utilizare para hacer el query o sentencia para la BD*/
+	SqlCommand^ objSentencia = gcnew SqlCommand();
+	/*Aqui estoy indicando que mi sentencia se va a ejecutar en mi conexion de BD*/
+	objSentencia->Connection = this->objConexion;
+	/*Aqui voy a indicar la sentencia que voy a ejecutar*/
+	objSentencia->CommandText = "select * from SC_Pedido where Fecha = '" + fechaActual + "'";
+	/*Aqui ejecuto la sentencia en la Base de Datos*/
+	/*Para Select siempre sera ExecuteReader*/
+	/*Para select siempre va a devolver un SqlDataReader*/
+	SqlDataReader^ objData = objSentencia->ExecuteReader();
+	while (objData->Read()) {
+		String^ codigoRecibido = Convert::ToString(safe_cast<int>(objData[9]));
+		listaCodigos->Add(codigoRecibido);
+	}
+	cerrarConexionBD();
+	return listaCodigos;
+}

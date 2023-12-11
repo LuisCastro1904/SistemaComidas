@@ -10,7 +10,7 @@ ArduinoController::ArduinoController() {
 
 /*Son los metodos propios del manejo de BD*/
 void ArduinoController::Ejecutar() {
-	SerialPort port("COM5", 9600);
+	SerialPort port("COM3", 9600);
 	port.Open();
 	port.Write("EJECUTAR");
 }

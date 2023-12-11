@@ -43,12 +43,24 @@ namespace SistemaComidasView {
 	private: System::Windows::Forms::Button^ button1;
 	private: System::Windows::Forms::GroupBox^ groupBox1;
 
+
+
+
+
+	private: System::Windows::Forms::Button^ button2;
+	private: System::Windows::Forms::Button^ button3;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column1;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column2;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column3;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column4;
-	private: System::Windows::Forms::Button^ button2;
-	private: System::Windows::Forms::Button^ button3;
+
+
+
+
+
+
+
+
 	protected:
 
 	protected:
@@ -78,14 +90,14 @@ namespace SistemaComidasView {
 		void InitializeComponent(void)
 		{
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
-			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column4 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->button3 = (gcnew System::Windows::Forms::Button());
+			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column4 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -96,37 +108,19 @@ namespace SistemaComidasView {
 				this->Column1,
 					this->Column2, this->Column3, this->Column4
 			});
-			this->dataGridView1->Location = System::Drawing::Point(39, 88);
+			this->dataGridView1->Location = System::Drawing::Point(52, 108);
+			this->dataGridView1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->RowHeadersWidth = 51;
-			this->dataGridView1->Size = System::Drawing::Size(537, 146);
+			this->dataGridView1->Size = System::Drawing::Size(716, 180);
 			this->dataGridView1->TabIndex = 8;
-			// 
-			// Column1
-			// 
-			this->Column1->HeaderText = L"Codigo";
-			this->Column1->Name = L"Column1";
-			// 
-			// Column2
-			// 
-			this->Column2->HeaderText = L"EstadoPedido";
-			this->Column2->Name = L"Column2";
-			// 
-			// Column3
-			// 
-			this->Column3->HeaderText = L"Nombre";
-			this->Column3->Name = L"Column3";
-			// 
-			// Column4
-			// 
-			this->Column4->HeaderText = L"CodigoRecojo";
-			this->Column4->Name = L"Column4";
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(115, 257);
+			this->button1->Location = System::Drawing::Point(153, 316);
+			this->button1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(94, 46);
+			this->button1->Size = System::Drawing::Size(125, 57);
 			this->button1->TabIndex = 9;
 			this->button1->Text = L" Ver Detalle Pedido";
 			this->button1->UseVisualStyleBackColor = true;
@@ -136,9 +130,11 @@ namespace SistemaComidasView {
 			// 
 			this->groupBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 20.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->groupBox1->Location = System::Drawing::Point(39, 21);
+			this->groupBox1->Location = System::Drawing::Point(52, 26);
+			this->groupBox1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Size = System::Drawing::Size(143, 40);
+			this->groupBox1->Padding = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->groupBox1->Size = System::Drawing::Size(191, 49);
 			this->groupBox1->TabIndex = 10;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Pedidos:";
@@ -146,9 +142,10 @@ namespace SistemaComidasView {
 			// 
 			// button2
 			// 
-			this->button2->Location = System::Drawing::Point(447, 269);
+			this->button2->Location = System::Drawing::Point(596, 331);
+			this->button2->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(75, 23);
+			this->button2->Size = System::Drawing::Size(100, 28);
 			this->button2->TabIndex = 12;
 			this->button2->Text = L"Cerrar";
 			this->button2->UseVisualStyleBackColor = true;
@@ -156,26 +153,55 @@ namespace SistemaComidasView {
 			// 
 			// button3
 			// 
-			this->button3->Location = System::Drawing::Point(279, 265);
+			this->button3->Location = System::Drawing::Point(372, 326);
+			this->button3->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(83, 30);
+			this->button3->Size = System::Drawing::Size(111, 37);
 			this->button3->TabIndex = 14;
 			this->button3->Text = L"Pedido Listo";
 			this->button3->UseVisualStyleBackColor = true;
 			this->button3->Click += gcnew System::EventHandler(this, &VistaCocinero::button3_Click);
 			// 
+			// Column1
+			// 
+			this->Column1->HeaderText = L"Codigo";
+			this->Column1->MinimumWidth = 6;
+			this->Column1->Name = L"Column1";
+			this->Column1->Width = 125;
+			// 
+			// Column2
+			// 
+			this->Column2->HeaderText = L"Estado del pedido";
+			this->Column2->MinimumWidth = 6;
+			this->Column2->Name = L"Column2";
+			this->Column2->Width = 125;
+			// 
+			// Column3
+			// 
+			this->Column3->HeaderText = L"Nombre del cliente";
+			this->Column3->MinimumWidth = 6;
+			this->Column3->Name = L"Column3";
+			this->Column3->Width = 125;
+			// 
+			// Column4
+			// 
+			this->Column4->HeaderText = L"Tiempo de preparación";
+			this->Column4->MinimumWidth = 6;
+			this->Column4->Name = L"Column4";
+			this->Column4->Width = 125;
+			// 
 			// VistaCocinero
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(610, 352);
+			this->ClientSize = System::Drawing::Size(813, 433);
 			this->Controls->Add(this->button3);
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->groupBox1);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->dataGridView1);
 			this->IsMdiContainer = true;
-			this->Margin = System::Windows::Forms::Padding(2);
+			this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->Name = L"VistaCocinero";
 			this->Text = L"Cocinero";
 			this->Load += gcnew System::EventHandler(this, &VistaCocinero::VistaCocinero_Load);
@@ -216,9 +242,11 @@ private: void mostrarGrilla(List<Pedido^>^ listaPedidos) {
 		/*Esta filaGrilla representa una fila del data grid de la pantalla*/
 		array<String^>^ filaGrilla = gcnew array<String^>(4);
 		filaGrilla[0] = Convert::ToString(objPedido->getCodigo());
-		filaGrilla[1] = Convert::ToString(objPedido->getEstadoPedido());
+		if (objPedido->getEstadoPedido() == 0) {
+			filaGrilla[1] = "En proceso";
+		}
 		filaGrilla[2] = objPedido->getNombres();
-		filaGrilla[3] = Convert::ToString(objPedido->getCodigoRecibido());
+		filaGrilla[3] = Convert::ToString(objPedido->getTiempoEstimado());
 		this->dataGridView1->Rows->Add(filaGrilla);
 	}
 }
