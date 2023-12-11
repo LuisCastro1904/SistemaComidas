@@ -114,6 +114,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CocineroDetallePedido.cpp" />
     <ClCompile Include="frmEditarProducto.cpp" />
     <ClCompile Include="frmEditarUsuario.cpp" />
     <ClCompile Include="frmMantenimientoLogin.cpp" />
@@ -146,6 +147,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CocineroDetallePedido.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="frmEditarProducto.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -211,6 +215,9 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="CocineroDetallePedido.resx">
+      <DependentUpon>CocineroDetallePedido.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmEditarProducto.resx">
       <DependentUpon>frmEditarProducto.h</DependentUpon>
     </EmbeddedResource>

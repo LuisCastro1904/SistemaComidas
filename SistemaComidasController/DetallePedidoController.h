@@ -24,5 +24,6 @@ namespace SistemaComidasController {
 		List<DetallePedido^>^ buscarDetallesPedidosComidasSinPedido();
 		List<DetallePedido^>^ buscarDetallesPedidosBebidasSinPedido();
 		void eliminarDetallesPedidoSinPedido();
+		List<DetallePedido^>^ VerDetallePedido(int codigoPedido);
 	};
 }

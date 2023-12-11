@@ -118,6 +118,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ArduinoController.h" />
+    <ClInclude Include="CocineroController.h" />
     <ClInclude Include="DetallePedidoController.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="PedidoController.h" />
@@ -126,6 +127,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ArduinoController.cpp" />
+    <ClCompile Include="CocineroController.cpp" />
     <ClCompile Include="DetallePedidoController.cpp" />
     <ClCompile Include="pch.cpp" />
     <ClCompile Include="PedidoController.cpp" />
