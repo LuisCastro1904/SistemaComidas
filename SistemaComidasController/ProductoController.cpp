@@ -306,7 +306,7 @@ List<String^>^ ProductoController::obtenerBebidas() {
 void ProductoController::actualizarStock(String^ nombreProducto, int nuevoStock) {
 	abrirConexionBD();
 	SqlCommand^ objSentencia = gcnew SqlCommand();
-	objSentencia->CommandText = "update SC_Producto set Stock =" + nuevoStock +"where Nombre = " + nombreProducto;
+	objSentencia->CommandText = "update SC_Producto set Stock ="+ nuevoStock +" where Nombre ='"+ nombreProducto +"'";
 	objSentencia->Connection = this->objConexion;
 	objSentencia->ExecuteNonQuery();
 	cerrarConexionBD();
