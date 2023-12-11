@@ -294,3 +294,45 @@ int DetallePedidoController::obtenerCantidadProductos(String^ Producto, String^ 
 	cerrarConexionBD();
 	return Cantidad;
 }
+
+List<String^>^ DetallePedidoController::obtenerProductosRetirados(int codigoUltimoPedido) {
+	List<String^>^ listaNombresProductos = gcnew List<String^>();
+	abrirConexionBD();
+	/*SqlCommand viene a ser el objeto que utilizare para hacer el query o sentencia para la BD*/
+	SqlCommand^ objSentencia = gcnew SqlCommand();
+	/*Aqui estoy indicando que mi sentencia se va a ejecutar en mi conexion de BD*/
+	objSentencia->Connection = this->objConexion;
+	/*Aqui voy a indicar la sentencia que voy a ejecutar*/
+	objSentencia->CommandText = "select * from SC_DetallePedido where codigoPedido =" + codigoUltimoPedido;
+	/*Aqui ejecuto la sentencia en la Base de Datos*/
+	/*Para Select siempre sera ExecuteReader*/
+	/*Para select siempre va a devolver un SqlDataReader*/
+	SqlDataReader^ objData = objSentencia->ExecuteReader();
+	while (objData->Read()) {
+		String^ nombreProducto = safe_cast<String^>(objData[2]);
+		listaNombresProductos->Add(nombreProducto);
+	}
+	cerrarConexionBD();
+	return listaNombresProductos;
+}
+
+List<int>^ DetallePedidoController::obtenerCantidadesRetiradas(int codigoUltimoPedido) {
+	List<int>^ listaCantidades = gcnew List<int>();
+	abrirConexionBD();
+	/*SqlCommand viene a ser el objeto que utilizare para hacer el query o sentencia para la BD*/
+	SqlCommand^ objSentencia = gcnew SqlCommand();
+	/*Aqui estoy indicando que mi sentencia se va a ejecutar en mi conexion de BD*/
+	objSentencia->Connection = this->objConexion;
+	/*Aqui voy a indicar la sentencia que voy a ejecutar*/
+	objSentencia->CommandText = "select * from SC_DetallePedido where codigoPedido =" + codigoUltimoPedido;
+	/*Aqui ejecuto la sentencia en la Base de Datos*/
+	/*Para Select siempre sera ExecuteReader*/
+	/*Para select siempre va a devolver un SqlDataReader*/
+	SqlDataReader^ objData = objSentencia->ExecuteReader();
+	while (objData->Read()) {
+		int cantidad = safe_cast<int>(objData[1]);
+		listaCantidades->Add(cantidad);
+	}
+	cerrarConexionBD();
+	return listaCantidades;
+}

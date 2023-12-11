@@ -27,5 +27,7 @@ namespace SistemaComidasController {
 		List<DetallePedido^>^ VerDetallePedido(int codigoPedido);
 		List<String^>^ buscarDetallesPedidosxFecha(String^ fechaSeleccionada);
 		int obtenerCantidadProductos(String^ Producto, String^ fechaSeleccionada);
+		List<String^>^ obtenerProductosRetirados(int codigoUltimoPedido);
+		List<int>^ obtenerCantidadesRetiradas(int codigoUltimoPedido);
 	};
 }

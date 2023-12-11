@@ -433,14 +433,19 @@ private: System::Void button1_Click_1(System::Object^ sender, System::EventArgs^
 	ProductoController^ objProductoController = gcnew ProductoController();
 	Producto^ objProducto = objProductoController->buscarProductoxNombre(ComidaSeleccionada);
 	int Cantidad = Convert::ToInt32(this->numericUpDown1->Text);
-	String^ NombreProducto = ObtenerRadioButtonSeleccionado(sender, e);
-	Double PrecioUnitario = objProducto->getPrecio();
-	Double Importe = PrecioUnitario * Cantidad;
-	DetallePedidoController^ objDetallePedidoController = gcnew DetallePedidoController(); 
-	objDetallePedidoController->agregarDetallePedido(Cantidad, NombreProducto, PrecioUnitario, Importe);
-	MessageBox::Show("El producto se ha agregado con éxito");
-	List<DetallePedido^>^ listaDetallesPedidos = objDetallePedidoController->buscarDetallesPedidosComidasSinPedido();
-	mostrarGrilla(listaDetallesPedidos);
+	if (Cantidad > objProducto->getStock()) {
+		MessageBox::Show("Se ha excedido el límite de stock del producto. Quedan " + objProducto->getStock() + " unidades");
+	}
+	else {
+		String^ NombreProducto = objProducto->getNombre();
+		Double PrecioUnitario = objProducto->getPrecio();
+		Double Importe = PrecioUnitario * Cantidad;
+		DetallePedidoController^ objDetallePedidoController = gcnew DetallePedidoController();
+		objDetallePedidoController->agregarDetallePedido(Cantidad, NombreProducto, PrecioUnitario, Importe);
+		MessageBox::Show("El producto se ha agregado con éxito");
+		List<DetallePedido^>^ listaDetallesPedidos = objDetallePedidoController->buscarDetallesPedidosComidasSinPedido();
+		mostrarGrilla(listaDetallesPedidos);
+	}
 }
 
 private: System::String^ ObtenerRadioButtonSeleccionado(System::Object^ sender, System::EventArgs^ e) {

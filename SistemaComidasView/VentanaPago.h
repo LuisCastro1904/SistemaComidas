@@ -291,6 +291,14 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	objPedidoController->agregarPedido(EstadoPedido, TiempoEstimado, Fecha, PrecioTotal, Nombres, Apellidos, DNI, NumeroTarjeta, CodigoRecibido, EstadoRecojo);
 	int codigoUltimoPedido = objPedidoController->obtenerCodigoUltimoPedido();
 	objDetallePedidoController->actualizarCodigoPedido(codigoUltimoPedido);
+	List<String^>^ listaNombres = objDetallePedidoController->obtenerProductosRetirados(codigoUltimoPedido);
+	List<int>^ listaCantidades = objDetallePedidoController->obtenerCantidadesRetiradas(codigoUltimoPedido);
+	for (int i = 0; i < listaNombres->Count; i++) {
+		ProductoController^ objProductoController = gcnew ProductoController();
+		Producto^ objProducto = objProductoController->buscarProductoxNombre(listaNombres[i]);
+		int nuevoStock = objProducto->getStock() - listaCantidades[i];
+		objProductoController->actualizarStock(listaNombres[i], nuevoStock);
+	}
 	VentanaFin ^ ventanaFIN = gcnew VentanaFin;
 	//ventanaMantProyectos1 -> MdiParent = this;
 	ventanaFIN ->ShowDialog();

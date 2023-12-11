@@ -26,6 +26,7 @@ namespace SistemaComidasController {
 			List<String^>^ obtenerComidas();
 			int obtenerCantidadBebidas();
 			List<String^>^ obtenerBebidas();
+			void actualizarStock(String^ nombreProducto, int nuevoStock);
 
 			/*Base de Datos*/
 			void abrirConexionBD();

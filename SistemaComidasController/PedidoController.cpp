@@ -80,7 +80,7 @@ List<String^>^ PedidoController::buscarCodigosxFecha(String^ fechaActual) {
 	/*Aqui estoy indicando que mi sentencia se va a ejecutar en mi conexion de BD*/
 	objSentencia->Connection = this->objConexion;
 	/*Aqui voy a indicar la sentencia que voy a ejecutar*/
-	objSentencia->CommandText = "select * from SC_Pedido where Fecha = '" + fechaActual + "' and EstadoRecojo = 0";
+	objSentencia->CommandText = "select * from SC_Pedido where Fecha = '" + fechaActual + "' and EstadoRecojo = 0 and EstadoPedido = 1";
 	/*Aqui ejecuto la sentencia en la Base de Datos*/
 	/*Para Select siempre sera ExecuteReader*/
 	/*Para select siempre va a devolver un SqlDataReader*/
