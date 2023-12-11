@@ -181,3 +181,23 @@ double PedidoController::obtenerTiempoUltimoPedido() {
 	cerrarConexionBD();
 	return tiempoPendiente;
 }
+
+double PedidoController::obtenerTiempoxCodigo(int codigoUltimoPedido) {
+	double tiempo;
+	abrirConexionBD();
+	/*SqlCommand viene a ser el objeto que utilizare para hacer el query o sentencia para la BD*/
+	SqlCommand^ objSentencia = gcnew SqlCommand();
+	/*Aqui estoy indicando que mi sentencia se va a ejecutar en mi conexion de BD*/
+	objSentencia->Connection = this->objConexion;
+	/*Aqui voy a indicar la sentencia que voy a ejecutar*/
+	objSentencia->CommandText = "select * from SC_Pedido where codigo ='" + codigoUltimoPedido + "'";
+	/*Aqui ejecuto la sentencia en la Base de Datos*/
+	/*Para Select siempre sera ExecuteReader*/
+	/*Para select siempre va a devolver un SqlDataReader*/
+	SqlDataReader^ objData = objSentencia->ExecuteReader();
+	while (objData->Read()) {
+		tiempo = safe_cast<double>(objData[2]);
+	}
+	cerrarConexionBD();
+	return tiempo;
+}

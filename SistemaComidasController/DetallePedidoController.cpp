@@ -89,19 +89,37 @@ void DetallePedidoController::agregarDetallePedido(int Cantidad, String^ NombreP
 void DetallePedidoController::eliminarDetallePedidoFisico(int codigo) {
 	abrirConexionBD();
 	SqlCommand^ objSentencia = gcnew SqlCommand();
-	objSentencia->CommandText = "delete SC_DetallePedido where codigo=" + codigo;
+	objSentencia->CommandText = "delete SC_DetallePedido where Codigo=" + codigo +" and codigoPedido=0";
 	objSentencia->Connection = this->objConexion;
 	objSentencia->ExecuteNonQuery();
 	cerrarConexionBD();
 }
 
 DetallePedido^ DetallePedidoController::buscarDetallePedidoxNombreProducto(String^ NombreProducto) {
-	List<DetallePedido^>^ listaDetallesPedidos = buscarAll();
-	for (int i = 0; i < listaDetallesPedidos->Count; i++) {
-		if (listaDetallesPedidos[i]->getNombreProducto() == NombreProducto) {
-			return listaDetallesPedidos[i];
-		}
+	DetallePedido^ objDetallePedido = gcnew DetallePedido();
+	abrirConexionBD();
+	/*SqlCommand viene a ser el objeto que utilizare para hacer el query o sentencia para la BD*/
+	SqlCommand^ objSentencia = gcnew SqlCommand();
+	/*Aqui estoy indicando que mi sentencia se va a ejecutar en mi conexion de BD*/
+	objSentencia->Connection = this->objConexion;
+	/*Aqui voy a indicar la sentencia que voy a ejecutar*/
+	objSentencia->CommandText = "select * from SC_DetallePedido where NombreProducto='" + NombreProducto + "' and codigoPedido=0";
+	/*Aqui ejecuto la sentencia en la Base de Datos*/
+	/*Para Select siempre sera ExecuteReader*/
+	/*Para select siempre va a devolver un SqlDataReader*/
+	SqlDataReader^ objData = objSentencia->ExecuteReader();
+	while (objData->Read()) {
+		int Codigo = safe_cast<int>(objData[0]);
+		int Cantidad = safe_cast<int>(objData[1]);
+		String^ NombreProducto = safe_cast<String^>(objData[2]);
+		double PrecioUnitario = safe_cast<double>(objData[3]);
+		double Importe = safe_cast<double>(objData[4]);
+		int CodigoPedido = safe_cast<int>(objData[5]);
+		
+		objDetallePedido = gcnew DetallePedido(Codigo, Cantidad, NombreProducto, PrecioUnitario, Importe, CodigoPedido);
 	}
+	cerrarConexionBD();
+	return objDetallePedido;
 }
 
 void DetallePedidoController::actualizarDetallePedido(int Cantidad, int codigoEditar, int nuevoImporte) {
