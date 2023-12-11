@@ -371,7 +371,10 @@ private: System::Void VistaBebidas_Load(System::Object^ sender, System::EventArg
 	{
 		RadioButton^ radioButton = gcnew RadioButton();
 		radioButton->Name = "radioButton" + Convert::ToString(i);
-		radioButton->Text = nombresRadioButtons[i];
+		ProductoController^ objProductoController = gcnew ProductoController();
+		Producto^ objProducto = objProductoController->buscarProductoxNombre(nombresRadioButtons[i]);
+		String^ Precio = Convert::ToString(objProducto->getPrecio());
+		radioButton->Text = nombresRadioButtons[i] + " (S/ " + Precio + ")";
 		//radioButton->BackColor = Color::DarkGray;
 		radioButton->Width = 120;
 		radioButton->Height = 60;
@@ -381,7 +384,6 @@ private: System::Void VistaBebidas_Load(System::Object^ sender, System::EventArg
 		radioButton->Padding = System::Windows::Forms::Padding(5);
 
 		// URL de la imagen de fondo
-		Producto^ objProducto = objProductoController->buscarProductoxNombre(nombresRadioButtons[i]);
 		String^ urlImagenFondo = objProducto->getImagen();
 		// Cargar la imagen desde la URL
 		Image^ imagenFondo = Image::FromStream(System::Net::WebRequest::Create(urlImagenFondo)->GetResponse()->GetResponseStream());

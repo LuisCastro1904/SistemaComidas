@@ -256,10 +256,10 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 		Producto^ objProducto = objProductoController->buscarProductoxNombre(NombreProducto);
 		String^ TipoProducto = objProducto->getTipo();
 		if (TipoProducto == "Comida") {
-			cantComidas++;
+			cantComidas = cantComidas + listaDetallesPedido[i]->getCantidad();
 		}
 		else {
-			cantBebidas++;
+			cantBebidas = cantBebidas + listaDetallesPedido[i]->getCantidad();
 		}
 	}
 	if (cantBebidas > 0) {
@@ -268,7 +268,7 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	else {
 		TiempoEstimado = 0;
 	}
-	TiempoEstimado = TiempoEstimado + (cantComidas+2 / 3) * 15;
+	TiempoEstimado = TiempoEstimado + ((cantComidas+2)/3) * 15;
 	String^ Fecha = this->dateTimePicker1->Text;
 	double PrecioTotal = 0;
 	for (int i = 0; i < listaDetallesPedido->Count; i++) {
