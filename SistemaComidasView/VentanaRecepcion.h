@@ -170,6 +170,7 @@ namespace SistemaComidasView {
 		if (codigoValidado) {
 			ArduinoController^ objArduinoController = gcnew ArduinoController();
 			objArduinoController->Ejecutar();
+			objPedidoController->actualizarEstadoRecojo(Convert::ToInt16(CodigoIngresado));
 		}
 		else {
 			MessageBox::Show("Código ingresado incorrecto");

@@ -16,12 +16,13 @@ namespace SistemaComidasModel {
 		String^ DNI;
 		String^ NumeroTarjeta;
 		int CodigoRecibido;
+		bool EstadoRecojo;
 		List<DetallePedido^>^ listaDetalles;
 
 		/*Definimos métodos*/
 	public:
 		Pedido();
-		Pedido(int codigo, bool EstadoPedido, double TiempoEstimado, String^ Fecha, Double PrecioTotal, String^ Nombres, String^ Apellidos, String^ DNI, String^ NumeroTarjeta, int CodigoRecibido, List<DetallePedido^>^ listaDetalles);
+		Pedido(int codigo, bool EstadoPedido, double TiempoEstimado, String^ Fecha, Double PrecioTotal, String^ Nombres, String^ Apellidos, String^ DNI, String^ NumeroTarjeta, int CodigoRecibido, List<DetallePedido^>^ listaDetalles, bool EstadoRecojo);
 		int getCodigo();
 		void setCodigo(int codigo);
 
@@ -54,5 +55,8 @@ namespace SistemaComidasModel {
 
 		List<DetallePedido^>^ getLlistaDetalles();
 		void setlistaDetalles(List<DetallePedido^>^ listaDetalles);
+
+		bool getEstadoRecojo();
+		void setEstadoRecojo(bool EstadoRecojo);
 	};
 }

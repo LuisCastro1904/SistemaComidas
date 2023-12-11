@@ -15,11 +15,12 @@ namespace SistemaComidasController {
 		void cerrarConexionBD();
 		//List<Pedido^>^ BuscarPedido(String^ Tipo);
 		//List<Pedido^>^ buscarAll();
-		void agregarPedido(bool EstadoPedido, double TiempoEstimado, String^ Fecha, double PrecioTotal, String^ Nombres, String^ Apellidos, String^ DNI, String^ NumeroTarjeta, int CodigoRecibido);
+		void agregarPedido(bool EstadoPedido, double TiempoEstimado, String^ Fecha, double PrecioTotal, String^ Nombres, String^ Apellidos, String^ DNI, String^ NumeroTarjeta, int CodigoRecibido, bool EstadoRecojo);
 		int obtenerCodigoUltimoPedido();
 		int obtenerCodigoRecibidoUltimoPedido(int codigoUltimoPedido);
 		List<String^>^ buscarCodigosxFecha(String^ fechaActual);
 		List<String^>^ buscarFechasconPedidos();
 		int obtenerCantPedidosxFecha(String^ fecha);
+		void actualizarEstadoRecojo(int CodigoIngresado);
 	};
 }

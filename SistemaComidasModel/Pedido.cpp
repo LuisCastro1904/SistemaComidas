@@ -3,7 +3,7 @@ using namespace SistemaComidasModel;
 Pedido::Pedido() {
 
 }
-Pedido::Pedido(int codigo, bool EstadoPedido, double TiempoEstimado, String^ Fecha, Double PrecioTotal, String^ Nombres, String^ Apellidos, String^ DNI, String^ NumeroTarjeta, int CodigoRecibido, List<DetallePedido^>^ listaDetalles)
+Pedido::Pedido(int codigo, bool EstadoPedido, double TiempoEstimado, String^ Fecha, Double PrecioTotal, String^ Nombres, String^ Apellidos, String^ DNI, String^ NumeroTarjeta, int CodigoRecibido, List<DetallePedido^>^ listaDetalles, bool EstadoRecojo)
 {
 	this->codigo = codigo;
 	this->EstadoPedido = EstadoPedido;
@@ -16,6 +16,7 @@ Pedido::Pedido(int codigo, bool EstadoPedido, double TiempoEstimado, String^ Fec
 	this->NumeroTarjeta = NumeroTarjeta;
 	this->CodigoRecibido = CodigoRecibido;
     this->listaDetalles = listaDetalles;
+    this->EstadoRecojo = EstadoRecojo;
 }
 int Pedido::getCodigo() {
     return this->codigo;
@@ -101,4 +102,11 @@ List<DetallePedido^>^ Pedido::getLlistaDetalles() {
 }
 void  Pedido::setlistaDetalles(List<DetallePedido^>^ listaDetalles) {
     this->listaDetalles = listaDetalles;
+}
+
+bool Pedido::getEstadoRecojo() {
+    return this->EstadoRecojo;
+}
+void Pedido::setEstadoRecojo(bool EstadoRecojo) {
+    this->EstadoRecojo = EstadoRecojo;
 }

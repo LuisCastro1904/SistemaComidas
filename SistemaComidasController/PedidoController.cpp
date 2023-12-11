@@ -20,10 +20,10 @@ void PedidoController::cerrarConexionBD() {
 
 //List<Pedido^>^ PedidoController::buscarAll();
 
-void PedidoController::agregarPedido(bool EstadoPedido, double TiempoEstimado, String^ Fecha, double PrecioTotal, String^ Nombres, String^ Apellidos, String^ DNI, String^ NumeroTarjeta, int CodigoRecibido) {
+void PedidoController::agregarPedido(bool EstadoPedido, double TiempoEstimado, String^ Fecha, double PrecioTotal, String^ Nombres, String^ Apellidos, String^ DNI, String^ NumeroTarjeta, int CodigoRecibido, bool EstadoRecojo) {
 	abrirConexionBD();
 	SqlCommand^ objSentencia = gcnew SqlCommand();
-	objSentencia->CommandText = "insert into SC_Pedido(EstadoPedido,TiempoEstimado,Fecha,PrecioTotal, Nombres, Apellidos, DNI, NumeroTarjeta, CodigoRecibido) values ('" + EstadoPedido + "','" + TiempoEstimado + "','" + Fecha + "','" + PrecioTotal + "','" + Nombres + "','" + Apellidos + "','" + DNI + "','" + NumeroTarjeta + "','" + CodigoRecibido + "')";
+	objSentencia->CommandText = "insert into SC_Pedido(EstadoPedido,TiempoEstimado,Fecha,PrecioTotal, Nombres, Apellidos, DNI, NumeroTarjeta, CodigoRecibido, EstadoRecojo) values ('" + EstadoPedido + "','" + TiempoEstimado + "','" + Fecha + "','" + PrecioTotal + "','" + Nombres + "','" + Apellidos + "','" + DNI + "','" + NumeroTarjeta + "','" + CodigoRecibido + "','" + EstadoRecojo + "')";
 	objSentencia->Connection = this->objConexion;
 	objSentencia->ExecuteNonQuery();
 	cerrarConexionBD();
@@ -80,7 +80,7 @@ List<String^>^ PedidoController::buscarCodigosxFecha(String^ fechaActual) {
 	/*Aqui estoy indicando que mi sentencia se va a ejecutar en mi conexion de BD*/
 	objSentencia->Connection = this->objConexion;
 	/*Aqui voy a indicar la sentencia que voy a ejecutar*/
-	objSentencia->CommandText = "select * from SC_Pedido where Fecha = '" + fechaActual + "'";
+	objSentencia->CommandText = "select * from SC_Pedido where Fecha = '" + fechaActual + "' and EstadoRecojo = 0";
 	/*Aqui ejecuto la sentencia en la Base de Datos*/
 	/*Para Select siempre sera ExecuteReader*/
 	/*Para select siempre va a devolver un SqlDataReader*/
@@ -140,4 +140,19 @@ int PedidoController::obtenerCantPedidosxFecha(String^ fecha) {
 	}
 	cerrarConexionBD();
 	return cantPedidos;
+}
+
+void PedidoController::actualizarEstadoRecojo(int CodigoIngresado) {
+	abrirConexionBD();
+	/*SqlCommand viene a ser el objeto que utilizare para hacer el query o sentencia para la BD*/
+	SqlCommand^ objSentencia = gcnew SqlCommand();
+	/*Aqui estoy indicando que mi sentencia se va a ejecutar en mi conexion de BD*/
+	objSentencia->Connection = this->objConexion;
+	/*Aqui voy a indicar la sentencia que voy a ejecutar*/
+	objSentencia->CommandText = "update SC_Pedido set EstadoRecojo=1 where CodigoRecibido =" + CodigoIngresado;
+	/*Aqui ejecuto la sentencia en la Base de Datos*/
+	/*Para Select siempre sera ExecuteReader*/
+	/*Para select siempre va a devolver un SqlDataReader*/
+	SqlDataReader^ objData = objSentencia->ExecuteReader();
+	cerrarConexionBD();
 }

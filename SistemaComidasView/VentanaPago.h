@@ -286,8 +286,9 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	std::uniform_int_distribution<int> distribucion(0, 1000);
 	// Generar un número aleatorio
 	int CodigoRecibido = distribucion(generador);
+	bool EstadoRecojo = 0;
 	PedidoController^ objPedidoController = gcnew PedidoController();
-	objPedidoController->agregarPedido(EstadoPedido, TiempoEstimado, Fecha, PrecioTotal, Nombres, Apellidos, DNI, NumeroTarjeta, CodigoRecibido);
+	objPedidoController->agregarPedido(EstadoPedido, TiempoEstimado, Fecha, PrecioTotal, Nombres, Apellidos, DNI, NumeroTarjeta, CodigoRecibido, EstadoRecojo);
 	int codigoUltimoPedido = objPedidoController->obtenerCodigoUltimoPedido();
 	objDetallePedidoController->actualizarCodigoPedido(codigoUltimoPedido);
 	VentanaFin ^ ventanaFIN = gcnew VentanaFin;
