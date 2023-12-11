@@ -180,10 +180,10 @@
     <ClInclude Include="modificarPedido.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="ReporteEstado.h">
+    <ClInclude Include="ReportePedido.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="ReportePedido.h">
+    <ClInclude Include="ReporteDetallePedido.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="ReporteProducto.h">
@@ -248,11 +248,11 @@
     <EmbeddedResource Include="modificarPedido.resx">
       <DependentUpon>modificarPedido.h</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ReporteEstado.resx">
-      <DependentUpon>ReporteEstado.h</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="ReportePedido.resx">
       <DependentUpon>ReportePedido.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReporteDetallePedido.resx">
+      <DependentUpon>ReporteDetallePedido.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ReporteProducto.resx">
       <DependentUpon>ReporteProducto.h</DependentUpon>

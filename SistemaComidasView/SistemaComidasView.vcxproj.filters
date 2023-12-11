@@ -140,10 +140,10 @@
     <ClInclude Include="modificarPedido.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="ReporteEstado.h">
+    <ClInclude Include="ReportePedido.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="ReportePedido.h">
+    <ClInclude Include="ReporteDetallePedido.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="ReporteProducto.h">

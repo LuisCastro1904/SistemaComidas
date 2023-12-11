@@ -3,8 +3,8 @@
 #include "VentanaRecepcion.h"
 #include "loginAdministracion.h"
 #include "loginCocinero.h"
-#include "ReporteEstado.h"
 #include "ReportePedido.h"
+#include "ReporteDetallePedido.h"
 #include "ReporteProducto.h"
 
 namespace SistemaComidasView {
@@ -172,22 +172,22 @@ namespace SistemaComidasView {
 			// pToolStripMenuItem
 			// 
 			this->pToolStripMenuItem->Name = L"pToolStripMenuItem";
-			this->pToolStripMenuItem->Size = System::Drawing::Size(158, 26);
-			this->pToolStripMenuItem->Text = L"Productos";
+			this->pToolStripMenuItem->Size = System::Drawing::Size(224, 26);
+			this->pToolStripMenuItem->Text = L"Stock de productos";
 			this->pToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::pToolStripMenuItem_Click);
 			// 
 			// pedidosToolStripMenuItem
 			// 
 			this->pedidosToolStripMenuItem->Name = L"pedidosToolStripMenuItem";
-			this->pedidosToolStripMenuItem->Size = System::Drawing::Size(158, 26);
-			this->pedidosToolStripMenuItem->Text = L"Pedidos";
+			this->pedidosToolStripMenuItem->Size = System::Drawing::Size(224, 26);
+			this->pedidosToolStripMenuItem->Text = L"Productos por dia";
 			this->pedidosToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::pedidosToolStripMenuItem_Click);
 			// 
 			// estadoToolStripMenuItem
 			// 
 			this->estadoToolStripMenuItem->Name = L"estadoToolStripMenuItem";
-			this->estadoToolStripMenuItem->Size = System::Drawing::Size(158, 26);
-			this->estadoToolStripMenuItem->Text = L"Estado";
+			this->estadoToolStripMenuItem->Size = System::Drawing::Size(224, 26);
+			this->estadoToolStripMenuItem->Text = L"Pedidos por dia";
 			this->estadoToolStripMenuItem->Click += gcnew System::EventHandler(this, &frmPrincipal::estadoToolStripMenuItem_Click);
 			// 
 			// frmPrincipal
@@ -253,15 +253,15 @@ private: System::Void pToolStripMenuItem_Click(System::Object^ sender, System::E
 	ReporteProd->ShowDialog();
 }
 private: System::Void pedidosToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-	ReportePedido^ ReportePed = gcnew ReportePedido();
+	ReporteDetallePedido^ ventReporteDetallePedido = gcnew ReporteDetallePedido();
 	//ventanaRecepcion->MdiParent = this;
-	ReportePed->ShowDialog();
+	ventReporteDetallePedido->ShowDialog();
 }
 
 private: System::Void estadoToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-	ReporteEstado^ ReporteEst = gcnew ReporteEstado();
+	ReportePedido^ ventReportePedido = gcnew ReportePedido();
 	//ventanaRecepcion->MdiParent = this;
-	ReporteEst->ShowDialog();
+	ventReportePedido->ShowDialog();
 }
 };
 	}

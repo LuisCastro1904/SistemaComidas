@@ -19,5 +19,7 @@ namespace SistemaComidasController {
 		int obtenerCodigoUltimoPedido();
 		int obtenerCodigoRecibidoUltimoPedido(int codigoUltimoPedido);
 		List<String^>^ buscarCodigosxFecha(String^ fechaActual);
+		List<String^>^ buscarFechasconPedidos();
+		int obtenerCantPedidosxFecha(String^ fecha);
 	};
 }

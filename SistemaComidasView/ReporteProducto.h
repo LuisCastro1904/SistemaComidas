@@ -73,7 +73,7 @@ namespace SistemaComidasView {
 			// 
 			this->comboBox1->FormattingEnabled = true;
 			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"", L"Bebida", L"Comida" });
-			this->comboBox1->Location = System::Drawing::Point(266, 24);
+			this->comboBox1->Location = System::Drawing::Point(376, 34);
 			this->comboBox1->Name = L"comboBox1";
 			this->comboBox1->Size = System::Drawing::Size(141, 24);
 			this->comboBox1->TabIndex = 1;
@@ -81,7 +81,7 @@ namespace SistemaComidasView {
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(448, 24);
+			this->button1->Location = System::Drawing::Point(558, 34);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(75, 25);
 			this->button1->TabIndex = 2;
@@ -92,7 +92,7 @@ namespace SistemaComidasView {
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(211, 28);
+			this->label1->Location = System::Drawing::Point(321, 38);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(38, 16);
 			this->label1->TabIndex = 3;
@@ -110,7 +110,7 @@ namespace SistemaComidasView {
 			series1->Legend = L"Legend1";
 			series1->Name = L"Series1";
 			this->chart1->Series->Add(series1);
-			this->chart1->Size = System::Drawing::Size(633, 515);
+			this->chart1->Size = System::Drawing::Size(897, 460);
 			this->chart1->TabIndex = 4;
 			this->chart1->Text = L"chart1";
 			// 
@@ -118,7 +118,7 @@ namespace SistemaComidasView {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1020, 707);
+			this->ClientSize = System::Drawing::Size(1020, 597);
 			this->Controls->Add(this->chart1);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->button1);
@@ -152,12 +152,14 @@ private: System::Void chart1_Click(System::Object^ sender, System::EventArgs^ e)
 private: System::Void ReporteProducto_Load(System::Object^ sender, System::EventArgs^ e) {
 	ProductoController^ objProductoController = gcnew ProductoController();
 	List<Producto^>^ listaProducto = objProductoController->buscarAll();
+	this->chart1->Series["Series1"]->Points->Clear();
 	for (int i = 0; i < listaProducto->Count; i++) {
 		this->chart1->Series["Series1"]->Points->Add(listaProducto[i]->getStock());
 		this->chart1->Series["Series1"]->Points[i]->AxisLabel = listaProducto[i]->getNombre();
-		this->chart1->Series["Series1"]->Points[i]->LegendText = listaProducto[i]->getNombre();
 		this->chart1->Series["Series1"]->Points[i]->Label = Convert::ToString(listaProducto[i]->getStock());
 	}
+	this->chart1->Series["Series1"]->IsVisibleInLegend = false;
+	this->chart1->ChartAreas[0]->AxisX->LabelStyle->Interval = 1;
 
 }
 };

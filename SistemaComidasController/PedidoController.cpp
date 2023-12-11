@@ -92,3 +92,52 @@ List<String^>^ PedidoController::buscarCodigosxFecha(String^ fechaActual) {
 	cerrarConexionBD();
 	return listaCodigos;
 }
+
+List<String^>^ PedidoController::buscarFechasconPedidos() {
+	List<String^>^ listaFechas = gcnew List<String^>();
+	abrirConexionBD();
+	/*SqlCommand viene a ser el objeto que utilizare para hacer el query o sentencia para la BD*/
+	SqlCommand^ objSentencia = gcnew SqlCommand();
+	/*Aqui estoy indicando que mi sentencia se va a ejecutar en mi conexion de BD*/
+	objSentencia->Connection = this->objConexion;
+	/*Aqui voy a indicar la sentencia que voy a ejecutar*/
+	objSentencia->CommandText = "select * from SC_Pedido";
+	/*Aqui ejecuto la sentencia en la Base de Datos*/
+	/*Para Select siempre sera ExecuteReader*/
+	/*Para select siempre va a devolver un SqlDataReader*/
+	SqlDataReader^ objData = objSentencia->ExecuteReader();
+	while (objData->Read()) {
+		String^ fecha = safe_cast<String^>(objData[3]);
+		int existe = 0;
+		for (int j = 0; j < listaFechas->Count; j++) {
+			if (listaFechas[j]->Contains(fecha)) {
+				existe = 1;
+			}
+		}
+		if (existe == 0) {
+			listaFechas->Add(fecha);
+		}
+	}
+	cerrarConexionBD();
+	return listaFechas;
+}
+
+int PedidoController::obtenerCantPedidosxFecha(String^ fecha) {
+	int cantPedidos;
+	abrirConexionBD();
+	/*SqlCommand viene a ser el objeto que utilizare para hacer el query o sentencia para la BD*/
+	SqlCommand^ objSentencia = gcnew SqlCommand();
+	/*Aqui estoy indicando que mi sentencia se va a ejecutar en mi conexion de BD*/
+	objSentencia->Connection = this->objConexion;
+	/*Aqui voy a indicar la sentencia que voy a ejecutar*/
+	objSentencia->CommandText = "select * from SC_Pedido where Fecha ='"+fecha+"'";
+	/*Aqui ejecuto la sentencia en la Base de Datos*/
+	/*Para Select siempre sera ExecuteReader*/
+	/*Para select siempre va a devolver un SqlDataReader*/
+	SqlDataReader^ objData = objSentencia->ExecuteReader();
+	while (objData->Read()) {
+		cantPedidos++;
+	}
+	cerrarConexionBD();
+	return cantPedidos;
+}
