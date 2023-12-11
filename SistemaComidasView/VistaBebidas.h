@@ -109,10 +109,10 @@ namespace SistemaComidasView {
 			this->button5 = (gcnew System::Windows::Forms::Button());
 			this->button4 = (gcnew System::Windows::Forms::Button());
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
-			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->a = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Cantidad = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Pedido = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Cantidad = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->a = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
@@ -160,19 +160,12 @@ namespace SistemaComidasView {
 			this->dataGridView1->TabIndex = 0;
 			this->dataGridView1->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &VistaBebidas::dataGridView1_CellContentClick);
 			// 
-			// Column2
+			// Pedido
 			// 
-			this->Column2->HeaderText = L"Importe (S/.)";
-			this->Column2->MinimumWidth = 6;
-			this->Column2->Name = L"Column2";
-			this->Column2->Width = 60;
-			// 
-			// a
-			// 
-			this->a->HeaderText = L"Precio unit. (S/.)";
-			this->a->MinimumWidth = 8;
-			this->a->Name = L"a";
-			this->a->Width = 60;
+			this->Pedido->HeaderText = L"Producto";
+			this->Pedido->MinimumWidth = 8;
+			this->Pedido->Name = L"Pedido";
+			this->Pedido->Width = 125;
 			// 
 			// Cantidad
 			// 
@@ -181,12 +174,19 @@ namespace SistemaComidasView {
 			this->Cantidad->Name = L"Cantidad";
 			this->Cantidad->Width = 60;
 			// 
-			// Pedido
+			// a
 			// 
-			this->Pedido->HeaderText = L"Producto";
-			this->Pedido->MinimumWidth = 8;
-			this->Pedido->Name = L"Pedido";
-			this->Pedido->Width = 125;
+			this->a->HeaderText = L"Precio unit. (S/.)";
+			this->a->MinimumWidth = 8;
+			this->a->Name = L"a";
+			this->a->Width = 60;
+			// 
+			// Column2
+			// 
+			this->Column2->HeaderText = L"Importe (S/.)";
+			this->Column2->MinimumWidth = 6;
+			this->Column2->Name = L"Column2";
+			this->Column2->Width = 60;
 			// 
 			// button2
 			// 
@@ -231,6 +231,7 @@ namespace SistemaComidasView {
 			this->button1->TabIndex = 33;
 			this->button1->Text = L"Agregar";
 			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &VistaBebidas::button1_Click_1);
 			// 
 			// numericUpDown1
 			// 
@@ -390,6 +391,21 @@ private: System::Void VistaBebidas_Load(System::Object^ sender, System::EventArg
 		// Agregar el RadioButton al GroupBox
 		flowLayoutPanel1->Controls->Add(radioButton);
 	}
+}
+private: System::Void button1_Click_1(System::Object^ sender, System::EventArgs^ e) {
+	String^ BebidaSeleccionada;
+	BebidaSeleccionada = ObtenerRadioButtonSeleccionado(sender, e);
+	ProductoController^ objProductoController = gcnew ProductoController();
+	Producto^ objProducto = objProductoController->buscarProductoxNombre(BebidaSeleccionada);
+	int Cantidad = Convert::ToInt32(this->numericUpDown1->Text);
+	String^ NombreProducto = ObtenerRadioButtonSeleccionado(sender, e);
+	Double PrecioUnitario = objProducto->getPrecio();
+	Double Importe = PrecioUnitario * Cantidad;
+	DetallePedidoController^ objDetallePedidoController = gcnew DetallePedidoController();
+	objDetallePedidoController->agregarDetallePedido(Cantidad, NombreProducto, PrecioUnitario, Importe);
+	MessageBox::Show("El producto se ha agregado con éxito");
+	List<DetallePedido^>^ listaDetallesPedidos = objDetallePedidoController->buscarDetallesPedidosBebidasSinPedido();
+	mostrarGrilla(listaDetallesPedidos);
 }
 };
 }
