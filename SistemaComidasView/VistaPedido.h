@@ -364,7 +364,7 @@ namespace SistemaComidasView {
 			ProductoController^ objProductoController = gcnew ProductoController();
 			Producto^ objProducto = objProductoController->buscarProductoxNombre(nombresRadioButtons[i]);
 			String^ Precio = Convert::ToString(objProducto->getPrecio());
-			radioButton->Text = nombresRadioButtons[i] + " (S/ "+Precio+")";
+			radioButton->Text = nombresRadioButtons[i];
 			//radioButton->BackColor = Color::DarkGray;
 			radioButton->Width = 120;
 			radioButton->Height = 60;

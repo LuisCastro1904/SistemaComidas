@@ -22,5 +22,6 @@ namespace SistemaComidasController {
 		List<String^>^ buscarFechasconPedidos();
 		int obtenerCantPedidosxFecha(String^ fecha);
 		void actualizarEstadoRecojo(int CodigoIngresado);
+		double obtenerTiempoUltimoPedido();
 	};
 }

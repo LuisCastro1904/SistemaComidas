@@ -268,7 +268,9 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	else {
 		TiempoEstimado = 0;
 	}
-	TiempoEstimado = TiempoEstimado + ((cantComidas+2)/3) * 15;
+	PedidoController^ objPedidoController = gcnew PedidoController();
+	double TiempoPendiente = objPedidoController->obtenerTiempoUltimoPedido();
+	TiempoEstimado = TiempoPendiente + TiempoEstimado + ((cantComidas+2)/3) * 15;
 	String^ Fecha = this->dateTimePicker1->Text;
 	double PrecioTotal = 0;
 	for (int i = 0; i < listaDetallesPedido->Count; i++) {
@@ -287,7 +289,6 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	// Generar un número aleatorio
 	int CodigoRecibido = distribucion(generador);
 	bool EstadoRecojo = 0;
-	PedidoController^ objPedidoController = gcnew PedidoController();
 	objPedidoController->agregarPedido(EstadoPedido, TiempoEstimado, Fecha, PrecioTotal, Nombres, Apellidos, DNI, NumeroTarjeta, CodigoRecibido, EstadoRecojo);
 	int codigoUltimoPedido = objPedidoController->obtenerCodigoUltimoPedido();
 	objDetallePedidoController->actualizarCodigoPedido(codigoUltimoPedido);
